@@ -1,0 +1,19 @@
+{
+  "name": "flatoddutils",
+  "version": "1.0.0",
+  "description": "This project is a collection of utility functions and constants.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taborns/flatoddutils.git"
+  },
+  "author": "Tabor Nekatibeb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taborns/flatoddutils/issues"
+  },
+  "homepage": "https://github.com/taborns/flatoddutils#readme"
+}
