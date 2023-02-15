@@ -1,4 +1,4 @@
-import slipcomp from "./slipcomputer";
+import slipcomp from "./slipcomputer.js";
 
 /* 
     given the slip computer name and all the parameters required 
