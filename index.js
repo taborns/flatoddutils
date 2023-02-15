@@ -14,7 +14,9 @@ const getSlipComputer = (
     )
 }
 
-let exports = {}
 
-exports.getSlipComputer = getSlipComputer
+export default {
+    getSlipComputer : getSlipComputer
+
+}
   
