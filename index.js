@@ -13,7 +13,8 @@ const getSlipComputer = (
         placedbet, total_odds, match_count
     )
 }
-  
+
+let exports = {}
 
 exports.getSlipComputer = getSlipComputer
   
