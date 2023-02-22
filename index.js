@@ -7,11 +7,23 @@ import slipcomp from "./slipcomputer.js";
 */
 
 const getSlipComputer = ( 
-    slip_computer_name, placedbet, total_odds, match_count
+    slip_computer_name, 
+    placedbet, 
+    total_odds, 
+    match_count,
+    min_odd, 
+    max_odd
 ) => {
+
+
     return new slipcomp[slip_computer_name](
-        placedbet, total_odds, match_count
+        placedbet, 
+        total_odds,
+        match_count,
+        min_odd, 
+        max_odd
     )
+    
 }
 
 

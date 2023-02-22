@@ -1,45 +1,39 @@
+import { each } from "store"
+import Constants from "../components/constants"
+
 /* 
-PlacedBet : represents the bet amount. If a player bet with 20 ETB, that is the palced bet 
+PlacedBet : represents the amount put 
 stake : represent the placed bet amount after tax 
 */
 class SlipComp {
 
-    static DEFAULT_MAX_WIN = 5000;
-    static DEFAULT_TAXABLE_WIN = 1000;
-    static DEFAULT_WIN_TAX = 0.15
-    static DEFAULT_TOT_TAX = 0.1
-    static DEFAULT_VAT_TAX = 0.15
-    static DEFAULT_WITHHOLDTAX = 0.14
-    static DEFAULT_SLIPSIZE = 20
-    static DEFAULT_TAX_TYPE_TOT = 'tot';
-    static DEFAULT_TAX_TYPE_VAT = 'vat';
-    static DEFAULT_TAX_TYPE_NONE = 'none';
-
-    constructor(placedbet, total_odds, match_count) {
+    constructor(placedbet, total_odds, match_count, min_odd, max_odd) {
 
         this.placedbet = placedbet || 0
         this.total_odds = total_odds || 0
         this.match_count = match_count || 0
+        this.min_odd = min_odd || 0
+        this.max_odd = max_odd || 0
 
     }
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_all_configurations = () => {
 
         return {
 
-            'MAX_WIN': DEFAULT_MAX_WIN,
-            'TAXABLE_WIN': DEFAULT_TAXABLE_WIN,
-            'WIN_TAX': DEFAULT_WIN_TAX,
-            'TOT_TAX': SlipComp.DEFAULT_TOT_TAX,
-            'VAT_TAX': SlipComp.DEFAULT_VAT_TAX,
+            'MAX_WIN': Constants.MAX_WIN,
+            'TAXABLE_WIN': Constants.CONFIG.TAXABLE_WIN,
+            'WIN_TAX': Constants.CONFIG.WIN_TAX,
+            'TOT_TAX': Constants.CONFIG.TOT_TAX,
+            'VAT_TAX': Constants.CONFIG.VAT_TAX,
             "VAT_TAX_LABEL": "VAT",
-            'TAX_TYPE': 'vat',
-            'WITHHOLDING_TAX': CSlipComp.DEFAULT_WITHHOLDTAX,
-            'SLIP_SIZE': SlipComp.DEFAULT_SLIPSIZE,
+            'TAX_TYPE': Constants.TAX_TYPE_VAT,
+            'WITHHOLDING_TAX': Constants.CONFIG.WITHHOLDTAX,
+            'SLIP_SIZE': Constants.DEFAULTSLIPSIZE,
             'NUM_ELIGIBLE_MATCHES': 0
         }
 
@@ -53,10 +47,10 @@ class SlipComp {
 
     get_tax_value = () => {
 
-        if (this.get_configurations('TAX_TYPE') == SlipComp.DEFAULT_TAX_TYPE_TOT)
+        if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_TOT)
             return this.get_configurations('TOT_TAX')
 
-        else if (this.get_configurations('TAX_TYPE') == 'vat')
+        else if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_VAT)
             return this.get_configurations('VAT_TAX')
 
     }
@@ -67,10 +61,10 @@ class SlipComp {
     //Represnets the stake 
     get_stake = () => {
 
-        if (this.get_configurations('TAX_TYPE') == SlipComp.DEFAULT_TAX_TYPE_TOT)
+        if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_TOT)
             return this.placedbet * (1 - this.get_tax_value())
 
-        else if (this.get_configurations('TAX_TYPE') == 'vat')
+        else if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_VAT)
             return this.placedbet / (1 + this.get_tax_value())
 
         return 0
@@ -99,10 +93,10 @@ class SlipComp {
     //Vat or Tot are two taxes considered in this stage of the calculation 
     get_initial_tax = () => {
 
-        if (this.get_configurations('TAX_TYPE') == SlipComp.DEFAULT_TAX_TYPE_TOT)
+        if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_TOT)
             return this.get_tot_tax()
 
-        else if (this.get_configurations('TAX_TYPE') == 'vat')
+        else if (this.get_configurations('TAX_TYPE') == Constants.TAX_TYPE_VAT)
             return this.get_vat_tax()
 
     }
@@ -142,8 +136,8 @@ class SlipComp {
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value > DEFAULT_TAXABLE_WIN)
-            tax_value = DEFAULT_WIN_TAX * win_value
+        if (win_value > Constants.CONFIG.TAXABLE_WIN)
+            tax_value = Constants.CONFIG.WIN_TAX * win_value
 
         return tax_value
     }
@@ -186,7 +180,7 @@ class MulaSlipComp extends SlipComp {
     }
 
     calculate_tax = () => {
-        let win_tax = CSlipComp.DEFAULT_WITHHOLDTAX * this.get_win_value()
+        let win_tax = Constants.CONFIG.WITHHOLDTAX * this.get_win_value()
 
         return win_tax
     }
@@ -211,7 +205,7 @@ class MulaSlipCompMW5K extends SlipComp {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 5000
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
         return all_configurations[configuration_name]
 
     }
@@ -228,7 +222,7 @@ class MulaSlipCompMW5K extends SlipComp {
     }
 
     calculate_tax = () => {
-        let win_tax = CSlipComp.DEFAULT_WITHHOLDTAX * this.get_win_value()
+        let win_tax = Constants.CONFIG.WITHHOLDTAX * this.get_win_value()
 
         return win_tax
     }
@@ -253,7 +247,7 @@ class MulaSlipComp10PVatMW5K extends MulaSlipCompMW5K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 5000
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['VAT_TAX'] = 0.1
         all_configurations['VAT_TAX_LABEL'] = "LEVY"
 
@@ -295,7 +289,7 @@ class MulaSlipComp10PVatMW10K extends MulaSlipComp10PVatMW5K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 10000
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['VAT_TAX'] = 0.1
         all_configurations['VAT_TAX_LABEL'] = "LEVY"
         all_configurations['SLIP_SIZE'] = 30
@@ -314,7 +308,7 @@ class LesothoMulaSlipCompMW5K extends MulaSlipCompMW5K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 5000
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
         return all_configurations[configuration_name]
 
     }
@@ -332,7 +326,7 @@ class LesothoMulaSlipCompMW10K extends LesothoMulaSlipCompMW5K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 10000
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
         return all_configurations[configuration_name]
 
     }
@@ -342,7 +336,7 @@ class LesothoMulaSlipCompMW10K extends LesothoMulaSlipCompMW5K {
 class AfroSlipCompNoBonusMW50KSlipSize30 extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -360,7 +354,7 @@ class AfroSlipCompNoBonusMW50KSlipSize30 extends SlipComp {
 class AfroSlipCompNoBonusMW100KSlipSize50 extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -378,7 +372,7 @@ class AfroSlipCompNoBonusMW100KSlipSize50 extends SlipComp {
 class AfroSlipCompNoBonusMW350KSlipSize50 extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -396,7 +390,7 @@ class AfroSlipCompNoBonusMW350KSlipSize50 extends SlipComp {
 class AfroSlipCompNoBonusMW500KSlipSize50 extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -415,7 +409,7 @@ class AfroSlipCompNoBonusMW500KSlipSize50 extends AfroSlipCompNoBonusMW350KSlipS
 class AfroSlipCompNoBonusMW150KSlipSize50 extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -433,13 +427,13 @@ class AfroSlipCompNoBonusMW150KSlipSize50 extends SlipComp {
 class AfroSlipCompBonusTOTMW50KSlipSize50 extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: SlipComp.DEFAULT_TAX_TYPE_TOT
+        TAX_TYPE: Constants.TAX_TYPE_TOT
     })
 
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_TOT
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_TOT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -460,7 +454,7 @@ class AfroSlipCompMW50KSlpSz50BGT100BV10p extends SlipComp {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_TOT
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_TOT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -502,7 +496,7 @@ class AfroSlipCompMW350KSlpSz50BGT20BV10p extends SlipComp {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_TOT
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_TOT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -535,13 +529,13 @@ class AfroSlipCompMW350KSlpSz50BGT20BV10p extends SlipComp {
 class AfroSlipCompMW350KSlpSz50BGT20BVAT extends AfroSlipCompMW350KSlpSz50BGT20BV10p {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -555,13 +549,13 @@ class AfroSlipCompMW350KSlpSz50BGT20BVAT extends AfroSlipCompMW350KSlpSz50BGT20B
 class AfroSlipCompMW1MKSlpSz50BGT20BVAT extends AfroSlipCompMW350KSlpSz50BGT20BVAT {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['MAX_WIN'] = 1000000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -584,7 +578,7 @@ class AfroSlipCompMW350KSlpSz50BGT20_1000BV10p extends AfroSlipCompMW350KSlpSz50
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = SlipComp.DEFAULT_TAX_TYPE_TOT
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_TOT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
@@ -620,13 +614,13 @@ class AfroSlipCompMW350KSlpSz50BGT20_1000BV10p extends AfroSlipCompMW350KSlpSz50
 class AfroSlipCompMW350WinTaxNoStake extends SlipComp {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 20
 
@@ -639,8 +633,8 @@ class AfroSlipCompMW350WinTaxNoStake extends SlipComp {
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value > DEFAULT_TAXABLE_WIN)
-            tax_value = (win_value - this.get_stake()) * DEFAULT_WIN_TAX
+        if (win_value > Constants.CONFIG.TAXABLE_WIN)
+            tax_value = (win_value - this.get_stake()) * Constants.CONFIG.WIN_TAX
 
         return tax_value
     }
@@ -650,13 +644,13 @@ class AfroSlipCompMW350WinTaxNoStake extends SlipComp {
 class AfroSlipCompNOBnsMW350KRfndNOTLessStake extends AfroSlipCompMW350WinTaxNoStake {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_VAT
         all_configurations['MAX_WIN'] = 350000
         all_configurations['SLIP_SIZE'] = 20
 
@@ -683,7 +677,7 @@ class AfroSlipCompNOBnsMW350KRfndNOTLessStake extends AfroSlipCompMW350WinTaxNoS
 class AfroSlipCompBonusMW350KRfndNOTLessStake extends AfroSlipCompNOBnsMW350KRfndNOTLessStake {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -723,7 +717,7 @@ class AfroSlipCompBonusMW350KRfndNOTLessStake extends AfroSlipCompNOBnsMW350KRfn
 class AfroSlipComp2PRCBnsMW350KRFDNOTLTStake extends AfroSlipCompBonusMW350KRfndNOTLessStake {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -761,7 +755,7 @@ class AfroSlipComp2PRCBnsMW350KRFDNOTLTStake extends AfroSlipCompBonusMW350KRfnd
 
 class AfroSlipComp10PRCBnsMW350KRFDNOTLTStake extends AfroSlipComp2PRCBnsMW350KRFDNOTLTStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -780,7 +774,7 @@ class AfroSlipComp10PRCBnsMW350KRFDNOTLTStake extends AfroSlipComp2PRCBnsMW350KR
 
 class AfroSlip10PRCBnsMW150RFNDNOTLTSTKSLSZ50 extends AfroSlipComp10PRCBnsMW350KRFDNOTLTStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -800,7 +794,7 @@ class AfroSlip10PRCBnsMW150RFNDNOTLTSTKSLSZ50 extends AfroSlipComp10PRCBnsMW350K
 
 class AfroSlipComp10PRCBnsMW1MRFDNOTLTStake extends AfroSlipComp10PRCBnsMW350KRFDNOTLTStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -819,7 +813,7 @@ class AfroSlipComp10PRCBnsMW1MRFDNOTLTStake extends AfroSlipComp10PRCBnsMW350KRF
 
 class AfroSlipComp10PRCBnsGT1000MW1M extends AfroSlipComp10PRCBnsMW1MRFDNOTLTStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -872,7 +866,7 @@ class AfroSlipComp10PRCBnsGT1000MW1M extends AfroSlipComp10PRCBnsMW1MRFDNOTLTSta
 
 class AfroSlipComp10PRCBnsMW1M extends AfroSlipComp10PRCBnsGT1000MW1M {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -909,7 +903,7 @@ class AfroSlipComp10PRCBnsMW1M extends AfroSlipComp10PRCBnsGT1000MW1M {
 
 class AfroSlipMW150RFNDNOTLTSTKSLSZ50 extends AfroSlipComp10PRCBnsMW350KRFDNOTLTStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -932,8 +926,8 @@ class AfroSlipMW150RFNDNOTLTSTKSLSZ50 extends AfroSlipComp10PRCBnsMW350KRFDNOTLT
         let win_value = this.get_win_value()
         let tax_value = 0
 
-        if (win_value > DEFAULT_TAXABLE_WIN)
-            tax_value = win_value * DEFAULT_WIN_TAX
+        if (win_value > Constants.CONFIG.TAXABLE_WIN)
+            tax_value = win_value * Constants.CONFIG.WIN_TAX
 
         return tax_value
     }
@@ -942,7 +936,7 @@ class AfroSlipMW150RFNDNOTLTSTKSLSZ50 extends AfroSlipComp10PRCBnsMW350KRFDNOTLT
 
 class AfroSlipCompVAT_5PRCBnsMW350KRFNOTLTSTK extends AfroSlipCompBonusMW350KRfndNOTLessStake {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -990,8 +984,8 @@ class AfroSlipCompVAT_5PRCBnsMW350KRFNOTLTSTK extends AfroSlipCompBonusMW350KRfn
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value > DEFAULT_TAXABLE_WIN)
-            tax_value = win_value * DEFAULT_WIN_TAX
+        if (win_value > Constants.CONFIG.TAXABLE_WIN)
+            tax_value = win_value * Constants.CONFIG.WIN_TAX
 
         return tax_value
     }
@@ -1000,7 +994,7 @@ class AfroSlipCompVAT_5PRCBnsMW350KRFNOTLTSTK extends AfroSlipCompBonusMW350KRfn
 
 class AfroSlipCompMW350_BNSGT1000_8NOTLTSTK extends AfroSlipCompVAT_5PRCBnsMW350KRFNOTLTSTK {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1032,7 +1026,7 @@ class AfroSlipCompMW350_BNSGT1000_8NOTLTSTK extends AfroSlipCompVAT_5PRCBnsMW350
 
 class AfroSlipCompMW350_BNSGT1000NOTLTSTK extends AfroSlipCompVAT_5PRCBnsMW350KRFNOTLTSTK {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1061,7 +1055,7 @@ class AfroSlipCompMW350_BNSGT1000NOTLTSTK extends AfroSlipCompVAT_5PRCBnsMW350KR
 
 class AfroSlipCompMW350_BNSGT1000 extends AfroSlipCompMW350_BNSGT1000NOTLTSTK {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1093,7 +1087,7 @@ class AfroSlipCompMW350_BNSGT1000 extends AfroSlipCompMW350_BNSGT1000NOTLTSTK {
 
 class AfroSlipCompMW1M_BNSGT1000 extends AfroSlipCompMW350_BNSGT1000NOTLTSTK {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1147,7 +1141,7 @@ class AfroSlipCompMW1M_BNSGT1000 extends AfroSlipCompMW350_BNSGT1000NOTLTSTK {
 
 class MultiBonusMaxBonus100K extends SlipComp {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: SlipComp.DEFAULT_TAX_TYPE_NONE
+        TAX_TYPE: Constants.TAX_TYPE_NONE
     })
 
     get_configurations = (configuration_name) => {
@@ -1252,7 +1246,9 @@ class MultiBonusMaxBonus100K extends SlipComp {
             note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
         }
         else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
-            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a 1% win bonus`
+            percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
+
+            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a ${percentage}% win bonus`
 
         }
 
@@ -1375,7 +1371,7 @@ class MultiBonus2 extends MultiBonusMaxBonus100K{
 class MultiBonus3 extends MultiBonusMaxBonus100K{
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: SlipComp.DEFAULT_TAX_TYPE_NONE
+        TAX_TYPE: Constants.TAX_TYPE_NONE
     })
 
     get_configurations = (configuration_name) => {
@@ -1555,7 +1551,7 @@ class MultiBonus5 extends MultiBonus3 {
 class MultiBonus6 extends MultiBonus3 {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: SlipComp.DEFAULT_TAX_TYPE_NONE
+        TAX_TYPE: Constants.TAX_TYPE_NONE
     })
 
     get_configurations = (configuration_name) => {
@@ -1629,7 +1625,7 @@ class MultiBonus6 extends MultiBonus3 {
 
 class MultiBonus7 extends MultiBonus6 {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: SlipComp.DEFAULT_TAX_TYPE_NONE
+        TAX_TYPE: Constants.TAX_TYPE_NONE
     })
 
     get_configurations = (configuration_name) => {
@@ -1647,9 +1643,113 @@ class MultiBonus7 extends MultiBonus6 {
 
 }
 
-class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
+class MultiBonus8 extends MultiBonus3 { 
+
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_TOT
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1
+        all_configurations["TAX_TYPE"] = Constants.TAX_TYPE_TOT
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_stake = () => {
+        return this.placedbet / (1 + this.get_tax_value())
+
+    }
+
+    get_tot_tax = () => {
+        return this.get_stake() * this.get_tax_value()
+    }
+
+
+    get_min_bonus_eligble_match_count = () => {
+        return 6
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return this.get_configurations( "MAX_WIN" )
+    }
+
+    get_percentages = (match_count) => {
+
+        // >= 38
+        if( match_count >= 38 )
+            return 3
+
+        // >= 32 and <=37
+        else if( match_count >= 32)
+            return 2.5
+
+        // >= 28 and <=31
+        else if( match_count >= 28)
+            return 2
+        
+        // >= 24 and <=27
+        else if( match_count >= 24)
+            return 1.5
+
+        // >= 21 and <=23
+        else if( match_count >= 21)
+            return 0.72
+        
+        // >= 19 and <=20
+        else if( match_count >= 19)
+            return 0.42
+        
+        // >= 17 and <=18
+        else if( match_count >= 17)
+            return 0.29
+        
+        // >= 15 and <=16
+        else if( match_count >= 15)
+            return 0.22
+
+        // >= 13 and <=14
+        else if( match_count >= 13)
+            return 0.14
+        
+        // >= 11 and <=12
+        else if( match_count >= 11)
+            return 0.1
+
+        // >= 9 and <=10
+        else if( match_count >= 9)
+            return 0.07
+        
+        // >= 8
+        else if( match_count >= 8)
+            return 0.04
+        
+        // >= 7
+        else if( match_count >= 7)
+            return 0.03
+        
+        // >= 6
+        else if( match_count >= 6)
+            return 0.02
+        
+    }
+
+    is_odd_bonus_eligible = () => {
+        return true
+    }
+
+}
+
+class MultiBonus9 extends MultiBonus6 {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_NONE
     })
 
     get_configurations = (configuration_name) => {
@@ -1657,8 +1757,61 @@ class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 35
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+    
+    is_win_taxable = ( amount) =>  { 
+        return amount > this.get_configurations("TAXABLE_WIN")
+    }
+
+
+    calculate_tax = () => {
+
+        let win_value  = this.get_win_value()
+        let tax_value = 0
+
+        if (this.is_win_taxable( win_value))
+            tax_value = Constants.CONFIG.WIN_TAX * win_value
+
+        return tax_value
+    }
+
+    get_win_tax_bonus = () => {
+       return this.calculate_tax()        
+
+    }
+
+    get_bonus_value = () => {
+        let multi_bonus_value = this.calculate_bonus_value()
+        let win_tax_bonus = this.get_win_tax_bonus()
+
+        let total_bonus = multi_bonus_value + win_tax_bonus
+        if( total_bonus > this.get_configurations("MAX_BONUS") )
+            total_bonus =  this.get_configurations("MAX_BONUS")
+        
+        return total_bonus
+    
+    }
+
+}
+
+class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_VAT
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
         all_configurations['SLIP_SIZE'] = 50
-        all_configurations['MAX_BONUS'] = 100000
+        all_configurations['MAX_BONUS'] = 52400
 
         return all_configurations[configuration_name]
 
@@ -1669,8 +1822,8 @@ class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value > DEFAULT_TAXABLE_WIN)
-            tax_value = DEFAULT_WIN_TAX * win_value
+        if (win_value > Constants.CONFIG.TAXABLE_WIN)
+            tax_value = Constants.CONFIG.WIN_TAX * win_value
 
         return tax_value
     }
@@ -1679,7 +1832,7 @@ class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
 
 class MultiBonusMaxBns100KStakeWTaxdSlpSz35 extends MultiBonusMaxBns100KStakeWinTaxed{
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1699,7 +1852,7 @@ class MultiBonusMaxBns100KStakeWTaxdSlpSz35 extends MultiBonusMaxBns100KStakeWin
 class MultiBonusMaxBnsWinTaxBonus extends MultiBonusMaxBns100KStakeWTaxdSlpSz35 {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1724,7 +1877,7 @@ class MultiBonusMaxBnsWinTaxBonus extends MultiBonusMaxBns100KStakeWTaxdSlpSz35 
         let tax_value = 0
 
         if (this.is_win_taxable( win_value))
-            tax_value = DEFAULT_WIN_TAX * win_value
+            tax_value = Constants.CONFIG.WIN_TAX * win_value
 
         return tax_value
     }
@@ -1765,7 +1918,7 @@ class MultiBonusMaxBnsWinTaxBonus extends MultiBonusMaxBns100KStakeWTaxdSlpSz35 
 class MultiBonusMaxVATWinTaxBonus extends MultiBonusMaxBnsWinTaxBonus {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1801,7 +1954,7 @@ class MultiBonusMaxVATWinTaxBonus extends MultiBonusMaxBnsWinTaxBonus {
 
 class MultiBonusMaxVATWinTaxBonus2 extends MultiBonusMaxVATWinTaxBonus{
     static ConfigurationDescription = () => ({
-        TAX_TYPE: 'vat'
+        TAX_TYPE: Constants.TAX_TYPE_VAT
     })
 
     get_configurations = (configuration_name) => {
@@ -1875,8 +2028,11 @@ export default {
     MultiBonusMaxVATWinTaxBonus : MultiBonusMaxVATWinTaxBonus,
     MultiBonusMaxVATWinTaxBonus2 : MultiBonusMaxVATWinTaxBonus2,
     MultiBonus2 : MultiBonus2,
+    MultiBonus3 : MultiBonus3,
     MultiBonus4 : MultiBonus4,
     MultiBonus5 : MultiBonus5,
     MultiBonus6 : MultiBonus6,
-    MultiBonus7 : MultiBonus7
+    MultiBonus7 : MultiBonus7,
+    MultiBonus8 : MultiBonus8,
+    MultiBonus9 : MultiBonus9
 }
