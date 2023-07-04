@@ -6,29 +6,28 @@ import slipcomp from "./slipcomputer.js";
     object
 */
 
-const getSlipComputer = ( 
-    slip_computer_name, 
-    placedbet, 
-    total_odds, 
+const getSlipComputer = (
+    slip_computer_name,
+    placedbet,
+    total_odds,
     match_count,
-    min_odd, 
+    min_odd,
     max_odd
 ) => {
 
-
-    return new slipcomp[slip_computer_name](
-        placedbet, 
+    let class_name = slipcomp[slip_computer_name]
+    return new class_name(
+        placedbet,
         total_odds,
         match_count,
-        min_odd, 
+        min_odd,
         max_odd
     )
-    
+
 }
 
 
 export default {
-    getSlipComputer : getSlipComputer
+    getSlipComputer: getSlipComputer
 
 }
-  
