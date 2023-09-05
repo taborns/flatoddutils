@@ -137,7 +137,7 @@ class SlipComp {
     }
 
     is_slip_limit_reached = () => {
-        return  this.match_count() >  this.get_configurations("SLIP_SIZE")
+        return this.match_count() > this.get_configurations("SLIP_SIZE")
     }
 
     get_stake_tax = () => {
@@ -1195,7 +1195,7 @@ class MultiBonusMaxBonus100K extends SlipComp {
     }
 
     get_percentage_dict = () => {
-        
+
         return {
             8: 0.01,
             9: 0.03,
@@ -1233,29 +1233,29 @@ class MultiBonusMaxBonus100K extends SlipComp {
 
 
     get_percentage_match_count = () => {
-        
+
         let percentage_match_count = this.get_match_count()
 
-        if ( percentage_match_count  > this.get_max_bonus_eligble_match_count() )
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
             percentage_match_count = this.get_max_bonus_eligble_match_count()
-        
-        
+
+
         return percentage_match_count
 
     }
-    
+
     calculate_bonus_value = () => {
-        if( !this.is_odd_bonus_eligible() )
+        if (!this.is_odd_bonus_eligible())
             return 0
         let percentage = this.get_percentages(this.get_percentage_match_count())
-        let max_percentage = this.get_percentages( this.get_max_bonus_eligble_match_count() )
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
         if (!percentage)
             return 0
         let win_value = this.get_win_value()
         let max_possible_bonus = win_value * max_percentage
         let bonus_value = win_value * percentage
-        
-        if(bonus_value > max_possible_bonus)
+
+        if (bonus_value > max_possible_bonus)
             bonus_value = max_possible_bonus
 
         if (bonus_value > this.get_configurations("MAX_BONUS"))
@@ -1263,7 +1263,7 @@ class MultiBonusMaxBonus100K extends SlipComp {
 
         return bonus_value
     }
-    
+
     get_bonus_value = () => {
         return this.calculate_bonus_value()
     }
@@ -1317,7 +1317,7 @@ class MultiBonusMaxBonus100K extends SlipComp {
     }
 }
 
-class MultiBonus2 extends MultiBonusMaxBonus100K{
+class MultiBonus2 extends MultiBonusMaxBonus100K {
 
     get_configurations = (configuration_name) => {
 
@@ -1332,7 +1332,7 @@ class MultiBonus2 extends MultiBonusMaxBonus100K{
 
     }
 
-    get_percentages = (match_count) => { 
+    get_percentages = (match_count) => {
         return {
             5: 0.1,
             6: 0.15,
@@ -1382,7 +1382,7 @@ class MultiBonus2 extends MultiBonusMaxBonus100K{
 
         if (percentage) {
 
-            if ( this.is_odd_bonus_eligible())
+            if (this.is_odd_bonus_eligible())
                 note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
             else
                 note = `The total value of the selected odds has to be atleast ${min_bonus_total_odd} and  each odd needs to be ${min_bonus_odd} or more`
@@ -1398,7 +1398,7 @@ class MultiBonus2 extends MultiBonusMaxBonus100K{
 
 }
 
-class MultiBonus3 extends MultiBonusMaxBonus100K{
+class MultiBonus3 extends MultiBonusMaxBonus100K {
 
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
@@ -1430,7 +1430,7 @@ class MultiBonus3 extends MultiBonusMaxBonus100K{
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value >= this.get_configurations("TAXABLE_WIN") )
+        if (win_value >= this.get_configurations("TAXABLE_WIN"))
             tax_value = this.get_configurations("WIN_TAX") * win_value
 
         return tax_value
@@ -1458,14 +1458,14 @@ class MultiBonus3 extends MultiBonusMaxBonus100K{
             20: 0.75,
         }[match_count]
     }
-    
+
     is_odd_bonus_eligible = () => {
         return this.total_odds >= this.get_configurations("MIN_BONUS_ODD") ** this.match_count
 
     }
 }
 
-class MultiBonus4 extends MultiBonus2{
+class MultiBonus4 extends MultiBonus2 {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -1479,7 +1479,7 @@ class MultiBonus4 extends MultiBonus2{
 
     }
 
-    get_percentages = (match_count) => { 
+    get_percentages = (match_count) => {
         return {
             5: 0.1,
             6: 0.15,
@@ -1509,7 +1509,7 @@ class MultiBonus4 extends MultiBonus2{
         let win_value = this.get_win_value() + this.get_bonus_value()
         let tax_value = 0
 
-        if (win_value >= this.get_configurations("TAXABLE_WIN") )
+        if (win_value >= this.get_configurations("TAXABLE_WIN"))
             tax_value = this.get_configurations("WIN_TAX") * win_value
 
         return tax_value
@@ -1524,24 +1524,24 @@ class MultiBonus4 extends MultiBonus2{
     }
 
     is_odd_bonus_eligible = () => {
-        let min_allowed_odd = 0 
+        let min_allowed_odd = 0
 
-        if( this.total_odds < this.get_configurations("MIN_BONUS_ODD") ** this.match_count )
+        if (this.total_odds < this.get_configurations("MIN_BONUS_ODD") ** this.match_count)
             return false
 
 
-        if ( this.match_count > this.get_min_bonus_eligble_match_count())
+        if (this.match_count > this.get_min_bonus_eligble_match_count())
             min_allowed_odd = this.get_configurations("MIN_BONUS_ODD") ** (this.match_count - this.get_min_bonus_eligble_match_count())
 
-        
+
         return this.total_odds >= min_allowed_odd + this.get_minimum_total_eligible_odd()
 
     }
-    
+
 }
 
 class MultiBonus5 extends MultiBonus3 {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -1563,7 +1563,7 @@ class MultiBonus5 extends MultiBonus3 {
 
         if (percentage) {
 
-            if ( this.is_odd_bonus_eligible())
+            if (this.is_odd_bonus_eligible())
                 note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
             else
                 note = `Each odd needs to be ${min_bonus_odd} or more`
@@ -1601,24 +1601,24 @@ class MultiBonus6 extends MultiBonus3 {
 
         // returns the number of matchs it requires to get to the total odd if 
         // the value of the selected odds is 1.5 each. 
-        
-        let total_odd = this.get_configurations( "MIN_BONUS_ODD" )
+
+        let total_odd = this.get_configurations("MIN_BONUS_ODD")
         let match_count = 0
         let acceptable_total_odd = this.get_configurations("MIN_BONUS_ODD") ** this.match_count
 
-        while( true ) {
-            if(  this.total_odds > total_odd) {
+        while (true) {
+            if (this.total_odds > total_odd) {
                 match_count += 1
-                total_odd *= this.get_configurations( "MIN_BONUS_ODD" )
+                total_odd *= this.get_configurations("MIN_BONUS_ODD")
             }
-            else if( total_odd > acceptable_total_odd ) { 
-                match_count =  this.match_count
+            else if (total_odd > acceptable_total_odd) {
+                match_count = this.match_count
                 break
             }
-        
-            else if( match_count >= this.get_configurations("SLIP_SIZE"))
+
+            else if (match_count >= this.get_configurations("SLIP_SIZE"))
                 break
-            
+
             else {
                 break
             }
@@ -1629,24 +1629,24 @@ class MultiBonus6 extends MultiBonus3 {
         return match_count
 
     }
-    
+
     get_percentage_match_count = () => {
-        if ( this.match_count < this.get_min_bonus_eligble_match_count() )
+        if (this.match_count < this.get_min_bonus_eligble_match_count())
             return this.match_count
-            
-        
+
+
 
         let percentage_match_count = this.get_total_odd_match_count()
 
-        if ( percentage_match_count  > this.get_max_bonus_eligble_match_count() )
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
             percentage_match_count = this.get_max_bonus_eligble_match_count()
-        
-        
-        
+
+
+
         return percentage_match_count
 
     }
-    
+
     is_odd_bonus_eligible = () => {
         return true
     }
@@ -1713,7 +1713,7 @@ class MultiBonus7 extends MultiBonus6 {
 
 }
 
-class MultiBonus8 extends MultiBonus3 { 
+class MultiBonus8 extends MultiBonus3 {
 
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'tot'
@@ -1748,67 +1748,67 @@ class MultiBonus8 extends MultiBonus3 {
     }
 
     get_max_bonus_eligble_match_count = () => {
-        return this.get_configurations( "MAX_WIN" )
+        return this.get_configurations("MAX_WIN")
     }
 
     get_percentages = (match_count) => {
 
         // >= 38
-        if( match_count >= 38 )
+        if (match_count >= 38)
             return 3
 
         // >= 32 and <=37
-        else if( match_count >= 32)
+        else if (match_count >= 32)
             return 2.5
 
         // >= 28 and <=31
-        else if( match_count >= 28)
+        else if (match_count >= 28)
             return 2
-        
+
         // >= 24 and <=27
-        else if( match_count >= 24)
+        else if (match_count >= 24)
             return 1.5
 
         // >= 21 and <=23
-        else if( match_count >= 21)
+        else if (match_count >= 21)
             return 0.72
-        
+
         // >= 19 and <=20
-        else if( match_count >= 19)
+        else if (match_count >= 19)
             return 0.42
-        
+
         // >= 17 and <=18
-        else if( match_count >= 17)
+        else if (match_count >= 17)
             return 0.29
-        
+
         // >= 15 and <=16
-        else if( match_count >= 15)
+        else if (match_count >= 15)
             return 0.22
 
         // >= 13 and <=14
-        else if( match_count >= 13)
+        else if (match_count >= 13)
             return 0.14
-        
+
         // >= 11 and <=12
-        else if( match_count >= 11)
+        else if (match_count >= 11)
             return 0.1
 
         // >= 9 and <=10
-        else if( match_count >= 9)
+        else if (match_count >= 9)
             return 0.07
-        
+
         // >= 8
-        else if( match_count >= 8)
+        else if (match_count >= 8)
             return 0.04
-        
+
         // >= 7
-        else if( match_count >= 7)
+        else if (match_count >= 7)
             return 0.03
-        
+
         // >= 6
-        else if( match_count >= 6)
+        else if (match_count >= 6)
             return 0.02
-        
+
     }
 
     is_odd_bonus_eligible = () => {
@@ -1834,25 +1834,25 @@ class MultiBonus9 extends MultiBonus6 {
         return all_configurations[configuration_name]
 
     }
-    
-    is_win_taxable = ( amount) =>  { 
+
+    is_win_taxable = (amount) => {
         return amount > this.get_configurations("TAXABLE_WIN")
     }
 
 
     calculate_tax = () => {
 
-        let win_value  = this.get_win_value()
+        let win_value = this.get_win_value()
         let tax_value = 0
 
-        if (this.is_win_taxable( win_value))
+        if (this.is_win_taxable(win_value))
             tax_value = 0.15 * win_value
 
         return tax_value
     }
 
     get_win_tax_bonus = () => {
-       return this.calculate_tax()        
+        return this.calculate_tax()
 
     }
 
@@ -1861,11 +1861,11 @@ class MultiBonus9 extends MultiBonus6 {
         let win_tax_bonus = this.get_win_tax_bonus()
 
         let total_bonus = multi_bonus_value + win_tax_bonus
-        if( total_bonus > this.get_configurations("MAX_BONUS") )
-            total_bonus =  this.get_configurations("MAX_BONUS")
-        
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
+
         return total_bonus
-    
+
     }
 
 }
@@ -1958,7 +1958,7 @@ class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
 
 }
 
-class MultiBonusMaxBns100KStakeWTaxdSlpSz35 extends MultiBonusMaxBns100KStakeWinTaxed{
+class MultiBonusMaxBns100KStakeWTaxdSlpSz35 extends MultiBonusMaxBns100KStakeWinTaxed {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2001,17 +2001,17 @@ class MultiBonusMaxBnsWinTaxBonus extends MultiBonusMaxBns100KStakeWTaxdSlpSz35 
 
     calculate_tax = () => {
 
-        let win_value  = this.get_win_value()
+        let win_value = this.get_win_value()
         let tax_value = 0
 
-        if (this.is_win_taxable( win_value))
+        if (this.is_win_taxable(win_value))
             tax_value = 0.15 * win_value
 
         return tax_value
     }
 
     get_win_tax_bonus = () => {
-       return this.calculate_tax()        
+        return this.calculate_tax()
 
     }
 
@@ -2020,18 +2020,18 @@ class MultiBonusMaxBnsWinTaxBonus extends MultiBonusMaxBns100KStakeWTaxdSlpSz35 
         let win_tax_bonus = this.get_win_tax_bonus()
 
         let total_bonus = multi_bonus_value + win_tax_bonus
-        if( total_bonus > this.get_configurations("MAX_BONUS") )
-            total_bonus =  this.get_configurations("MAX_BONUS")
-        
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
+
         return total_bonus
-    
+
     }
 
     get_net_pay = () => {
         let win_value = this.get_win_value()
-        let total_bonus =this.get_bonus_value()
+        let total_bonus = this.get_bonus_value()
 
-        
+
         let net_pay = win_value + total_bonus
 
         let win_tax = this.calculate_tax()
@@ -2068,19 +2068,19 @@ class MultiBonusMaxVATWinTaxBonus extends MultiBonusMaxBnsWinTaxBonus {
         let win_value = this.get_win_value()
 
         let total_bonus = multi_bonus_value + win_tax_bonus
-        if( total_bonus > this.get_configurations("MAX_BONUS") )
-            total_bonus =  this.get_configurations("MAX_BONUS")
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
 
-        if( !this.is_win_taxable( win_value))
+        if (!this.is_win_taxable(win_value))
             total_bonus += this.get_initial_tax()
-        
+
         return total_bonus
-    
+
     }
 
 }
 
-class MultiBonusMaxVATWinTaxBonus2 extends MultiBonusMaxVATWinTaxBonus{
+class MultiBonusMaxVATWinTaxBonus2 extends MultiBonusMaxVATWinTaxBonus {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2103,18 +2103,18 @@ class MultiBonusMaxVATWinTaxBonus2 extends MultiBonusMaxVATWinTaxBonus{
         let win_tax_bonus = this.get_win_tax_bonus()
 
         let total_bonus = multi_bonus_value + win_tax_bonus
-        if( total_bonus > this.get_configurations("MAX_BONUS") )
-            total_bonus =  this.get_configurations("MAX_BONUS")
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
 
-        if( !this.is_win_taxable( this.get_placed_bet() ))
+        if (!this.is_win_taxable(this.get_placed_bet()))
             total_bonus += this.get_initial_tax() * this.total_odds
-        
+
         return total_bonus
-    
+
     }
 }
 
-class WinTaxBonusSlpSz50MW350K extends AfroSlipCompNoBonusMW350KSlipSize50{
+class WinTaxBonusSlpSz50MW350K extends AfroSlipCompNoBonusMW350KSlipSize50 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2145,21 +2145,21 @@ class WinTaxBonusSlpSz50MW350K extends AfroSlipCompNoBonusMW350KSlipSize50{
         return win_value
     }
 
-    is_win_taxable = ( amount) =>  { 
+    is_win_taxable = (amount) => {
         return amount > this.get_configurations("TAXABLE_WIN")
     }
-    
+
     calculate_tax = () => {
 
-        let win_value  = this.get_win_value()
+        let win_value = this.get_win_value()
         let tax_value = 0
 
-        if (this.is_win_taxable( win_value))
+        if (this.is_win_taxable(win_value))
             tax_value = this.get_configurations("WIN_TAX") * win_value
         return tax_value
 
     }
-    
+
     get_win_tax_bonus = () => {
         return this.calculate_tax()
     }
@@ -2179,21 +2179,21 @@ class WinTaxBonusSlpSz50MW350K extends AfroSlipCompNoBonusMW350KSlipSize50{
 
         let win_value = this.get_win_value()
 
-        if( win_value < this.get_configurations("TAXABLE_WIN") )
+        if (win_value < this.get_configurations("TAXABLE_WIN"))
             return 0
 
         let bonus_value = this.get_win_tax_bonus()
 
-        if ( bonus_value < 0 )
+        if (bonus_value < 0)
             bonus_value = 0
 
         return bonus_value
-    
+
     }
 
 }
 
-class WinTaxBonusSlpSz50MW500K extends WinTaxBonusSlpSz50MW350K{
+class WinTaxBonusSlpSz50MW500K extends WinTaxBonusSlpSz50MW350K {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2210,7 +2210,7 @@ class WinTaxBonusSlpSz50MW500K extends WinTaxBonusSlpSz50MW350K{
     }
 }
 
-class WinTaxBonusSlpSz50MW1Mil extends WinTaxBonusSlpSz50MW350K{
+class WinTaxBonusSlpSz50MW1Mil extends WinTaxBonusSlpSz50MW350K {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2247,7 +2247,7 @@ class SC54MW350KSPS50 extends SlipComp {
     get_tot_tax = () => {
         return 0;
     }
-    
+
     get_initial_tax = () => {
         return 0
     }
@@ -2319,6 +2319,289 @@ class LesMultiBonus1 extends MultiBonus6 {
     }
 }
 
+class BasicKenyaSlipComputer extends SlipComp {
+
+
+    get_all_configurations = () => {
+
+        //
+        // Contains list of all common configuration values that can be applied to
+        // a slip computer
+        //
+        return {
+            "EXCISE_RATE": 0.075,
+            "WITHHOLD_RATE": 0.2,
+            "NUM_ELIGIBLE_MATCHES": 8,
+            "MAX_WIN": 1000000,
+            "SLIP_SIZE": 50,
+        }
+    }
+
+
+    __get_excise_rate = () => {
+        return this.get_configurations("EXCISE_RATE")
+    }
+
+    __get_withholding_rate = () => {
+        return this.get_configurations("WITHHOLD_RATE")
+    }
+
+    get_gross_stake = () => {
+        return this.placedbet
+    }
+
+    get_total_odds = () => {
+        return this.total_odds
+    }
+
+    get_match_count = () => {
+        return this.match_count
+    }
+
+    get_excise_amount = () => {
+        // Excise Amount = Gross stake - (1 / (1 + Excise rate ))
+        // Example - Excise amount = 1000 - (1 / (1 + 0.075))
+
+        return this.get_gross_stake() - (
+            this.get_gross_stake() / (1 + this.__get_excise_rate())
+        )
+    }
+
+
+    get_net_stake = () => {
+        return this.get_gross_stake() - this.get_excise_amount()
+    }
+
+    get_gross_winning = () => {
+        // Gross Winning - Net Stake * Total Odds
+        // Gross winning can't be higer than the max possible payout
+        let gros_winning = this.get_net_stake() * this.get_total_odds()
+
+        if (gros_winning > this.get_configurations("MAX_WIN"))
+            gros_winning = this.get_configurations("MAX_WIN")
+
+        return gros_winning
+
+    }
+
+    get_net_winning = () => {
+        return this.get_gross_winning() - this.get_net_stake()
+
+    }
+
+    get_withholding_amount = () => {
+        return this.get_net_winning() * this.__get_withholding_rate()
+
+    }
+
+    get_net_payout = () => {
+        return this.get_gross_winning() - this.get_withholding_amount()
+
+    }
+
+    get_bonus_value = () => {
+        return 0
+    }
+
+    get_initial_tax = () => {
+        return this.get_before_0()
+    }
+    get_win_value = () => {
+        // Gross Winning
+        let win_value = this.get_gross_winning()
+        console.log("WinValue", win_value)
+        return win_value
+    }
+
+    get_net_pay = () => {
+        let net_payout = this.get_gross_winning() - this.get_withholding_amount()
+        net_payout += this.get_bonus_value()
+
+        if (net_payout > this.get_configurations("MAX_WIN"))
+            net_payout = this.get_configurations("MAX_WIN")
+
+        return net_payout
+    }
+
+    calculate_tax = () => {
+        return this.get_withholding_amount()
+
+    }
+
+    get_before_0 = () => {
+        return this.get_excise_amount()
+
+    }
+
+    get_before_01 = () => {
+        return 0
+    }
+
+    get_natlottery_taxable = () => {
+        return 0
+    }
+
+    get_after_0 = () => {
+        return this.get_withholding_amount()
+    }
+
+    get_after_0_label = () => {
+        return "Withholding Tax"
+    }
+    get_before_0_label = () => {
+        return "Excise Tax"
+    }
+    get_before_01_label = () => {
+        return ""
+    }
+
+
+
+}
+
+class BasicMultibetBonusKenyaSlipComputer extends BasicKenyaSlipComputer {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 100000
+        all_configurations['MIN_BONUS_ODD'] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    is_odd_bonus_eligible = () => {
+        return (
+            this.get_total_odds()
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+        )
+    }
+
+    get_min_bonus_eligble_match_count = () => {
+        return 6
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 50
+    }
+
+
+    get_percentages = (match_count) => {
+
+        // >= 38
+        if (match_count >= 38)
+            return 3
+
+        // >= 32 and <=37
+        else if (match_count >= 32)
+            return 2.5
+
+        // >= 28 and <=31
+        else if (match_count >= 28)
+            return 2
+
+        // >= 24 and <=27
+        else if (match_count >= 24)
+            return 1.5
+
+        // >= 21 and <=23
+        else if (match_count >= 21)
+            return 0.72
+
+        // >= 19 and <=20
+        else if (match_count >= 19)
+            return 0.42
+
+        // >= 17 and <=18
+        else if (match_count >= 17)
+            return 0.29
+
+        // >= 15 and <=16
+        else if (match_count >= 15)
+            return 0.22
+
+        // >= 13 and <=14
+        else if (match_count >= 13)
+            return 0.14
+
+        // >= 11 and <=12
+        else if (match_count >= 11)
+            return 0.1
+
+        // >= 9 and <=10
+        else if (match_count >= 9)
+            return 0.07
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.04
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.03
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.02
+
+    }
+
+    calculate_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible())
+            return 0
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        if (!percentage)
+            return 0
+        let win_value = this.get_win_value()
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = win_value * percentage
+
+        if (bonus_value > max_possible_bonus)
+            bonus_value = max_possible_bonus
+
+        if (bonus_value > this.get_configurations("MAX_BONUS"))
+            bonus_value = this.get_configurations("MAX_BONUS")
+
+        return bonus_value
+    }
+
+    get_bonus_value = () => {
+        return this.calculate_bonus_value()
+    }
+
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+
+        return percentage_match_count
+
+    }
+
+    get_note = () => {
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let note = null
+        if (percentage) {
+            note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
+        }
+        else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
+            percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
+
+            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a ${percentage}% win bonus`
+
+        }
+
+        return note
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -2331,12 +2614,12 @@ export default {
     LesothoMulaSlipCompMW10K: LesothoMulaSlipCompMW10K,
     AfroSlipCompNoBonusMW100KSlipSize50: AfroSlipCompNoBonusMW100KSlipSize50,
     AfroSlipCompNoBonusMW350KSlipSize50: AfroSlipCompNoBonusMW350KSlipSize50,
-    AfroSlipCompNoBonusMW500KSlipSize50 : AfroSlipCompNoBonusMW500KSlipSize50,
+    AfroSlipCompNoBonusMW500KSlipSize50: AfroSlipCompNoBonusMW500KSlipSize50,
     AfroSlipCompBonusTOTMW50KSlipSize50: AfroSlipCompBonusTOTMW50KSlipSize50,
     AfroSlipCompMW50KSlpSz50BGT100BV10p: AfroSlipCompMW50KSlpSz50BGT100BV10p,
     AfroSlipCompMW350KSlpSz50BGT20BV10p: AfroSlipCompMW350KSlpSz50BGT20BV10p,
     AfroSlipCompMW350KSlpSz50BGT20BVAT: AfroSlipCompMW350KSlpSz50BGT20BVAT,
-    AfroSlipCompMW1MKSlpSz50BGT20BVAT : AfroSlipCompMW1MKSlpSz50BGT20BVAT,
+    AfroSlipCompMW1MKSlpSz50BGT20BVAT: AfroSlipCompMW1MKSlpSz50BGT20BVAT,
     AfroSlipCompMW350KSlpSz50BGT20_1000BV10p: AfroSlipCompMW350KSlpSz50BGT20_1000BV10p,
     AfroSlipCompMW350WinTaxNoStake: AfroSlipCompMW350WinTaxNoStake,
     AfroSlipCompNOBnsMW350KRfndNOTLessStake: AfroSlipCompNOBnsMW350KRfndNOTLessStake,
@@ -2356,28 +2639,30 @@ export default {
     AfroSlipCompMW1M_BNSGT1000: AfroSlipCompMW1M_BNSGT1000,
     MultiBonusMaxBonus100K: MultiBonusMaxBonus100K,
     MultiBonusMaxBns100KStakeWinTaxed: MultiBonusMaxBns100KStakeWinTaxed,
-    MultiBonusMaxBns100KStakeWTaxdSlpSz35 : MultiBonusMaxBns100KStakeWTaxdSlpSz35,
-    MultiBonusMaxBnsWinTaxBonus : MultiBonusMaxBnsWinTaxBonus,
-    MultiBonusMaxVATWinTaxBonus : MultiBonusMaxVATWinTaxBonus,
-    MultiBonusMaxVATWinTaxBonus2 : MultiBonusMaxVATWinTaxBonus2,
-    MultiBonus2 : MultiBonus2,
-    MultiBonus3 : MultiBonus3,
-    MultiBonus4 : MultiBonus4,
-    MultiBonus5 : MultiBonus5,
-    MultiBonus6 : MultiBonus6,
-    MultiBonus6Mw500SlpSz50 : MultiBonus6Mw500SlpSz50,
-    MultiBonus6Mw1MilSlpSz50 : MultiBonus6Mw1MilSlpSz50,
-    MultiBonus7 : MultiBonus7,
-    MultiBonus8 : MultiBonus8,
-    MultiBonus9 : MultiBonus9,
-    MultiBonus9Mw500KMB5240SlpSz35 : MultiBonus9Mw500KMB5240SlpSz35,
-    MultiBonus9Mw1MilMB5240SlpSz35 : MultiBonus9Mw1MilMB5240SlpSz35,
-    MultiBonus10 : MultiBonus10,
-    WinTaxBonusSlpSz50MW350K : WinTaxBonusSlpSz50MW350K,
-    WinTaxBonusSlpSz50MW500K : WinTaxBonusSlpSz50MW500K,
-    WinTaxBonusSlpSz50MW1Mil : WinTaxBonusSlpSz50MW1Mil,
-    SC54MW350KSPS50 : SC54MW350KSPS50,
-    SC54MW500KSPS50 : SC54MW500KSPS50,
-    SC54MW1MilSPS50 : SC54MW1MilSPS50,
-    LesMultiBonus1 : LesMultiBonus1,
+    MultiBonusMaxBns100KStakeWTaxdSlpSz35: MultiBonusMaxBns100KStakeWTaxdSlpSz35,
+    MultiBonusMaxBnsWinTaxBonus: MultiBonusMaxBnsWinTaxBonus,
+    MultiBonusMaxVATWinTaxBonus: MultiBonusMaxVATWinTaxBonus,
+    MultiBonusMaxVATWinTaxBonus2: MultiBonusMaxVATWinTaxBonus2,
+    MultiBonus2: MultiBonus2,
+    MultiBonus3: MultiBonus3,
+    MultiBonus4: MultiBonus4,
+    MultiBonus5: MultiBonus5,
+    MultiBonus6: MultiBonus6,
+    MultiBonus6Mw500SlpSz50: MultiBonus6Mw500SlpSz50,
+    MultiBonus6Mw1MilSlpSz50: MultiBonus6Mw1MilSlpSz50,
+    MultiBonus7: MultiBonus7,
+    MultiBonus8: MultiBonus8,
+    MultiBonus9: MultiBonus9,
+    MultiBonus9Mw500KMB5240SlpSz35: MultiBonus9Mw500KMB5240SlpSz35,
+    MultiBonus9Mw1MilMB5240SlpSz35: MultiBonus9Mw1MilMB5240SlpSz35,
+    MultiBonus10: MultiBonus10,
+    WinTaxBonusSlpSz50MW350K: WinTaxBonusSlpSz50MW350K,
+    WinTaxBonusSlpSz50MW500K: WinTaxBonusSlpSz50MW500K,
+    WinTaxBonusSlpSz50MW1Mil: WinTaxBonusSlpSz50MW1Mil,
+    SC54MW350KSPS50: SC54MW350KSPS50,
+    SC54MW500KSPS50: SC54MW500KSPS50,
+    SC54MW1MilSPS50: SC54MW1MilSPS50,
+    LesMultiBonus1: LesMultiBonus1,
+    BasicKenyaSlipComputer: BasicKenyaSlipComputer,
+    BasicMultibetBonusKenyaSlipComputer: BasicMultibetBonusKenyaSlipComputer
 }
