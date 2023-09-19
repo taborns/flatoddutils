@@ -195,6 +195,16 @@ class SlipComp {
         return this.match_count
     }
 
+    get_after_0_label = () => {
+        return "Withholding Tax"
+    }
+    get_before_0_label = () => {
+        return "Excise Tax"
+    }
+    get_before_01_label = () => {
+        return ""
+    }
+
 }
 
 class MulaSlipComp extends SlipComp {
@@ -2445,15 +2455,7 @@ class BasicKenyaSlipComputer extends SlipComp {
         return this.get_withholding_amount()
     }
 
-    get_after_0_label = () => {
-        return "Withholding Tax"
-    }
-    get_before_0_label = () => {
-        return "Excise Tax"
-    }
-    get_before_01_label = () => {
-        return ""
-    }
+
 
 
 
