@@ -2604,6 +2604,49 @@ class BasicMultibetBonusKenyaSlipComputer extends BasicKenyaSlipComputer {
     }
 }
 
+class BasicKenyaSlipComp12_5ET extends BasicKenyaSlipComputer {
+    get_all_configurations = () => {
+
+        //
+        // Contains list of all common configuration values that can be applied to
+        // a slip computer
+        //
+        return {
+            "EXCISE_RATE": 0.125,
+            "WITHHOLD_RATE": 0.2,
+            "NUM_ELIGIBLE_MATCHES": 8,
+            "MAX_WIN": 1000000,
+            "SLIP_SIZE": 50,
+        }
+    }
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['EXCISE_RATE'] = true
+
+        return all_configurations[configuration_name]
+
+    }
+
+}
+
+class BasicMulbetKenyaSlipComp12_5ET extends BasicKenyaSlipComp12_5ET {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 100000
+        all_configurations['MIN_BONUS_ODD'] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+}
+
+
+
 export default {
 
     SlipComp: SlipComp,
@@ -2666,5 +2709,8 @@ export default {
     SC54MW1MilSPS50: SC54MW1MilSPS50,
     LesMultiBonus1: LesMultiBonus1,
     BasicKenyaSlipComputer: BasicKenyaSlipComputer,
-    BasicMultibetBonusKenyaSlipComputer: BasicMultibetBonusKenyaSlipComputer
+    BasicMultibetBonusKenyaSlipComputer: BasicMultibetBonusKenyaSlipComputer,
+    BasicKenyaSlipComp12_5ET: BasicKenyaSlipComp12_5ET,
+    BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET
+
 }
