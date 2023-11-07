@@ -199,10 +199,10 @@ class SlipComp {
         return "Winning Tax( 15%)"
     }
     get_before_0_label = () => {
-        if (this.get_configurations("TAX_TYPE") == Constants.TAX_TYPE_VAT)
+        if (this.get_configurations("TAX_TYPE") == 'vat')
             return "V.A.T"
 
-        if (this.get_configurations("TAX_TYPE") == Constants.TAX_TYPE_TOT)
+        if (this.get_configurations("TAX_TYPE") == 'tot')
             return "TOT"
         return ""
 
