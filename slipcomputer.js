@@ -196,14 +196,24 @@ class SlipComp {
     }
 
     get_after_0_label = () => {
-        return "Withholding Tax"
+        return "Winning Tax( 15%)"
     }
     get_before_0_label = () => {
-        return "Excise Tax"
+        if (this.get_configurations("TAX_TYPE") == Constants.TAX_TYPE_VAT)
+            return "V.A.T"
+
+        if (this.get_configurations("TAX_TYPE") == Constants.TAX_TYPE_TOT)
+            return "TOT"
+        return ""
+
+
     }
     get_before_01_label = () => {
-        return ""
+        return "NAT. Lot"
     }
+
+
+
 
 }
 
@@ -2455,7 +2465,15 @@ class BasicKenyaSlipComputer extends SlipComp {
         return this.get_withholding_amount()
     }
 
-
+    get_after_0_label = () => {
+        return "Withholding Tax"
+    }
+    get_before_0_label = () => {
+        return "Excise Tax"
+    }
+    get_before_01_label = () => {
+        return ""
+    }
 
 
 
