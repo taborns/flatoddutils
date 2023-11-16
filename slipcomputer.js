@@ -217,6 +217,65 @@ class SlipComp {
 
 }
 
+class NoTaxSlipCompMw500K extends SlipComp {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        return all_configurations[configuration_name]
+
+    }
+
+    get_stake = () => {
+
+        return this.get_placed_bet()
+
+    }
+
+    get_initial_tax = () => {
+
+        return 0
+
+    }
+
+
+    get_bonus_value = () => {
+
+        return 0;
+    }
+
+    // calculates the winning tax 
+    calculate_tax = () => {
+
+        return 0;
+    }
+
+}
+
+class NoTaxSlipCompMw1M extends NoTaxSlipCompMw500K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        return all_configurations[configuration_name]
+
+    }
+}
+
+class NoTaxSlipCompMw2M extends NoTaxSlipCompMw500K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 2000000
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        return all_configurations[configuration_name]
+
+    }
+}
+
 class MulaSlipComp extends SlipComp {
 
     static ConfigurationDescription = () => ({
@@ -2668,6 +2727,9 @@ class BasicMulbetKenyaSlipComp12_5ET extends BasicKenyaSlipComp12_5ET {
 export default {
 
     SlipComp: SlipComp,
+    NoTaxSlipCompMw500K: NoTaxSlipCompMw500K,
+    NoTaxSlipCompMw1M: NoTaxSlipCompMw1M,
+    NoTaxSlipCompMw2M: NoTaxSlipCompMw2M,
     MulaSlipComp: MulaSlipComp,
     AfroSlipCompNoBonusMW50KSlipSize30: AfroSlipCompNoBonusMW50KSlipSize30,
     MulaSlipCompMW5K: MulaSlipCompMW5K,
