@@ -223,7 +223,7 @@ class NoTaxSlipCompMw500K extends SlipComp {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 500000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
@@ -259,7 +259,7 @@ class NoTaxSlipCompMw1M extends NoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 1000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
@@ -270,7 +270,7 @@ class NoTaxSlipCompMw2M extends NoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 2000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
