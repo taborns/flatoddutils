@@ -2667,8 +2667,13 @@ class BasicMultibetBonusKenyaSlipComputer extends BasicKenyaSlipComputer {
 
         let percentage = this.get_percentages(this.get_percentage_match_count())
         let note = null
+        let min_odd = this.get_configurations("MIN_BONUS_ODD")
         if (percentage) {
-            note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
+            if (this.is_odd_bonus_eligible()) {
+                note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
+            } else {
+                note = `Your picks needs to have odd value of ${min_odd} or above.`
+            }
         }
         else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
             percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
