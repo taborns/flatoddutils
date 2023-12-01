@@ -2708,7 +2708,7 @@ class BasicKenyaSlipComp12_5ET extends BasicKenyaSlipComputer {
 
 }
 
-class BasicMulbetKenyaSlipComp12_5ET extends BasicKenyaSlipComp12_5ET {
+class BasicMulbetKenyaSlipComp12_5ET extends BasicMultibetBonusKenyaSlipComputer {
 
     get_configurations = (configuration_name) => {
 
@@ -2716,6 +2716,11 @@ class BasicMulbetKenyaSlipComp12_5ET extends BasicKenyaSlipComp12_5ET {
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_BONUS'] = 100000
         all_configurations['MIN_BONUS_ODD'] = 1.2
+        all_configurations['EXCISE_RATE'] = 0.125
+        all_configurations['WITHHOLD_RATE'] = 0.2
+        all_configurations['NUM_ELIGIBLE_MATCHES'] = 8
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
 
         return all_configurations[configuration_name]
 
