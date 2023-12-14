@@ -2010,7 +2010,7 @@ class MultiBonus10 extends MultiBonus5 {
 
 class MultiBonus11 extends MultiBonus6 {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: Constants.TAX_TYPE_NONE
+        TAX_TYPE: 'none'
     })
 
     get_configurations = (configuration_name) => {
@@ -2096,7 +2096,7 @@ class MultiBonus11 extends MultiBonus6 {
         let tax_value = 0
 
         if (this.is_win_taxable(win_value))
-            tax_value = Constants.CONFIG.WIN_TAX * win_value
+            tax_value = 0.15 * win_value
 
         return tax_value
     }
@@ -2991,7 +2991,7 @@ class MulbetNoTaxSlipCompMw1M extends BasicMulbetNoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 1000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
@@ -3002,7 +3002,7 @@ class MulbetNoTaxSlipCompMw2M extends BasicMulbetNoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 2000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
