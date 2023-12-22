@@ -2119,6 +2119,25 @@ class MultiBonus11 extends MultiBonus6 {
     }
 }
 
+class MultiBonus11MW1Mil extends MultiBonus11 {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_NONE
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+}
+
 class MultiBonusMaxBns100KStakeWinTaxed extends MultiBonusMaxBonus100K {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
@@ -3067,6 +3086,7 @@ export default {
     MultiBonus9Mw1MilMB5240SlpSz35: MultiBonus9Mw1MilMB5240SlpSz35,
     MultiBonus10: MultiBonus10,
     MultiBonus11: MultiBonus11,
+    MultiBonus11MW1Mil: MultiBonus11MW1Mil,
     WinTaxBonusSlpSz50MW350K: WinTaxBonusSlpSz50MW350K,
     WinTaxBonusSlpSz50MW500K: WinTaxBonusSlpSz50MW500K,
     WinTaxBonusSlpSz50MW1Mil: WinTaxBonusSlpSz50MW1Mil,
@@ -3077,6 +3097,7 @@ export default {
     BasicKenyaSlipComputer: BasicKenyaSlipComputer,
     BasicMultibetBonusKenyaSlipComputer: BasicMultibetBonusKenyaSlipComputer,
     BasicKenyaSlipComp12_5ET: BasicKenyaSlipComp12_5ET,
-    BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET
+    BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET,
+
 
 }
