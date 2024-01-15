@@ -187,6 +187,12 @@ class SlipComp {
         return net_pay
     }
 
+    get_total_odds = () => {
+        return this.total_odds
+    }
+
+
+
     get_note = () => {
         return null
     }
