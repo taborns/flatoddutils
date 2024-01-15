@@ -3028,6 +3028,152 @@ class MulbetNoTaxSlipCompMw2M extends BasicMulbetNoTaxSlipCompMw500K {
 }
 
 
+
+class MulbetSlipCompMO12_MW2MNoTax extends NoTaxSlipCompMw2M {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 500000
+        all_configurations['MAX_WIN'] = 2000000
+        all_configurations['MIN_BONUS_ODD'] = 1.2
+        all_configurations['SLIP_SIZE'] = 50
+
+        return all_configurations[configuration_name]
+
+    }
+
+    is_odd_bonus_eligible = () => {
+        return (
+            this.get_total_odds()
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+        )
+    }
+
+    get_min_bonus_eligble_match_count = () => {
+        return 6
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 50
+    }
+
+
+    get_percentages = (match_count) => {
+
+        // >= 38
+        if (match_count >= 38)
+            return 3
+
+        // >= 32 and <=37
+        else if (match_count >= 32)
+            return 2.5
+
+        // >= 28 and <=31
+        else if (match_count >= 28)
+            return 2
+
+        // >= 24 and <=27
+        else if (match_count >= 24)
+            return 1.5
+
+        // >= 21 and <=23
+        else if (match_count >= 21)
+            return 0.72
+
+        // >= 19 and <=20
+        else if (match_count >= 19)
+            return 0.42
+
+        // >= 17 and <=18
+        else if (match_count >= 17)
+            return 0.29
+
+        // >= 15 and <=16
+        else if (match_count >= 15)
+            return 0.22
+
+        // >= 13 and <=14
+        else if (match_count >= 13)
+            return 0.14
+
+        // >= 11 and <=12
+        else if (match_count >= 11)
+            return 0.1
+
+        // >= 9 and <=10
+        else if (match_count >= 9)
+            return 0.07
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.04
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.03
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.02
+
+    }
+
+    calculate_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible())
+            return 0
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        if (!percentage)
+            return 0
+        let win_value = this.get_win_value()
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = win_value * percentage
+
+        if (bonus_value > max_possible_bonus)
+            bonus_value = max_possible_bonus
+
+        if (bonus_value > this.get_configurations("MAX_BONUS"))
+            bonus_value = this.get_configurations("MAX_BONUS")
+
+        return bonus_value
+    }
+
+    get_bonus_value = () => {
+        return this.calculate_bonus_value()
+    }
+
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+
+        return percentage_match_count
+
+    }
+
+    get_note = () => {
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let note = null
+        if (percentage) {
+            note = `Current Bonus ${(percentage * 100).toFixed(2)}% `
+        }
+        else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
+            percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
+
+            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a ${percentage}% win bonus`
+
+        }
+
+        return note
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -3098,6 +3244,7 @@ export default {
     BasicMultibetBonusKenyaSlipComputer: BasicMultibetBonusKenyaSlipComputer,
     BasicKenyaSlipComp12_5ET: BasicKenyaSlipComp12_5ET,
     BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET,
+    MulbetSlipCompMO12_MW2MNoTax: MulbetSlipCompMO12_MW2MNoTax,
 
 
 }
