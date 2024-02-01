@@ -1738,6 +1738,22 @@ class MultiBonus6 extends MultiBonus3 {
 
 }
 
+class MultiBonus6SlpSz40 extends MultiBonus6 {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 40
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+}
+
+
 class MultiBonus6Mw500SlpSz50 extends MultiBonus6 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
@@ -3229,6 +3245,7 @@ export default {
     MultiBonus4: MultiBonus4,
     MultiBonus5: MultiBonus5,
     MultiBonus6: MultiBonus6,
+    MultiBonus6SlpSz40: MultiBonus6SlpSz40,
     MultiBonus6Mw500SlpSz50: MultiBonus6Mw500SlpSz50,
     MultiBonus6Mw1MilSlpSz50: MultiBonus6Mw1MilSlpSz50,
     MultiBonus7: MultiBonus7,
