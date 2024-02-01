@@ -2143,7 +2143,7 @@ class MultiBonus11 extends MultiBonus6 {
 
 class MultiBonus11MW1Mil extends MultiBonus11 {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: Constants.TAX_TYPE_NONE
+        TAX_TYPE: 'none'
     })
 
     get_configurations = (configuration_name) => {
