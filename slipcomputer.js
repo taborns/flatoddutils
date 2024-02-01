@@ -3196,6 +3196,199 @@ class MulbetSlipCompMO12_MW2MNoTax extends NoTaxSlipCompMw2M {
     }
 }
 
+class MulbetSlipCompMO12_MW2MNoTax2 extends MulbetSlipCompMO12_MW2MNoTax {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 500000
+        all_configurations['MAX_WIN'] = 2000000
+        all_configurations['MIN_BONUS_ODD'] = 1.2
+        all_configurations['SLIP_SIZE'] = 50
+
+        return all_configurations[configuration_name]
+
+    }
+
+
+    get_percentages = (match_count) => {
+
+        // >= 45 500%
+        if (match_count >= 45)
+            return 5
+
+        // >= 44 475%
+        else if (match_count >= 44)
+            return 4.75
+
+        // >= 43 450%
+        else if (match_count >= 43)
+            return 4.5
+
+        // >= 42 420%
+        else if (match_count >= 42)
+            return 4.2
+
+        // >= 41 400%
+        else if (match_count >= 41)
+            return 4
+
+        // >= 40 380%
+        else if (match_count >= 40)
+            return 3.8
+
+        // >= 39 360%
+        else if (match_count >= 39)
+            return 3.6
+
+        // >= 38 340%
+        else if (match_count >= 38)
+            return 3.4
+
+        // >= 37 320%
+        else if (match_count >= 37)
+            return 3.2
+
+        // >= 36 and 305%
+        else if (match_count >= 36)
+            return 3.05
+
+        // >= 35 290%
+        else if (match_count >= 35)
+            return 2.9
+
+        // >= 34 270%
+        else if (match_count >= 34)
+            return 2.7
+
+        // >= 33 2.55%
+        else if (match_count >= 33)
+            return 2.55
+
+        // >= 32 240%
+        else if (match_count >= 32)
+            return 2.4
+
+        // >= 31 225%
+        else if (match_count >= 31)
+            return 2.25
+
+        // >= 30 210%
+        else if (match_count >= 30)
+            return 2.1
+
+        // >= 29 195%
+        else if (match_count >= 29)
+            return 1.95
+
+        // >= 28 185%
+        else if (match_count >= 28)
+            return 1.85
+
+        // >= 27 170%
+        else if (match_count >= 27)
+            return 1.7
+
+        // >= 26 160%
+        else if (match_count >= 26)
+            return 1.6
+
+        // >= 25 150%
+        else if (match_count >= 25)
+            return 1.5
+
+        // >= 24 140%
+        else if (match_count >= 24)
+            return 1.4
+
+        // >= 23 130%
+        else if (match_count >= 23)
+            return 1.3
+
+        // >= 22 120%
+        else if (match_count >= 22)
+            return 1.2
+
+        // >= 21 110%
+        else if (match_count >= 21)
+            return 1.1
+
+        // >= 20 100%
+        else if (match_count >= 20)
+            return 1
+
+        // >= 19 90%
+        else if (match_count >= 19)
+            return 0.9
+
+        // >= 18 80%
+        else if (match_count >= 18)
+            return 0.8
+
+        // >= 17 75%
+        else if (match_count >= 17)
+            return 0.75
+
+        // >= 16 65%
+        else if (match_count >= 16)
+            return 0.65
+
+        // >= 15 60%
+        else if (match_count >= 15)
+            return 0.6
+
+        // >= 14 55%
+        else if (match_count >= 14)
+            return 0.55
+
+        // >= 13 50%
+        else if (match_count >= 13)
+            return 0.5
+
+        // >= 12 45%
+        else if (match_count >= 12)
+            return 0.45
+
+        // >= 11 40%
+        else if (match_count >= 11)
+            return 0.4
+
+        // >= 10 35%
+        else if (match_count >= 10)
+            return 0.35
+
+        // >= 9 30%
+        else if (match_count >= 9)
+            return 0.3
+
+        // >= 8 25%
+        else if (match_count >= 8)
+            return 0.25
+
+        // >= 7 20%
+        else if (match_count >= 7)
+            return 0.2
+
+        // >= 6 15%
+        else if (match_count >= 6)
+            return 0.15
+
+        // >= 5 10%
+        else if (match_count >= 5)
+            return 0.1
+
+        // >= 4 4%
+        else if (match_count >= 4)
+            return 0.04
+
+        // >= 3 3%
+        else if (match_count >= 3)
+            return 0.03
+    }
+}
+
+
 export default {
 
     SlipComp: SlipComp,
@@ -3268,6 +3461,7 @@ export default {
     BasicKenyaSlipComp12_5ET: BasicKenyaSlipComp12_5ET,
     BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET,
     MulbetSlipCompMO12_MW2MNoTax: MulbetSlipCompMO12_MW2MNoTax,
+    MulbetSlipCompMO12_MW2MNoTax2: MulbetSlipCompMO12_MW2MNoTax2
 
 
 }
