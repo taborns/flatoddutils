@@ -3211,6 +3211,13 @@ class MulbetSlipCompMO12_MW2MNoTax2 extends MulbetSlipCompMO12_MW2MNoTax {
 
     }
 
+    get_min_bonus_eligble_match_count = () => {
+        return 3
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 50
+    }
 
     get_percentages = (match_count) => {
 
