@@ -3378,9 +3378,9 @@ class MulbetSlipCompMO12_MW2MNoTax2 extends MulbetSlipCompMO12_MW2MNoTax {
         else if (match_count >= 5)
             return 0.1
 
-        // >= 4 4%
+        // >= 4 5%
         else if (match_count >= 4)
-            return 0.04
+            return 0.05
 
         // >= 3 3%
         else if (match_count >= 3)
