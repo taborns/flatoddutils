@@ -287,7 +287,7 @@ class NoTaxSlipCompMw15M extends NoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 15000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
