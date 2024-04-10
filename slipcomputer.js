@@ -2318,7 +2318,7 @@ class MBNS11_50SLPSZ_1Mil_850K_CAP extends MultiBonus11_20EVN {
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_WIN'] = 1000000
-        all_configurations['NET_PAY_CAP'] = 850_000
+        all_configurations['NET_PAY_CAP'] = 850000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         all_configurations["MIN_BONUS_ODD"] = 1.4
