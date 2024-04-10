@@ -2308,6 +2308,47 @@ class MBNS11_50SLPSZ_1Mil extends MultiBonus11_20EVN {
 }
 
 
+class MBNS11_50SLPSZ_1Mil_850K_CAP extends MultiBonus11_20EVN {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'none'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 850_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_net_pay = () => {
+        let win_value = this.get_win_value()
+        let bonus_value = this.get_bonus_value()
+
+        let net_pay = win_value + bonus_value
+
+        let win_tax = this.calculate_tax()
+
+        net_pay = net_pay - win_tax
+        
+        if( net_pay >= this.get_configurations("NET_PAY_CAP")) { 
+            net_pay = this.get_configurations("NET_PAY_CAP")
+        }
+
+        return net_pay
+    }
+
+
+
+}
+
+
 class MultiBonus11MW1Mil extends MultiBonus11 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
@@ -3769,6 +3810,7 @@ export default {
     MulbetSlipCompMO12_MW2MNoTax2: MulbetSlipCompMO12_MW2MNoTax2,
     MultiBonus11_20EVN : MultiBonus11_20EVN,
     MBNS11_50SLPSZ_1Mil : MBNS11_50SLPSZ_1Mil,
+    MBNS11_50SLPSZ_1Mil_850K_CAP : MBNS11_50SLPSZ_1Mil_850K_CAP,
     MultiBonus12 : MultiBonus12,
     MultiBonus12_1Mil : MultiBonus12_1Mil
 
