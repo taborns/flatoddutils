@@ -260,6 +260,30 @@ class NoTaxSlipCompMw500K extends SlipComp {
 
 }
 
+class NoTaxSlipCompMw500K_35SLPSZ extends NoTaxSlipCompMw500K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 5000000
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['SLIP_SIZE'] = 35
+        return all_configurations[configuration_name]
+
+    }
+}
+
+class NoTaxSlipCompMw500K_50SLPSZ extends NoTaxSlipCompMw500K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 5000000
+        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['SLIP_SIZE'] = 50
+        return all_configurations[configuration_name]
+
+    }
+}
+
 class NoTaxSlipCompMw1M extends NoTaxSlipCompMw500K {
     get_configurations = (configuration_name) => {
 
@@ -2165,6 +2189,125 @@ class MultiBonus11 extends MultiBonus6 {
     }
 }
 
+class MultiBonus11_20EVN extends MultiBonus11 {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'none'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_percentages = (match_count) => {
+        // >= 20
+        if (match_count >= 20)
+            return 0.75
+
+        // >= 19
+        if (match_count >= 19)
+            return 0.7
+
+        // >= 18
+        if (match_count >= 18)
+            return 0.65
+
+        // >= 17
+        if (match_count >= 17)
+            return 0.6
+
+        // >= 16
+        if (match_count >= 16)
+            return 0.55
+
+        // >= 15
+        if (match_count >= 15)
+            return 0.5
+
+        // >= 14
+        else if (match_count >= 14)
+            return 0.45
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.4
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.35
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.3
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.25
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.20
+
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.15
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.1
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.06
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.05
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.04
+
+        // >= 3
+        else if (match_count >= 3)
+            return 0.03
+
+    }
+
+}
+
+class MBNS11_50SLPSZ_1Mil extends MultiBonus11_20EVN {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'none'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+
+
+}
+
+
 class MultiBonus11MW1Mil extends MultiBonus11 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
@@ -2178,6 +2321,133 @@ class MultiBonus11MW1Mil extends MultiBonus11 {
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+}
+
+class MultiBonus12 extends MultiBonus11 {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_NONE
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+
+    get_percentages = (match_count) => {
+
+        // >= 14
+        if (match_count >= 14)
+            return 0.7
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.58
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.45
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.38
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.34
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.24
+
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.2
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.16
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.06
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.05
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.04
+
+        // >= 3
+        else if (match_count >= 3)
+            return 0.03
+
+    }
+
+
+    is_win_taxable = (amount) => {
+        return amount > this.get_configurations("TAXABLE_WIN")
+    }
+
+
+    calculate_tax = () => {
+
+        let win_value = this.get_win_value()
+        let tax_value = 0
+
+        if (this.is_win_taxable(win_value))
+            tax_value = Constants.CONFIG.WIN_TAX * win_value
+
+        return tax_value
+    }
+
+    get_win_tax_bonus = () => {
+        return this.calculate_tax()
+
+    }
+
+    get_bonus_value = () => {
+        let multi_bonus_value = this.calculate_bonus_value()
+        let win_tax_bonus = this.get_win_tax_bonus()
+
+        let total_bonus = multi_bonus_value + win_tax_bonus
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
+
+        return total_bonus
+
+    }
+}
+
+class MultiBonus12_1Mil extends MultiBonus12 {
+
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_NONE
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.2
 
         return all_configurations[configuration_name]
 
@@ -3424,6 +3694,8 @@ export default {
 
     SlipComp: SlipComp,
     NoTaxSlipCompMw500K: NoTaxSlipCompMw500K,
+    NoTaxSlipCompMw500K_35SLPSZ : NoTaxSlipCompMw500K_35SLPSZ,
+    NoTaxSlipCompMw500K_50SLPSZ : NoTaxSlipCompMw500K_50SLPSZ,
     NoTaxSlipCompMw1M: NoTaxSlipCompMw1M,
     NoTaxSlipCompMw2M: NoTaxSlipCompMw2M,
     NoTaxSlipCompMw10M: NoTaxSlipCompMw10M,
@@ -3494,7 +3766,10 @@ export default {
     BasicKenyaSlipComp12_5ET: BasicKenyaSlipComp12_5ET,
     BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET,
     MulbetSlipCompMO12_MW2MNoTax: MulbetSlipCompMO12_MW2MNoTax,
-    MulbetSlipCompMO12_MW2MNoTax2: MulbetSlipCompMO12_MW2MNoTax2
-
+    MulbetSlipCompMO12_MW2MNoTax2: MulbetSlipCompMO12_MW2MNoTax2,
+    MultiBonus11_20EVN : MultiBonus11_20EVN,
+    MBNS11_50SLPSZ_1Mil : MBNS11_50SLPSZ_1Mil,
+    MultiBonus12 : MultiBonus12,
+    MultiBonus12_1Mil : MultiBonus12_1Mil
 
 }
