@@ -269,7 +269,7 @@ class NoTaxSlipCompMw500K_35SLPSZ extends NoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 5000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         all_configurations['SLIP_SIZE'] = 35
         return all_configurations[configuration_name]
 
@@ -323,7 +323,7 @@ class NoTaxSlipCompMw10M extends NoTaxSlipCompMw500K {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 10000000
-        all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
+        all_configurations['TAX_TYPE'] = 'none'
         return all_configurations[configuration_name]
 
     }
@@ -2384,7 +2384,7 @@ class MultiBonus11MW1Mil extends MultiBonus11 {
 
 class MultiBonus12 extends MultiBonus11 {
     static ConfigurationDescription = () => ({
-        TAX_TYPE: Constants.TAX_TYPE_NONE
+        TAX_TYPE: 'none'
     })
 
     get_configurations = (configuration_name) => {
@@ -2466,7 +2466,7 @@ class MultiBonus12 extends MultiBonus11 {
         let tax_value = 0
 
         if (this.is_win_taxable(win_value))
-            tax_value = Constants.CONFIG.WIN_TAX * win_value
+            tax_value = 0.15 * win_value
 
         return tax_value
     }
@@ -2492,7 +2492,7 @@ class MultiBonus12 extends MultiBonus11 {
 class MultiBonus12_1Mil extends MultiBonus12 {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: Constants.TAX_TYPE_NONE
+        TAX_TYPE: 'none'
     })
 
     get_configurations = (configuration_name) => {
