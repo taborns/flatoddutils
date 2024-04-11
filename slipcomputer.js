@@ -224,7 +224,8 @@ class SlipComp {
 }
 
 class NoTaxSlipCompMw500K extends SlipComp {
-
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -261,6 +262,9 @@ class NoTaxSlipCompMw500K extends SlipComp {
 }
 
 class NoTaxSlipCompMw500K_35SLPSZ extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -273,6 +277,8 @@ class NoTaxSlipCompMw500K_35SLPSZ extends NoTaxSlipCompMw500K {
 }
 
 class NoTaxSlipCompMw500K_50SLPSZ extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -285,6 +291,8 @@ class NoTaxSlipCompMw500K_50SLPSZ extends NoTaxSlipCompMw500K {
 }
 
 class NoTaxSlipCompMw1M extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -296,6 +304,8 @@ class NoTaxSlipCompMw1M extends NoTaxSlipCompMw500K {
 }
 
 class NoTaxSlipCompMw2M extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -307,6 +317,8 @@ class NoTaxSlipCompMw2M extends NoTaxSlipCompMw500K {
 }
 
 class NoTaxSlipCompMw10M extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -319,6 +331,8 @@ class NoTaxSlipCompMw10M extends NoTaxSlipCompMw500K {
 
 
 class NoTaxSlipCompMw15M extends NoTaxSlipCompMw500K {
+    static ConfigurationDescription = () => ({
+    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
