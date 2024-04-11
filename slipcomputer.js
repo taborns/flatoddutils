@@ -276,7 +276,7 @@ class NoTaxSlipCompMw500K_50SLPSZ extends NoTaxSlipCompMw500K {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 5000000
+        all_configurations['MAX_WIN'] = 500000
         all_configurations['TAX_TYPE'] = Constants.TAX_TYPE_NONE
         all_configurations['SLIP_SIZE'] = 50
         return all_configurations[configuration_name]
