@@ -3745,6 +3745,376 @@ class MulbetSlipCompMO12_MW2MNoTax2 extends MulbetSlipCompMO12_MW2MNoTax {
 }
 
 
+class MBNS_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'none'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_net_pay = () => {
+        let win_value = this.get_win_value()
+        let bonus_value = this.get_bonus_value()
+
+        let net_pay = win_value + bonus_value
+
+        let win_tax = this.calculate_tax()
+
+        net_pay = net_pay - win_tax
+        
+        if( net_pay >= this.get_configurations("NET_PAY_CAP")) { 
+            net_pay = this.get_configurations("NET_PAY_CAP")
+        }
+
+        return net_pay
+    }
+
+
+    get_percentages = (match_count) => {
+        
+        // >= 14
+        if (match_count >= 14)
+            return 0.75
+
+        // >= 13, 60
+        else if (match_count >= 13)
+            return 0.6
+
+        // >= 12, 50%
+        else if (match_count >= 12)
+            return 0.5
+
+        // >= 11, 40%
+        else if (match_count >= 11)
+            return 0.4
+
+        // >= 10, 35%
+        else if (match_count >= 10)
+            return 0.35
+
+        // >= 9, 30%
+        else if (match_count >= 9)
+            return 0.3
+
+
+        // >= 8, 25%
+        else if (match_count >= 8)
+            return 0.25
+
+        // >= 7, 20% 
+        else if (match_count >= 7)
+            return 0.2
+
+        // >= 6, 10%
+        else if (match_count >= 6)
+            return 0.1
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.05
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.04
+
+        // >= 3
+        else if (match_count >= 3)
+            return 0.03
+
+        else
+            return 0
+
+    }
+}
+
+// Add time - May 1
+class MBNS_MW500K_50SLP_3_24MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'none'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['NET_PAY_CAP'] = 500000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_percentages = (match_count) => {
+        // >= 24
+        if (match_count >= 24)
+            return 0.8
+
+        // >= 23
+        if (match_count >= 23)
+            return 0.7
+
+        // >= 22
+        if (match_count >= 22)
+            return 0.6
+        
+        // >= 21
+        if (match_count >= 21)
+            return 0.5
+
+        // >= 20
+        if (match_count >= 20)
+            return 0.4
+
+        // >= 19
+        if (match_count >= 19)
+            return 0.35
+
+        // >= 18
+        if (match_count >= 18)
+            return 0.3
+
+        // >= 17, 25
+        else if (match_count >= 17)
+            return 0.25
+
+        // >= 16, 20%
+        else if (match_count >= 16)
+            return 0.2
+
+        // >= 15, 17%
+        else if (match_count >= 15)
+            return 0.17
+
+        // >= 14, 14%
+        else if (match_count >= 14)
+            return 0.14
+
+        // >= 13, 11%
+        else if (match_count >= 13)
+            return 0.11
+
+
+        // >= 12, 9%
+        else if (match_count >= 12)
+            return 0.09
+
+        // >= 11, 7% 
+        else if (match_count >= 11)
+            return 0.07
+
+        // >= 10, 5%
+        else if (match_count >= 10)
+            return 0.05
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.03
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.02
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.01
+
+        else 
+            return 0
+    }
+}
+
+class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['NET_PAY_CAP'] = 500000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_percentages = (match_count) => {
+        
+
+        // >= 40
+        if (match_count >= 40)
+            return 4
+
+        // >= 39
+        else if (match_count >= 39)
+            return 3.8
+
+        // >= 38
+        else if (match_count >= 38)
+            return 3.6
+
+        // >= 37
+        else if (match_count >= 37)
+            return 3.4
+
+        // >= 36
+        else if (match_count >= 36)
+            return 3.2
+
+        // >= 35
+        else if (match_count >= 35)
+            return 3.1
+
+        // >= 34
+        else if (match_count >= 34)
+            return 2.9
+
+        // >= 33
+        else if (match_count >= 33)
+            return 2.7
+
+        // >= 32
+        else if (match_count >= 32)
+            return 2.5
+
+        // >= 31
+        else if (match_count >= 31)
+            return 2.3
+
+        // >= 30
+        else if (match_count >= 30)
+            return 2.1
+
+        // >= 29
+        else if (match_count >= 29)
+            return 2
+
+        // >= 28
+        else if (match_count >= 28)
+            return 1.7
+
+        // >= 27
+        else if (match_count >= 27)
+            return 1.5
+
+        // >= 26
+        else if (match_count >= 26)
+            return 1.3
+
+        // >= 25
+        else if (match_count >= 25)
+            return 1.1
+
+        // >= 24
+        else if (match_count >= 24)
+            return 1
+
+        // >= 23
+        else if (match_count >= 23)
+            return 0.95
+
+        // >= 22
+        else if (match_count >= 22)
+            return 0.9
+
+        // >= 21
+        if (match_count >= 21)
+            return 0.85
+
+        // >= 20
+        if (match_count >= 20)
+            return 0.8
+
+        // >= 19
+        if (match_count >= 19)
+            return 0.75
+
+        // >= 18
+        if (match_count >= 18)
+            return 0.7
+        
+        // >= 17
+        if (match_count >= 17)
+            return 0.65
+
+        // >= 16
+        if (match_count >= 16)
+            return 0.6
+
+        // >= 15
+        if (match_count >= 15)
+            return 0.55
+
+        // >= 14
+        if (match_count >= 14)
+            return 0.5
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.45
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.4
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.35
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.3
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.25
+
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.2
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.15
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.1
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.09
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.08
+
+        // >= 3
+        else if (match_count >= 3)
+            return 0.05
+
+        else
+            return 0
+    }
+}
+
+
 export default {
 
     SlipComp: SlipComp,
@@ -3826,6 +4196,9 @@ export default {
     MBNS11_50SLPSZ_1Mil : MBNS11_50SLPSZ_1Mil,
     MBNS11_50SLPSZ_1Mil_850K_CAP : MBNS11_50SLPSZ_1Mil_850K_CAP,
     MultiBonus12 : MultiBonus12,
-    MultiBonus12_1Mil : MultiBonus12_1Mil
+    MultiBonus12_1Mil : MultiBonus12_1Mil,
+    MBNS_MW1M_50SLP_1MILCAP_3_14MMCH : MBNS_MW1M_50SLP_1MILCAP_3_14MMCH,
+    MBNS_MW500K_50SLP_3_24MCH : MBNS_MW500K_50SLP_3_24MCH,
+    MBNS_MW500K_50SLP_3_40MCH : MBNS_MW500K_50SLP_3_40MCH,
 
 }
