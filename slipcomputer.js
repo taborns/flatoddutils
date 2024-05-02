@@ -4114,6 +4114,110 @@ class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 }
 
+class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_percentages = (match_count) => {
+        
+
+        // >= 23
+        if (match_count >= 23)
+            return 1
+
+        // >= 22
+        else if (match_count >= 22)
+            return 0.95
+
+        // >= 21
+        if (match_count >= 21)
+            return 0.9
+
+        // >= 20
+        if (match_count >= 20)
+            return 0.85
+
+        // >= 19
+        if (match_count >= 19)
+            return 0.8
+
+        // >= 18
+        if (match_count >= 18)
+            return 0.75
+        
+        // >= 17
+        if (match_count >= 17)
+            return 0.7
+
+        // >= 16
+        if (match_count >= 16)
+            return 0.65
+
+        // >= 15
+        if (match_count >= 15)
+            return 0.6
+
+        // >= 14
+        if (match_count >= 14)
+            return 0.55
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.5
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.45
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.4
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.35
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.3
+
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.25
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.2
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.15
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.1
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.05
+
+
+        else
+            return 0
+    }
+}
 
 export default {
 
@@ -4200,5 +4304,6 @@ export default {
     MBNS_MW1M_50SLP_1MILCAP_3_14MMCH : MBNS_MW1M_50SLP_1MILCAP_3_14MMCH,
     MBNS_MW500K_50SLP_3_24MCH : MBNS_MW500K_50SLP_3_24MCH,
     MBNS_MW500K_50SLP_3_40MCH : MBNS_MW500K_50SLP_3_40MCH,
+    MBNS_MW350K_50SLP_4_23MCH : MBNS_MW350K_50SLP_4_23MCH
 
 }
