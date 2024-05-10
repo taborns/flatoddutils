@@ -569,6 +569,23 @@ class AfroSlipCompNoBonusMW350KSlipSize50 extends SlipComp {
 
 }
 
+class AfroSlipCompNoBonusMW600KSlipSize50 extends AfroSlipCompNoBonusMW350KSlipSize50 {
+
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: Constants.TAX_TYPE_VAT
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 600000
+        all_configurations['SLIP_SIZE'] = 50
+
+        return all_configurations[configuration_name]
+
+    }
+
+}
 class AfroSlipCompNoBonusMW500KSlipSize50 extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
     static ConfigurationDescription = () => ({
@@ -4238,6 +4255,7 @@ export default {
     LesothoMulaSlipCompMW10K: LesothoMulaSlipCompMW10K,
     AfroSlipCompNoBonusMW100KSlipSize50: AfroSlipCompNoBonusMW100KSlipSize50,
     AfroSlipCompNoBonusMW350KSlipSize50: AfroSlipCompNoBonusMW350KSlipSize50,
+    AfroSlipCompNoBonusMW600KSlipSize50 : AfroSlipCompNoBonusMW600KSlipSize50,
     AfroSlipCompNoBonusMW500KSlipSize50: AfroSlipCompNoBonusMW500KSlipSize50,
     AfroSlipCompBonusTOTMW50KSlipSize50: AfroSlipCompBonusTOTMW50KSlipSize50,
     AfroSlipCompMW50KSlpSz50BGT100BV10p: AfroSlipCompMW50KSlpSz50BGT100BV10p,
