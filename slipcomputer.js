@@ -4236,6 +4236,161 @@ class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 }
 
+class MBNS_MW350K_50SLP_7_35MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_percentages = (match_count) => {
+        // >= 35
+        if (match_count >= 35)
+            return 3
+
+        // >= 34
+        else if (match_count >= 34)
+            return 2.8
+
+
+        // >= 33
+        else if (match_count >= 33)
+            return 2.6
+
+        // >= 32
+        else if (match_count >= 32)
+            return 2.4
+
+        // >= 31
+        else if (match_count >= 31)
+            return 2.2
+
+        // >= 30
+        else if (match_count >= 30)
+            return 2
+
+        // >= 29
+        else if (match_count >= 29)
+            return 1.9
+
+        // >= 28
+        else if (match_count >= 28)
+            return 1.6
+
+        // >= 27
+        else if (match_count >= 27)
+            return 1.4      
+
+        // >= 26
+        else if (match_count >= 26)
+            return 1.2
+
+        // >= 25
+        else if (match_count >= 25)
+            return 1
+
+        // >= 24
+        else if (match_count >= 24)
+            return 0.8
+
+        // >= 23
+        else if (match_count >= 23)
+            return 0.7
+
+        // >= 22
+        else if (match_count >= 22)
+            return 0.6
+
+        // >= 21
+        else if (match_count >= 21)
+            return 0.5
+        
+        // >= 20
+        else if (match_count >= 20)
+            return 0.4
+
+        // >= 19
+        else if (match_count >= 19)
+            return 0.35
+
+        // >= 18
+        else if (match_count >= 18)
+            return 0.3
+
+        // >= 17
+        else if (match_count >= 17)
+            return 0.25
+
+        // >= 16
+        else if (match_count >= 16)
+            return 0.2
+
+        // >= 15
+        else if (match_count >= 15)
+            return 0.17
+
+        // >= 14
+        else if (match_count >= 14)
+            return 0.14
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.11
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.09
+
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.07
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.05
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.03
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.02
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.01
+
+
+        else
+            return 0
+    }
+}
+
+class MBNS_MW500K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['NET_PAY_CAP'] = 500000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+
+    }
+}
 export default {
 
     SlipComp: SlipComp,
@@ -4322,6 +4477,9 @@ export default {
     MBNS_MW1M_50SLP_1MILCAP_3_14MMCH : MBNS_MW1M_50SLP_1MILCAP_3_14MMCH,
     MBNS_MW500K_50SLP_3_24MCH : MBNS_MW500K_50SLP_3_24MCH,
     MBNS_MW500K_50SLP_3_40MCH : MBNS_MW500K_50SLP_3_40MCH,
-    MBNS_MW350K_50SLP_4_23MCH : MBNS_MW350K_50SLP_4_23MCH
+    MBNS_MW350K_50SLP_4_23MCH : MBNS_MW350K_50SLP_4_23MCH,
+    MBNS_MW350K_50SLP_7_35MCH : MBNS_MW350K_50SLP_7_35MCH,
+    MBNS_MW500K_50SLP_7_35MCH : MBNS_MW500K_50SLP_7_35MCH,
+
 
 }
