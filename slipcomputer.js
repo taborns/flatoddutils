@@ -572,7 +572,7 @@ class AfroSlipCompNoBonusMW350KSlipSize50 extends SlipComp {
 class AfroSlipCompNoBonusMW600KSlipSize50 extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
     static ConfigurationDescription = () => ({
-        TAX_TYPE: Constants.TAX_TYPE_VAT
+        TAX_TYPE: 'vat'
     })
 
     get_configurations = (configuration_name) => {
@@ -4391,6 +4391,133 @@ class MBNS_MW500K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
 
     }
 }
+
+class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 900000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations['VAT_TAX'] = 0.1
+        all_configurations['WIN_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_min_bonus_eligble_match_count = () => {
+        return 6
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return this.get_configurations("SLIP_SIZE")
+    }
+
+    calculate_tax = () => {
+
+        let win_value = this.get_win_value()
+        let tax_value = 0
+
+        if (this.is_win_taxable(win_value))
+            tax_value = this.get_configurations( "WIN_TAX" ) * win_value
+
+        return tax_value
+    }
+    get_win_tax_bonus = () => {
+        return 0
+
+
+    }
+    
+    get_percentages = (match_count) => {
+    
+        // >= 38
+        if (match_count >= 38)
+            return 3
+
+        // >= 32
+        else if (match_count >= 32)
+            return 2.5
+
+        // >= 28
+        else if (match_count >= 28)
+            return 2
+
+        // >= 24
+        else if (match_count >= 24)
+            return 1.5
+
+        // >= 21
+        else if (match_count >= 21)
+            return 0.72
+
+        // >= 19
+        else if (match_count >= 19)
+            return 0.42
+
+        // >= 17
+        else if (match_count >= 17)
+            return 0.29
+
+        // >= 15
+        else if (match_count >= 15)
+            return 0.22
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.18
+
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.14
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.1
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.09
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.06
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.04
+
+
+        else
+            return 0
+    }
+}
+
+class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 900000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations['VAT_TAX'] = 0
+        all_configurations['WIN_TAX'] = 0
+        all_configurations['TAX_TYPE'] = 'none'
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        return all_configurations[configuration_name]
+
+    }
+}
+
+
 export default {
 
     SlipComp: SlipComp,
@@ -4480,6 +4607,7 @@ export default {
     MBNS_MW350K_50SLP_4_23MCH : MBNS_MW350K_50SLP_4_23MCH,
     MBNS_MW350K_50SLP_7_35MCH : MBNS_MW350K_50SLP_7_35MCH,
     MBNS_MW500K_50SLP_7_35MCH : MBNS_MW500K_50SLP_7_35MCH,
-
+    MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN,
+    MBNS_MW1M_50SLP_6_38MCH_NO_TAX : MBNS_MW1M_50SLP_6_38MCH_NO_TAX
 
 }
