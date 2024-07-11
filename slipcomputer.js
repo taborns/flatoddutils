@@ -4537,6 +4537,206 @@ class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN
     }
 }
 
+class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 900000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 100000
+        all_configurations['VAT_TAX'] = 0.1
+        all_configurations['WIN_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        return all_configurations[configuration_name]
+
+    }
+    get_min_bonus_eligble_match_count = () => {
+        return 3
+    }
+
+    get_percentages = (match_count) => {
+        
+        // >= 40
+        if (match_count >= 40)
+            return 4
+
+        // >= 39
+        if (match_count >= 39)
+            return 3.8
+
+        // >= 38
+        if (match_count >= 38)
+            return 3.6
+
+        // >= 37
+        if (match_count >= 37)
+            return 3.4
+
+        // >= 36
+        else if (match_count >= 36)
+            return 3.2
+
+        // >= 35
+        else if (match_count >= 35)
+            return 3.1
+
+        // >= 34
+        else if (match_count >= 34)
+            return 2.9
+
+        // >= 33
+        else if (match_count >= 33)
+            return 2.7
+
+        // >= 32
+        else if (match_count >= 32)
+            return 2.5
+
+        // >= 31
+        else if (match_count >= 31)
+            return 2.3
+                
+        // >= 30
+        else if (match_count >= 30)
+            return 2.1
+
+        // >= 29
+        else if (match_count >= 29)
+            return 2
+
+        // >= 28
+        else if (match_count >= 28)
+            return 1.7
+
+        // >= 27
+        else if (match_count >= 27)
+            return 1.5
+
+        // >= 26
+        else if (match_count >= 26)
+            return 1.3
+    
+        // >= 25
+        else if (match_count >= 25)
+            return 1.1
+
+
+        // >= 24
+        else if (match_count >= 24)
+            return 1
+        
+        // >= 23
+        else if (match_count >= 23)
+            return 0.95
+
+               
+        // >= 22
+        else if (match_count >= 22)
+            return 0.90
+
+        // >= 21
+        else if (match_count >= 21)
+            return 0.85
+        
+        // >= 20
+        else if (match_count >= 20)
+            return 0.80
+
+
+        // >= 19
+        else if (match_count >= 19)
+            return 0.75
+
+        // >= 18
+        else if (match_count >= 18)
+            return 0.7
+
+        // >= 17
+        else if (match_count >= 17)
+            return 0.65
+
+        // >= 16
+        else if (match_count >= 16)
+            return 0.6
+
+        // >= 15
+        else if (match_count >= 15)
+            return 0.55
+       
+        // >= 14
+        else if (match_count >= 14)
+            return 0.5
+
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.45
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.4
+
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.35
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.3
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.25
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.20
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.15
+
+        // >= 6
+        else if (match_count >= 6)
+            return 0.1
+
+         // >= 5
+         else if (match_count >= 5)
+             return 0.09
+
+         // >= 4
+         else if (match_count >= 4)
+             return 0.08
+
+        // >= 3
+         else if (match_count >= 3)
+             return 0.05
+
+        else
+            return 0
+    }
+}
+
+class MBNS_MW1M_50SLP_3_40MCH_NO_TAX extends MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 900000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 100000
+        all_configurations['VAT_TAX'] = 0
+        all_configurations['WIN_TAX'] = 0
+        all_configurations['TAX_TYPE'] = 'none'
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        return all_configurations[configuration_name]
+
+    }
+}
 
 export default {
 
