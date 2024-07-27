@@ -482,6 +482,24 @@ class MulaSlipComp10PVatMW10K extends MulaSlipComp10PVatMW5K {
 
 }
 
+class MulaSlipComp10PVatMW30K extends MulaSlipComp10PVatMW5K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 30000
+        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['VAT_TAX'] = 0.1
+        all_configurations['VAT_TAX_LABEL'] = "LEVY"
+        all_configurations['SLIP_SIZE'] = 30
+
+
+        return all_configurations[configuration_name]
+
+    }
+
+}
+
+
 class LesothoMulaSlipCompMW5K extends MulaSlipCompMW5K {
     static ConfigurationDescription = () => ({
     })
@@ -4753,6 +4771,7 @@ export default {
     MulaSlipCompMW5K: MulaSlipCompMW5K,
     MulaSlipComp10PVatMW5K: MulaSlipComp10PVatMW5K,
     MulaSlipComp10PVatMW10K: MulaSlipComp10PVatMW10K,
+    MulaSlipComp10PVatMW30K : MulaSlipComp10PVatMW30K,
     LesothoMulaSlipCompMW5K: LesothoMulaSlipCompMW5K,
     LesothoMulaSlipCompMW10K: LesothoMulaSlipCompMW10K,
     AfroSlipCompNoBonusMW100KSlipSize50: AfroSlipCompNoBonusMW100KSlipSize50,
