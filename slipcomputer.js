@@ -2035,6 +2035,27 @@ class MultiBonus8 extends MultiBonus3 {
 
 }
 
+class MultiBonus8Mw350K_VAT extends MultiBonus8 { 
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'vat'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        all_configurations["TAX_TYPE"] = 'vat'
+        all_configurations["WIN_TAX"] = 0.15
+
+        return all_configurations[configuration_name]
+
+    }
+}
+
 class MultiBonus9 extends MultiBonus6 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
@@ -4817,6 +4838,7 @@ export default {
     MultiBonus6Mw1MilSlpSz50: MultiBonus6Mw1MilSlpSz50,
     MultiBonus7: MultiBonus7,
     MultiBonus8: MultiBonus8,
+    MultiBonus8Mw350K_VAT : MultiBonus8Mw350K_VAT,
     MultiBonus9: MultiBonus9,
     MultiBonus9Mw500KMB5240SlpSz35: MultiBonus9Mw500KMB5240SlpSz35,
     MultiBonus9Mw1MilMB5240SlpSz35: MultiBonus9Mw1MilMB5240SlpSz35,
