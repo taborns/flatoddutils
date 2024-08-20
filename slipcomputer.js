@@ -4557,6 +4557,444 @@ class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
             return 0
     }
 }
+class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['SLIP_SIZE'] = 40
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations['VAT_TAX'] = 0.1
+        all_configurations['WIN_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_min_bonus_eligble_match_count = () => {
+        return 4
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 36
+    }
+
+    calculate_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible()) return 0
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        if (!percentage) return 0
+        
+        let win_value = this.get_win_value()
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = win_value * percentage
+
+        if (bonus_value > max_possible_bonus)
+            bonus_value = max_possible_bonus
+
+        if (bonus_value > this.get_configurations("MAX_BONUS"))
+            bonus_value = this.get_configurations("MAX_BONUS")
+
+        return bonus_value
+    }
+
+    get_bonus_value = () => {
+        return this.calculate_bonus_value()
+    }
+    get_percentages = (match_count) => {
+    
+        // >= 36
+        if (match_count >= 36)
+            return 3
+
+        // >= 31
+        else if (match_count >= 31)
+            return 2.5
+
+        // >= 26
+        else if (match_count >= 26)
+            return 2
+
+        // >= 21
+        else if (match_count >= 21)
+            return 1.5
+
+        // >= 16
+        else if (match_count >= 16)
+            return 0.8
+
+        // >= 15
+        else if (match_count >= 15)
+            return 0.6
+
+        // >= 14
+        else if (match_count >= 14)
+            return 0.55
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.5
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.45
+
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.4
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.35
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.3
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.25
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.2
+        // >= 6
+        else if (match_count >= 6)
+            return 0.15
+        // >= 5
+        else if (match_count >= 5)
+            return 0.1
+        // >= 4
+        else if (match_count >= 4)
+            return 0.05
+
+
+        else
+            return 0
+    }
+}
+class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 1_000_000
+        all_configurations['NET_PAY_CAP'] = 1_000_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations['WIN_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 14
+    }
+
+    calculate_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible()) return 0
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        if (!percentage) return 0
+        
+        let win_value = this.get_win_value()
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = win_value * percentage
+
+        if (bonus_value > max_possible_bonus)
+            bonus_value = max_possible_bonus
+
+        if (bonus_value > this.get_configurations("MAX_BONUS"))
+            bonus_value = this.get_configurations("MAX_BONUS")
+
+        return bonus_value
+    }
+
+    get_bonus_value = () => {
+        return this.calculate_bonus_value()
+    }
+    
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+        return percentage_match_count
+
+    }
+
+    get_percentages = (match_count) => {
+    
+        // >= 14
+         if (match_count >= 14)
+            return 0.75
+
+        // >= 13
+        else if (match_count >= 13)
+            return 0.6
+
+        // >= 12
+        else if (match_count >= 12)
+            return 0.5
+
+        // >= 11
+        else if (match_count >= 11)
+            return 0.4
+
+        // >= 10
+        else if (match_count >= 10)
+            return 0.35
+
+        // >= 9
+        else if (match_count >= 9)
+            return 0.3
+
+        // >= 8
+        else if (match_count >= 8)
+            return 0.25
+
+        // >= 7
+        else if (match_count >= 7)
+            return 0.2
+        
+        // >= 6
+        else if (match_count >= 6)
+            return 0.1
+
+        // >= 5
+        else if (match_count >= 5)
+            return 0.05
+
+        // >= 4
+        else if (match_count >= 4)
+            return 0.04
+
+        // >= 3
+        else if (match_count >= 3)
+            return 0.03
+        
+        else
+            return 0
+    }
+}
+class MBNS_MW300K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 300_000
+        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        // all_configurations['VAT_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 7
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 35
+    }
+
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+        return percentage_match_count
+
+    }
+
+    calculate_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible()) return 0
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        if (!percentage) return 0
+        
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        let win_value = this.get_win_value()
+
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = win_value * percentage
+
+        if (bonus_value > max_possible_bonus)
+            bonus_value = max_possible_bonus
+
+        if (bonus_value > this.get_configurations("MAX_BONUS"))
+            bonus_value = this.get_configurations("MAX_BONUS")
+
+        return bonus_value
+    }
+
+    get_bonus_value = () => {
+        return this.calculate_bonus_value()
+    }
+}
+class MBNS_MW300K_50SLP_3_20MCH extends MBNS_MW300K_50SLP_7_35MCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 300_000
+        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        // all_configurations['VAT_TAX'] = 0.1
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 3
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 20
+    }
+
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+        return percentage_match_count
+
+    }
+
+    get_percentages=(match_count)=>{
+        if( match_count >= 20)
+            return 0.75  // 75%
+        else if( match_count >= 19)
+            return 0.7  // 70%
+        else if( match_count >= 18)
+            return 0.65  // 65%
+        else if( match_count >= 17)
+            return 0.6  // 60%
+        else if( match_count >= 16)
+            return 0.55  // 55%
+        else if( match_count >= 15)
+            return 0.5  // 50%
+        else if( match_count >= 14)
+            return 0.45  // 45%
+        else if( match_count >= 13)
+            return 0.4  // 40%
+        else if( match_count >= 12)
+            return 0.35  // 35%
+        else if( match_count >= 11)
+            return 0.3  // 30%
+        else if( match_count >= 10)
+            return 0.25  // 25%
+        else if( match_count >= 9)
+            return 0.2  // 20%
+        else if( match_count >= 8)
+            return 0.15  // 15%
+        else if( match_count >= 7)
+            return 0.1  // 10%
+        else if( match_count >= 6)
+            return 0.06  // 6%
+        else if( match_count >= 5)
+            return 0.05  // 5%
+        else if( match_count >= 4)
+            return 0.04  // 4%
+        else if( match_count >= 3)
+            return 0.03  // 3%
+        else
+            return 0  // No bonus
+    }
+}
+class MBNS_MW300K_50SLP_3_38MCH extends MBNS_MW300K_50SLP_7_35MCH {
+    
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 300_000
+        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 3
+    }
+
+    get_max_bonus_eligble_match_count = () => {
+        return 20
+    }
+
+    get_percentage_match_count = () => {
+
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+        return percentage_match_count
+
+    }
+
+    get_percentages=(match_count)=>{
+        if (match_count >= 38)
+            return 3.00  // 300%
+        else if( match_count >= 32)
+            return 2.50  // 250%
+        else if( match_count >= 28)
+            return 2.00  // 200%
+        else if( match_count >= 24)
+            return 1.50  // 150%
+        else if( match_count >= 21)
+            return 0.72  // 72%
+        else if( match_count >= 19)
+            return 0.42  // 42%
+        else if( match_count >= 17)
+            return 0.29  // 29%
+        else if( match_count >= 15)
+            return 0.22  // 22%
+        else if( match_count >= 13)
+            return 0.14  // 14%
+        else if( match_count >= 11)
+            return 0.10  // 10%
+        else if( match_count >= 9)
+            return 0.07  // 7%
+        else if( match_count >= 8)
+            return 0.04  // 4%
+        else if( match_count >= 5)
+            return 0.03  // 3%
+        else if( match_count >= 3)
+            return 0.02  // 2%
+        else
+            return 0  // No bonus
+    }
+}
 
 class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
     get_configurations = (configuration_name) => {
@@ -4872,6 +5310,11 @@ export default {
     MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN,
     MBNS_MW1M_50SLP_6_38MCH_NO_TAX : MBNS_MW1M_50SLP_6_38MCH_NO_TAX,
     MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN,
-    MBNS_MW1M_50SLP_3_40MCH_NO_TAX : MBNS_MW1M_50SLP_3_40MCH_NO_TAX
+    MBNS_MW1M_50SLP_3_40MCH_NO_TAX : MBNS_MW1M_50SLP_3_40MCH_NO_TAX,
+    MBNS_MW350K_40SLP_4_36MCH : MBNS_MW350K_40SLP_4_36MCH,
+    MBNS_MW1M_50SLP_3_14MCH : MBNS_MW1M_50SLP_3_14MCH,
+    MBNS_MW300K_50SLP_7_35MCH : MBNS_MW300K_50SLP_7_35MCH,
+    MBNS_MW300K_50SLP_3_20MCH : MBNS_MW300K_50SLP_3_20MCH,
+    MBNS_MW300K_50SLP_3_38MCH : MBNS_MW300K_50SLP_3_38MCH
 
 }
