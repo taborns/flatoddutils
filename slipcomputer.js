@@ -482,6 +482,24 @@ class MulaSlipComp10PVatMW10K extends MulaSlipComp10PVatMW5K {
 
 }
 
+class MulaSlipComp10PVatMW30K extends MulaSlipComp10PVatMW5K {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 30000
+        all_configurations['TAX_TYPE'] = 'vat'
+        all_configurations['VAT_TAX'] = 0.1
+        all_configurations['VAT_TAX_LABEL'] = "LEVY"
+        all_configurations['SLIP_SIZE'] = 30
+
+
+        return all_configurations[configuration_name]
+
+    }
+
+}
+
+
 class LesothoMulaSlipCompMW5K extends MulaSlipCompMW5K {
     static ConfigurationDescription = () => ({
     })
@@ -2015,6 +2033,27 @@ class MultiBonus8 extends MultiBonus3 {
         return true
     }
 
+}
+
+class MultiBonus8Mw350K_VAT extends MultiBonus8 { 
+    static ConfigurationDescription = () => ({
+        TAX_TYPE: 'vat'
+    })
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['MAX_BONUS'] = 52400
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        all_configurations["TAX_TYPE"] = 'vat'
+        all_configurations["WIN_TAX"] = 0.15
+
+        return all_configurations[configuration_name]
+
+    }
 }
 
 class MultiBonus9 extends MultiBonus6 {
@@ -5204,6 +5243,7 @@ export default {
     MulaSlipCompMW5K: MulaSlipCompMW5K,
     MulaSlipComp10PVatMW5K: MulaSlipComp10PVatMW5K,
     MulaSlipComp10PVatMW10K: MulaSlipComp10PVatMW10K,
+    MulaSlipComp10PVatMW30K : MulaSlipComp10PVatMW30K,
     LesothoMulaSlipCompMW5K: LesothoMulaSlipCompMW5K,
     LesothoMulaSlipCompMW10K: LesothoMulaSlipCompMW10K,
     AfroSlipCompNoBonusMW100KSlipSize50: AfroSlipCompNoBonusMW100KSlipSize50,
@@ -5249,6 +5289,7 @@ export default {
     MultiBonus6Mw1MilSlpSz50: MultiBonus6Mw1MilSlpSz50,
     MultiBonus7: MultiBonus7,
     MultiBonus8: MultiBonus8,
+    MultiBonus8Mw350K_VAT : MultiBonus8Mw350K_VAT,
     MultiBonus9: MultiBonus9,
     MultiBonus9Mw500KMB5240SlpSz35: MultiBonus9Mw500KMB5240SlpSz35,
     MultiBonus9Mw1MilMB5240SlpSz35: MultiBonus9Mw1MilMB5240SlpSz35,
@@ -5281,6 +5322,8 @@ export default {
     MBNS_MW500K_50SLP_7_35MCH : MBNS_MW500K_50SLP_7_35MCH,
     MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN,
     MBNS_MW1M_50SLP_6_38MCH_NO_TAX : MBNS_MW1M_50SLP_6_38MCH_NO_TAX,
+    MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN,
+    MBNS_MW1M_50SLP_3_40MCH_NO_TAX : MBNS_MW1M_50SLP_3_40MCH_NO_TAX,
     MBNS_MW350K_40SLP_4_36MCH : MBNS_MW350K_40SLP_4_36MCH,
     MBNS_MW1M_50SLP_3_14MCH : MBNS_MW1M_50SLP_3_14MCH,
     MBNS_MW300K_50SLP_7_35MCH : MBNS_MW300K_50SLP_7_35MCH,
