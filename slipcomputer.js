@@ -5215,6 +5215,19 @@ class MBNS_MW1M_50SLP_3_40MCH_NO_TAX extends MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN
     }
 }
 
+class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
+        
+         get_configurations(cls, configuration_name){
+    
+            all_configurations = cls.get_all_configurations()
+            all_configurations['MAX_WIN'] = 500_000
+            all_configurations['NET_PAY_CAP'] = 500_000
+            all_configurations['SLIP_SIZE'] = 25
+    
+            return all_configurations[configuration_name]
+        }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -5315,6 +5328,7 @@ export default {
     MBNS_MW1M_50SLP_3_14MCH : MBNS_MW1M_50SLP_3_14MCH,
     MBNS_MW300K_50SLP_7_35MCH : MBNS_MW300K_50SLP_7_35MCH,
     MBNS_MW300K_50SLP_3_20MCH : MBNS_MW300K_50SLP_3_20MCH,
-    MBNS_MW300K_50SLP_3_38MCH : MBNS_MW300K_50SLP_3_38MCH
+    MBNS_MW300K_50SLP_3_38MCH : MBNS_MW300K_50SLP_3_38MCH,
+    MBNS_MW500K_25SLP : MBNS_MW500K_25SLP
 
 }
