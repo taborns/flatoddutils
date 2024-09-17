@@ -5230,8 +5230,6 @@ class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
 class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
 
-    NAME = "MBNS_MW500K_25SLP_6_38MCH"
-
     get_configurations( configuration_name) {
 
         let all_configurations = this.get_all_configurations()
