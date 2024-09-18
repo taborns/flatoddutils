@@ -5015,6 +5015,9 @@ class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN
 }
 
 class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
+    is_odd_bonus_eligible(){
+        return this.get_total_odds()>= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+    }
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
