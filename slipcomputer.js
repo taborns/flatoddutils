@@ -5230,7 +5230,7 @@ class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
 class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
 
-    get_configurations=( configuration_name)=> {
+    get_configurations = (configuration_name) => {
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 500_000
         all_configurations['NET_PAY_CAP'] = 500_000
@@ -5242,15 +5242,15 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
     }
 
 
-    get_min_bonus_eligble_match_count() {
+    get_min_bonus_eligble_match_count = () => {
         return 6;
     }
 
-    get_max_bonus_eligble_match_count() {
+    get_max_bonus_eligble_match_count = () => {
         return 38;
     }
 
-    get_percentage_match_count() {
+    get_percentage_match_count = () => {
         let percentage_match_count = this.get_match_count()
 
         if (percentage_match_count > this.get_max_bonus_eligble_match_count())
@@ -5259,7 +5259,7 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
         return percentage_match_count
     }
 
-    get_percentages(match_count) {
+    get_percentages = (match_count) => {
         //  >= 38 300%
         if (match_count >= 38)
             return 3
