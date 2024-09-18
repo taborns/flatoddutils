@@ -5217,7 +5217,7 @@ class MBNS_MW1M_50SLP_3_40MCH_NO_TAX extends MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN
 
 class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
         
-         get_configurations(configuration_name){
+         get_configurations=(configuration_name)=>{
     
             let all_configurations = this.get_all_configurations()
             all_configurations['MAX_WIN'] = 500_000
@@ -5230,8 +5230,7 @@ class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
 
 class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
 
-    get_configurations( configuration_name) {
-
+    get_configurations=( configuration_name)=> {
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 500_000
         all_configurations['NET_PAY_CAP'] = 500_000
