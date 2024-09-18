@@ -5217,15 +5217,108 @@ class MBNS_MW1M_50SLP_3_40MCH_NO_TAX extends MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN
 
 class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
         
-         get_configurations(cls, configuration_name){
+         get_configurations(configuration_name){
     
-            all_configurations = cls.get_all_configurations()
+            let all_configurations = this.get_all_configurations()
             all_configurations['MAX_WIN'] = 500_000
             all_configurations['NET_PAY_CAP'] = 500_000
             all_configurations['SLIP_SIZE'] = 25
     
             return all_configurations[configuration_name]
         }
+}
+
+class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
+
+    get_configurations( configuration_name) {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 500_000
+        all_configurations['NET_PAY_CAP'] = 500_000
+        all_configurations['SLIP_SIZE'] = 25
+        all_configurations['BET_SLIP_BONUS'] = True
+        all_configurations['MAX_BONUS'] = 52_400
+        all_configurations["MIN_BONUS_ODD"] = 1.01
+        return all_configurations[configuration_name];
+    }
+
+
+    get_min_bonus_eligble_match_count() {
+        return 6;
+    }
+
+    get_max_bonus_eligble_match_count() {
+        return 38;
+    }
+
+    get_percentage_match_count() {
+        percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count())
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+
+        return percentage_match_count
+    }
+
+    get_percentages(match_count) {
+        //  >= 38 300%
+        if (match_count >= 38)
+            return 3
+
+        //  >= 32 and <=37 250%
+        else if (match_count >= 32)
+            return 2.5
+
+        //  >= 28 and <=31 200%
+        else if (match_count >= 28)
+            return 2
+
+        //  >= 24 and <=27 150%
+        else if (match_count >= 24)
+            return 1.5
+
+        //  >= 21 and <=23 72%
+        else if (match_count >= 21)
+            return 0.72
+
+        //  >= 19 and <=20 42%
+        else if (match_count >= 19)
+            return 0.42
+
+        //  >= 17 and <=18 29%
+        else if (match_count >= 17)
+            return 0.29
+
+        //  >= 15 and <=16 22%
+        else if (match_count >= 15)
+            return 0.22
+
+        //  >= 13 and <=14 14%
+        else if (match_count >= 13)
+            return 0.14
+
+        //  >= 11 and <=12 10%
+        else if (match_count >= 11)
+            return 0.1
+
+        //  >= 9 and <=10 7%
+        else if (match_count >= 9)
+            return 0.07
+
+        //  >= 8 4%
+        else if (match_count >= 8)
+            return 0.04
+
+        //  >= 7 3%
+        else if (match_count >= 7)
+            return 0.03
+
+        //  >= 6 2%
+        else if (match_count >= 6)
+            return 0.02
+
+        else return 0
+    }
 }
 
 export default {
@@ -5329,6 +5422,7 @@ export default {
     MBNS_MW300K_50SLP_7_35MCH : MBNS_MW300K_50SLP_7_35MCH,
     MBNS_MW300K_50SLP_3_20MCH : MBNS_MW300K_50SLP_3_20MCH,
     MBNS_MW300K_50SLP_3_38MCH : MBNS_MW300K_50SLP_3_38MCH,
-    MBNS_MW500K_25SLP : MBNS_MW500K_25SLP
+    MBNS_MW500K_25SLP : MBNS_MW500K_25SLP,
+    MBNS_MW500K_25SLP_6_38MCH : MBNS_MW500K_25SLP_6_38MCH
 
 }
