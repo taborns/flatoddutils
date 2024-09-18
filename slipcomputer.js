@@ -2035,7 +2035,7 @@ class MultiBonus8 extends MultiBonus3 {
 
 }
 
-class MultiBonus8Mw350K_VAT extends MultiBonus8 { 
+class MultiBonus8Mw350K_VAT extends MultiBonus8 {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'vat'
     })
@@ -2426,8 +2426,8 @@ class MBNS11_50SLPSZ_1Mil_850K_CAP extends MultiBonus11_20EVN {
         let win_tax = this.calculate_tax()
 
         net_pay = net_pay - win_tax
-        
-        if( net_pay >= this.get_configurations("NET_PAY_CAP")) { 
+
+        if (net_pay >= this.get_configurations("NET_PAY_CAP")) {
             net_pay = this.get_configurations("NET_PAY_CAP")
         }
 
@@ -3849,8 +3849,8 @@ class MBNS_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
         let win_tax = this.calculate_tax()
 
         net_pay = net_pay - win_tax
-        
-        if( net_pay >= this.get_configurations("NET_PAY_CAP")) { 
+
+        if (net_pay >= this.get_configurations("NET_PAY_CAP")) {
             net_pay = this.get_configurations("NET_PAY_CAP")
         }
 
@@ -3859,7 +3859,7 @@ class MBNS_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
 
 
     get_percentages = (match_count) => {
-        
+
         // >= 14
         if (match_count >= 14)
             return 0.75
@@ -3916,7 +3916,7 @@ class MBNS_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
 }
 
 // Add time - May 1
-class MBNS_MW500K_50SLP_3_24MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+class MBNS_MW500K_50SLP_3_24MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     static ConfigurationDescription = () => ({
         TAX_TYPE: 'none'
     })
@@ -3947,7 +3947,7 @@ class MBNS_MW500K_50SLP_3_24MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 22
         if (match_count >= 22)
             return 0.6
-        
+
         // >= 21
         if (match_count >= 21)
             return 0.5
@@ -4009,12 +4009,12 @@ class MBNS_MW500K_50SLP_3_24MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         else if (match_count >= 7)
             return 0.01
 
-        else 
+        else
             return 0
     }
 }
 
-class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4030,7 +4030,7 @@ class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 
     get_percentages = (match_count) => {
-        
+
 
         // >= 40
         if (match_count >= 40)
@@ -4123,7 +4123,7 @@ class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 18
         if (match_count >= 18)
             return 0.7
-        
+
         // >= 17
         if (match_count >= 17)
             return 0.65
@@ -4190,7 +4190,7 @@ class MBNS_MW500K_50SLP_3_40MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 }
 
-class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4206,7 +4206,7 @@ class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 
     get_percentages = (match_count) => {
-        
+
 
         // >= 23
         if (match_count >= 23)
@@ -4231,7 +4231,7 @@ class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 18
         if (match_count >= 18)
             return 0.75
-        
+
         // >= 17
         if (match_count >= 17)
             return 0.7
@@ -4295,7 +4295,7 @@ class MBNS_MW350K_50SLP_4_23MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 }
 
-class MBNS_MW350K_50SLP_7_35MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH { 
+class MBNS_MW350K_50SLP_7_35MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4346,7 +4346,7 @@ class MBNS_MW350K_50SLP_7_35MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
 
         // >= 27
         else if (match_count >= 27)
-            return 1.4      
+            return 1.4
 
         // >= 26
         else if (match_count >= 26)
@@ -4371,7 +4371,7 @@ class MBNS_MW350K_50SLP_7_35MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 21
         else if (match_count >= 21)
             return 0.5
-        
+
         // >= 20
         else if (match_count >= 20)
             return 0.4
@@ -4452,7 +4452,7 @@ class MBNS_MW500K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
 }
 
 class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4483,7 +4483,7 @@ class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
         let tax_value = 0
 
         if (this.is_win_taxable(win_value))
-            tax_value = this.get_configurations( "WIN_TAX" ) * win_value
+            tax_value = this.get_configurations("WIN_TAX") * win_value
 
         return tax_value
     }
@@ -4492,9 +4492,9 @@ class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
 
 
     }
-    
+
     get_percentages = (match_count) => {
-    
+
         // >= 38
         if (match_count >= 38)
             return 3
@@ -4558,7 +4558,7 @@ class MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN extends MBNS_MW350K_50SLP_7_35MCH {
     }
 }
 class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4589,7 +4589,7 @@ class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         let percentage = this.get_percentages(this.get_percentage_match_count())
         let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
         if (!percentage) return 0
-        
+
         let win_value = this.get_win_value()
         let max_possible_bonus = win_value * max_percentage
         let bonus_value = win_value * percentage
@@ -4607,7 +4607,7 @@ class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         return this.calculate_bonus_value()
     }
     get_percentages = (match_count) => {
-    
+
         // >= 36
         if (match_count >= 36)
             return 3
@@ -4680,7 +4680,7 @@ class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 }
 class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4706,7 +4706,7 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         let percentage = this.get_percentages(this.get_percentage_match_count())
         let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
         if (!percentage) return 0
-        
+
         let win_value = this.get_win_value()
         let max_possible_bonus = win_value * max_percentage
         let bonus_value = win_value * percentage
@@ -4723,7 +4723,7 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     get_bonus_value = () => {
         return this.calculate_bonus_value()
     }
-    
+
     get_percentage_match_count = () => {
 
         let percentage_match_count = this.get_match_count()
@@ -4736,9 +4736,9 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
     }
 
     get_percentages = (match_count) => {
-    
+
         // >= 14
-         if (match_count >= 14)
+        if (match_count >= 14)
             return 0.75
 
         // >= 13
@@ -4768,7 +4768,7 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 7
         else if (match_count >= 7)
             return 0.2
-        
+
         // >= 6
         else if (match_count >= 6)
             return 0.1
@@ -4784,13 +4784,13 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
         // >= 3
         else if (match_count >= 3)
             return 0.03
-        
+
         else
             return 0
     }
 }
 class MBNS_MW300K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4830,7 +4830,7 @@ class MBNS_MW300K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
 
         let percentage = this.get_percentages(this.get_percentage_match_count())
         if (!percentage) return 0
-        
+
         let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
         let win_value = this.get_win_value()
 
@@ -4851,7 +4851,7 @@ class MBNS_MW300K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
     }
 }
 class MBNS_MW300K_50SLP_3_20MCH extends MBNS_MW300K_50SLP_7_35MCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4886,49 +4886,49 @@ class MBNS_MW300K_50SLP_3_20MCH extends MBNS_MW300K_50SLP_7_35MCH {
 
     }
 
-    get_percentages=(match_count)=>{
-        if( match_count >= 20)
+    get_percentages = (match_count) => {
+        if (match_count >= 20)
             return 0.75  // 75%
-        else if( match_count >= 19)
+        else if (match_count >= 19)
             return 0.7  // 70%
-        else if( match_count >= 18)
+        else if (match_count >= 18)
             return 0.65  // 65%
-        else if( match_count >= 17)
+        else if (match_count >= 17)
             return 0.6  // 60%
-        else if( match_count >= 16)
+        else if (match_count >= 16)
             return 0.55  // 55%
-        else if( match_count >= 15)
+        else if (match_count >= 15)
             return 0.5  // 50%
-        else if( match_count >= 14)
+        else if (match_count >= 14)
             return 0.45  // 45%
-        else if( match_count >= 13)
+        else if (match_count >= 13)
             return 0.4  // 40%
-        else if( match_count >= 12)
+        else if (match_count >= 12)
             return 0.35  // 35%
-        else if( match_count >= 11)
+        else if (match_count >= 11)
             return 0.3  // 30%
-        else if( match_count >= 10)
+        else if (match_count >= 10)
             return 0.25  // 25%
-        else if( match_count >= 9)
+        else if (match_count >= 9)
             return 0.2  // 20%
-        else if( match_count >= 8)
+        else if (match_count >= 8)
             return 0.15  // 15%
-        else if( match_count >= 7)
+        else if (match_count >= 7)
             return 0.1  // 10%
-        else if( match_count >= 6)
+        else if (match_count >= 6)
             return 0.06  // 6%
-        else if( match_count >= 5)
+        else if (match_count >= 5)
             return 0.05  // 5%
-        else if( match_count >= 4)
+        else if (match_count >= 4)
             return 0.04  // 4%
-        else if( match_count >= 3)
+        else if (match_count >= 3)
             return 0.03  // 3%
         else
             return 0  // No bonus
     }
 }
 class MBNS_MW300K_50SLP_3_38MCH extends MBNS_MW300K_50SLP_7_35MCH {
-    
+
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -4962,34 +4962,34 @@ class MBNS_MW300K_50SLP_3_38MCH extends MBNS_MW300K_50SLP_7_35MCH {
 
     }
 
-    get_percentages=(match_count)=>{
+    get_percentages = (match_count) => {
         if (match_count >= 38)
             return 3.00  // 300%
-        else if( match_count >= 32)
+        else if (match_count >= 32)
             return 2.50  // 250%
-        else if( match_count >= 28)
+        else if (match_count >= 28)
             return 2.00  // 200%
-        else if( match_count >= 24)
+        else if (match_count >= 24)
             return 1.50  // 150%
-        else if( match_count >= 21)
+        else if (match_count >= 21)
             return 0.72  // 72%
-        else if( match_count >= 19)
+        else if (match_count >= 19)
             return 0.42  // 42%
-        else if( match_count >= 17)
+        else if (match_count >= 17)
             return 0.29  // 29%
-        else if( match_count >= 15)
+        else if (match_count >= 15)
             return 0.22  // 22%
-        else if( match_count >= 13)
+        else if (match_count >= 13)
             return 0.14  // 14%
-        else if( match_count >= 11)
+        else if (match_count >= 11)
             return 0.10  // 10%
-        else if( match_count >= 9)
+        else if (match_count >= 9)
             return 0.07  // 7%
-        else if( match_count >= 8)
+        else if (match_count >= 8)
             return 0.04  // 4%
-        else if( match_count >= 5)
+        else if (match_count >= 5)
             return 0.03  // 3%
-        else if( match_count >= 3)
+        else if (match_count >= 3)
             return 0.02  // 2%
         else
             return 0  // No bonus
@@ -5015,8 +5015,8 @@ class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN
 }
 
 class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
-    is_odd_bonus_eligible=()=>{
-        return this.get_total_odds()>= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+    is_odd_bonus_eligible = () => {
+        return this.get_total_odds() >= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
     }
     get_configurations = (configuration_name) => {
 
@@ -5037,7 +5037,7 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
     }
 
     get_percentages = (match_count) => {
-        
+
         // >= 40
         if (match_count >= 40)
             return 4
@@ -5077,7 +5077,7 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         // >= 31
         else if (match_count >= 31)
             return 2.3
-                
+
         // >= 30
         else if (match_count >= 30)
             return 2.1
@@ -5097,7 +5097,7 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         // >= 26
         else if (match_count >= 26)
             return 1.3
-    
+
         // >= 25
         else if (match_count >= 25)
             return 1.1
@@ -5106,12 +5106,12 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         // >= 24
         else if (match_count >= 24)
             return 1
-        
+
         // >= 23
         else if (match_count >= 23)
             return 0.95
 
-               
+
         // >= 22
         else if (match_count >= 22)
             return 0.90
@@ -5119,7 +5119,7 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         // >= 21
         else if (match_count >= 21)
             return 0.85
-        
+
         // >= 20
         else if (match_count >= 20)
             return 0.80
@@ -5144,7 +5144,7 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         // >= 15
         else if (match_count >= 15)
             return 0.55
-       
+
         // >= 14
         else if (match_count >= 14)
             return 0.5
@@ -5183,38 +5183,38 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
         else if (match_count >= 6)
             return 0.1
 
-         // >= 5
-         else if (match_count >= 5)
-             return 0.09
+        // >= 5
+        else if (match_count >= 5)
+            return 0.09
 
-         // >= 4
-         else if (match_count >= 4)
-             return 0.08
+        // >= 4
+        else if (match_count >= 4)
+            return 0.08
 
         // >= 3
-         else if (match_count >= 3)
-             return 0.05
+        else if (match_count >= 3)
+            return 0.05
 
         else
             return 0
     }
 
     is_odd_bonus_eligible = () => {
-        return this.get_total_odds()>= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+        return this.get_total_odds() >= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
     }
 
 
     get_bonus_value = () => {
         let percentage = this.get_percentages(this.get_percentage_match_count())
         let odd_bonus_eligiblity = this.is_odd_bonus_eligible()
-        if( !odd_bonus_eligiblity) {
+        if (!odd_bonus_eligiblity) {
             return 0
         }
 
-        if( !percentage ) { 
+        if (!percentage) {
             return 0
         }
-        
+
 
         let multi_bonus_value = this.calculate_bonus_value()
         let win_tax_bonus = this.get_win_tax_bonus()
@@ -5247,16 +5247,16 @@ class MBNS_MW1M_50SLP_3_40MCH_NO_TAX extends MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN
 }
 
 class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
-        
-         get_configurations=(configuration_name)=>{
-    
-            let all_configurations = this.get_all_configurations()
-            all_configurations['MAX_WIN'] = 500_000
-            all_configurations['NET_PAY_CAP'] = 500_000
-            all_configurations['SLIP_SIZE'] = 25
-    
-            return all_configurations[configuration_name]
-        }
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 500_000
+        all_configurations['NET_PAY_CAP'] = 500_000
+        all_configurations['SLIP_SIZE'] = 25
+
+        return all_configurations[configuration_name]
+    }
 }
 
 class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
@@ -5349,14 +5349,31 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
 
         else return 0
     }
+
+    get_note = () => {
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let note = null
+        if (percentage) {
+            note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
+        }
+        else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
+            percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
+
+            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a ${percentage}% win bonus`
+
+        }
+
+        return note
+    }
 }
 
 export default {
 
     SlipComp: SlipComp,
     NoTaxSlipCompMw500K: NoTaxSlipCompMw500K,
-    NoTaxSlipCompMw500K_35SLPSZ : NoTaxSlipCompMw500K_35SLPSZ,
-    NoTaxSlipCompMw500K_50SLPSZ : NoTaxSlipCompMw500K_50SLPSZ,
+    NoTaxSlipCompMw500K_35SLPSZ: NoTaxSlipCompMw500K_35SLPSZ,
+    NoTaxSlipCompMw500K_50SLPSZ: NoTaxSlipCompMw500K_50SLPSZ,
     NoTaxSlipCompMw1M: NoTaxSlipCompMw1M,
     NoTaxSlipCompMw2M: NoTaxSlipCompMw2M,
     NoTaxSlipCompMw10M: NoTaxSlipCompMw10M,
@@ -5366,12 +5383,12 @@ export default {
     MulaSlipCompMW5K: MulaSlipCompMW5K,
     MulaSlipComp10PVatMW5K: MulaSlipComp10PVatMW5K,
     MulaSlipComp10PVatMW10K: MulaSlipComp10PVatMW10K,
-    MulaSlipComp10PVatMW30K : MulaSlipComp10PVatMW30K,
+    MulaSlipComp10PVatMW30K: MulaSlipComp10PVatMW30K,
     LesothoMulaSlipCompMW5K: LesothoMulaSlipCompMW5K,
     LesothoMulaSlipCompMW10K: LesothoMulaSlipCompMW10K,
     AfroSlipCompNoBonusMW100KSlipSize50: AfroSlipCompNoBonusMW100KSlipSize50,
     AfroSlipCompNoBonusMW350KSlipSize50: AfroSlipCompNoBonusMW350KSlipSize50,
-    AfroSlipCompNoBonusMW600KSlipSize50 : AfroSlipCompNoBonusMW600KSlipSize50,
+    AfroSlipCompNoBonusMW600KSlipSize50: AfroSlipCompNoBonusMW600KSlipSize50,
     AfroSlipCompNoBonusMW500KSlipSize50: AfroSlipCompNoBonusMW500KSlipSize50,
     AfroSlipCompBonusTOTMW50KSlipSize50: AfroSlipCompBonusTOTMW50KSlipSize50,
     AfroSlipCompMW50KSlpSz50BGT100BV10p: AfroSlipCompMW50KSlpSz50BGT100BV10p,
@@ -5408,11 +5425,11 @@ export default {
     MultiBonus6: MultiBonus6,
     MultiBonus6SlpSz40: MultiBonus6SlpSz40,
     MultiBonus6Mw500SlpSz50: MultiBonus6Mw500SlpSz50,
-    MultiBonus6Mw1MilSlpSz20 : MultiBonus6Mw1MilSlpSz20,
+    MultiBonus6Mw1MilSlpSz20: MultiBonus6Mw1MilSlpSz20,
     MultiBonus6Mw1MilSlpSz50: MultiBonus6Mw1MilSlpSz50,
     MultiBonus7: MultiBonus7,
     MultiBonus8: MultiBonus8,
-    MultiBonus8Mw350K_VAT : MultiBonus8Mw350K_VAT,
+    MultiBonus8Mw350K_VAT: MultiBonus8Mw350K_VAT,
     MultiBonus9: MultiBonus9,
     MultiBonus9Mw500KMB5240SlpSz35: MultiBonus9Mw500KMB5240SlpSz35,
     MultiBonus9Mw1MilMB5240SlpSz35: MultiBonus9Mw1MilMB5240SlpSz35,
@@ -5432,27 +5449,27 @@ export default {
     BasicMulbetKenyaSlipComp12_5ET: BasicMulbetKenyaSlipComp12_5ET,
     MulbetSlipCompMO12_MW2MNoTax: MulbetSlipCompMO12_MW2MNoTax,
     MulbetSlipCompMO12_MW2MNoTax2: MulbetSlipCompMO12_MW2MNoTax2,
-    MultiBonus11_20EVN : MultiBonus11_20EVN,
-    MBNS11_50SLPSZ_1Mil : MBNS11_50SLPSZ_1Mil,
-    MBNS11_50SLPSZ_1Mil_850K_CAP : MBNS11_50SLPSZ_1Mil_850K_CAP,
-    MultiBonus12 : MultiBonus12,
-    MultiBonus12_1Mil : MultiBonus12_1Mil,
-    MBNS_MW1M_50SLP_1MILCAP_3_14MMCH : MBNS_MW1M_50SLP_1MILCAP_3_14MMCH,
-    MBNS_MW500K_50SLP_3_24MCH : MBNS_MW500K_50SLP_3_24MCH,
-    MBNS_MW500K_50SLP_3_40MCH : MBNS_MW500K_50SLP_3_40MCH,
-    MBNS_MW350K_50SLP_4_23MCH : MBNS_MW350K_50SLP_4_23MCH,
-    MBNS_MW350K_50SLP_7_35MCH : MBNS_MW350K_50SLP_7_35MCH,
-    MBNS_MW500K_50SLP_7_35MCH : MBNS_MW500K_50SLP_7_35MCH,
-    MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN,
-    MBNS_MW1M_50SLP_6_38MCH_NO_TAX : MBNS_MW1M_50SLP_6_38MCH_NO_TAX,
-    MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN : MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN,
-    MBNS_MW1M_50SLP_3_40MCH_NO_TAX : MBNS_MW1M_50SLP_3_40MCH_NO_TAX,
-    MBNS_MW350K_40SLP_4_36MCH : MBNS_MW350K_40SLP_4_36MCH,
-    MBNS_MW1M_50SLP_3_14MCH : MBNS_MW1M_50SLP_3_14MCH,
-    MBNS_MW300K_50SLP_7_35MCH : MBNS_MW300K_50SLP_7_35MCH,
-    MBNS_MW300K_50SLP_3_20MCH : MBNS_MW300K_50SLP_3_20MCH,
-    MBNS_MW300K_50SLP_3_38MCH : MBNS_MW300K_50SLP_3_38MCH,
-    MBNS_MW500K_25SLP : MBNS_MW500K_25SLP,
-    MBNS_MW500K_25SLP_6_38MCH : MBNS_MW500K_25SLP_6_38MCH
+    MultiBonus11_20EVN: MultiBonus11_20EVN,
+    MBNS11_50SLPSZ_1Mil: MBNS11_50SLPSZ_1Mil,
+    MBNS11_50SLPSZ_1Mil_850K_CAP: MBNS11_50SLPSZ_1Mil_850K_CAP,
+    MultiBonus12: MultiBonus12,
+    MultiBonus12_1Mil: MultiBonus12_1Mil,
+    MBNS_MW1M_50SLP_1MILCAP_3_14MMCH: MBNS_MW1M_50SLP_1MILCAP_3_14MMCH,
+    MBNS_MW500K_50SLP_3_24MCH: MBNS_MW500K_50SLP_3_24MCH,
+    MBNS_MW500K_50SLP_3_40MCH: MBNS_MW500K_50SLP_3_40MCH,
+    MBNS_MW350K_50SLP_4_23MCH: MBNS_MW350K_50SLP_4_23MCH,
+    MBNS_MW350K_50SLP_7_35MCH: MBNS_MW350K_50SLP_7_35MCH,
+    MBNS_MW500K_50SLP_7_35MCH: MBNS_MW500K_50SLP_7_35MCH,
+    MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN: MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN,
+    MBNS_MW1M_50SLP_6_38MCH_NO_TAX: MBNS_MW1M_50SLP_6_38MCH_NO_TAX,
+    MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN: MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN,
+    MBNS_MW1M_50SLP_3_40MCH_NO_TAX: MBNS_MW1M_50SLP_3_40MCH_NO_TAX,
+    MBNS_MW350K_40SLP_4_36MCH: MBNS_MW350K_40SLP_4_36MCH,
+    MBNS_MW1M_50SLP_3_14MCH: MBNS_MW1M_50SLP_3_14MCH,
+    MBNS_MW300K_50SLP_7_35MCH: MBNS_MW300K_50SLP_7_35MCH,
+    MBNS_MW300K_50SLP_3_20MCH: MBNS_MW300K_50SLP_3_20MCH,
+    MBNS_MW300K_50SLP_3_38MCH: MBNS_MW300K_50SLP_3_38MCH,
+    MBNS_MW500K_25SLP: MBNS_MW500K_25SLP,
+    MBNS_MW500K_25SLP_6_38MCH: MBNS_MW500K_25SLP_6_38MCH
 
 }
