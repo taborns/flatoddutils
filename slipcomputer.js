@@ -5015,6 +5015,9 @@ class MBNS_MW1M_50SLP_6_38MCH_NO_TAX extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN
 }
 
 class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VAT_WIN {
+    is_odd_bonus_eligible=()=>{
+        return this.get_total_odds()>= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+    }
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -5194,6 +5197,34 @@ class MBNS_MW1M_50SLP_3_40MCH_10P_VAT_WIN extends MBNS_MW1M_50SLP_6_38MCH_10P_VA
 
         else
             return 0
+    }
+
+    is_odd_bonus_eligible = () => {
+        return this.get_total_odds()>= this.get_configurations("MIN_BONUS_ODD") ** this.get_match_count()
+    }
+
+
+    get_bonus_value = () => {
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        let odd_bonus_eligiblity = this.is_odd_bonus_eligible()
+        if( !odd_bonus_eligiblity) {
+            return 0
+        }
+
+        if( !percentage ) { 
+            return 0
+        }
+        
+
+        let multi_bonus_value = this.calculate_bonus_value()
+        let win_tax_bonus = this.get_win_tax_bonus()
+
+        let total_bonus = multi_bonus_value + win_tax_bonus
+        if (total_bonus > this.get_configurations("MAX_BONUS"))
+            total_bonus = this.get_configurations("MAX_BONUS")
+
+        return total_bonus
+
     }
 }
 
