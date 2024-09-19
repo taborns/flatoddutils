@@ -5259,7 +5259,7 @@ class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
     }
 }
 
-class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
+class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW300K_50SLP_3_38MCH {
 
     get_configurations = (configuration_name) => {
         let all_configurations = this.get_all_configurations()
@@ -5292,80 +5292,78 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW500K_25SLP {
 
     get_percentages = (match_count) => {
         //  >= 38 300%
-        if (match_count >= 38)
+        if (match_count >= 38) {
             return 3
+        }
 
         //  >= 32 and <=37 250%
-        else if (match_count >= 32)
+        else if (match_count >= 32) {
             return 2.5
+        }
 
         //  >= 28 and <=31 200%
-        else if (match_count >= 28)
+        else if (match_count >= 28) {
             return 2
+        }
 
         //  >= 24 and <=27 150%
-        else if (match_count >= 24)
+        else if (match_count >= 24) {
             return 1.5
+        }
 
         //  >= 21 and <=23 72%
-        else if (match_count >= 21)
+        else if (match_count >= 21) {
             return 0.72
+        }
 
         //  >= 19 and <=20 42%
-        else if (match_count >= 19)
+        else if (match_count >= 19) {
             return 0.42
+        }
 
         //  >= 17 and <=18 29%
-        else if (match_count >= 17)
+        else if (match_count >= 17) {
             return 0.29
+        }
 
         //  >= 15 and <=16 22%
-        else if (match_count >= 15)
+        else if (match_count >= 15) {
             return 0.22
+        }
 
         //  >= 13 and <=14 14%
-        else if (match_count >= 13)
+        else if (match_count >= 13) {
             return 0.14
+        }
 
         //  >= 11 and <=12 10%
-        else if (match_count >= 11)
+        else if (match_count >= 11) {
             return 0.1
+        }
 
         //  >= 9 and <=10 7%
-        else if (match_count >= 9)
+        else if (match_count >= 9) {
             return 0.07
+        }
 
         //  >= 8 4%
-        else if (match_count >= 8)
+        else if (match_count >= 8) {
             return 0.04
+        }
 
         //  >= 7 3%
-        else if (match_count >= 7)
+        else if (match_count >= 7) {
             return 0.03
+        }
 
         //  >= 6 2%
-        else if (match_count >= 6)
+        else if (match_count >= 6) {
             return 0.02
+        }
 
         else return 0
     }
-
-    get_note = () => {
-
-        let percentage = this.get_percentages(this.get_percentage_match_count())
-        let note = null
-        if (percentage) {
-            note = `Current Bonus ${(percentage * 100).toFixed(2)}%`
-        }
-        else if (this.get_match_count() < this.get_min_bonus_eligble_match_count()) {
-            percentage = this.get_percentages(this.get_min_bonus_eligble_match_count()) * 100
-
-            note = `Select ${this.get_min_bonus_eligble_match_count() - this.get_match_count()} more matches and get a ${percentage}% win bonus`
-
-        }
-
-        return note
-    }
+    
 }
 
 export default {
