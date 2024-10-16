@@ -5367,47 +5367,85 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW300K_50SLP_3_38MCH {
 }
 
 
-class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35 {
+class MBNS_MW350K_50SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
 
-    get_configurations=(configuration_name)=> {
+
+
+     get_configurations=( configuration_name)=>{
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 300_000
-        all_configurations['NET_PAY_CAP'] = 300_000
-        all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 52_400
-        all_configurations["SLIP_SIZE"] = 35
-        all_configurations["MIN_BONUS_ODD"] = 1.4
-
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['SLIP_SIZE'] = 50
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 52_400
+        all_configurations["MIN_BONUS_ODD"] = 1.01
         return all_configurations[configuration_name]
     }
 
-    get_percentage_dict=()=> {
-        return {
-            3: 0.03,
-            4: 0.04,
-            5: 0.05,
-            6: 0.06,
-            7: 0.1,
-            8: 0.15,
-            9: 0.2,
-            10: 0.25,
-            11: 0.3,
-            12: 0.35,
-            13: 0.4,
-            14: 0.45,
-            15: 0.5,
-            16: 0.55,
-            17: 0.6,
-            18: 0.65,
-            19: 0.7,
-            20: 0.75,
+     get_min_bonus_eligble_match_count=()=>{return 6}
+
+     get_max_bonus_eligble_match_count=()=> {return 38}
+
+     get_percentage_match_count=()=>{
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count()){
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
         }
+
+        return percentage_match_count
     }
 
-    get_percentages = (match_count) => {
-        return this.get_percentage_dict()[match_count]
+     get_percentages=( match_count)=>{
+         if (match_count >= 38)
+             return 3.00 // # 300%
+         else if( match_count >= 32)
+             return 2.50  //250%
+         else if( match_count >= 28)
+             return 2.00  //200%
+         else if( match_count >= 24)
+             return 1.50  //150%
+         else if( match_count >= 21)
+             return 0.72  //72%
+         else if( match_count >= 19)
+             return 0.59  //59%
+         else if( match_count >= 17)
+             return 0.46  //46%
+         else if( match_count >= 15)
+             return 0.35  //35%
+         else if( match_count >= 13)
+             return 0.31  //31%
+         else if( match_count >= 11)
+             return 0.27  //27%
+         else if( match_count >= 9)
+             return 0.22  //22%
+         else if( match_count >= 8)
+             return 0.20  //20%
+         else if( match_count >= 7)
+             return 0.18  //18%
+         else if( match_count >= 6)
+             return 0.14  //14%
+         else
+             return 0  // No bonus for fewer than 6 games
+
+     }
     }
+
+class MBNS_MW350K_40SLP extends MBNS_MW500K_25SLP_6_38MCH {
+
+
+    get_configurations = ( configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['SLIP_SIZE'] = 40
+        all_configurations['MAX_BONUS'] = 0
+        return all_configurations[configuration_name]
+    }
+
+    get_percentages=( match_count)=>{return 0}
 }
 
 export default {
@@ -5513,6 +5551,7 @@ export default {
     MBNS_MW300K_50SLP_3_38MCH: MBNS_MW300K_50SLP_3_38MCH,
     MBNS_MW500K_25SLP: MBNS_MW500K_25SLP,
     MBNS_MW500K_25SLP_6_38MCH: MBNS_MW500K_25SLP_6_38MCH,
-    MBNS_MW300K_SlpSz35_3_20MCH: MBNS_MW300K_SlpSz35_3_20MCH
+    MBNS_MW350K_50SLP_6_38MCH: MBNS_MW350K_50SLP_6_38MCH,
+    MBNS_MW350K_40SLP: MBNS_MW350K_40SLP
 
 }
