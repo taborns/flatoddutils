@@ -1,6 +1,6 @@
 {
   "name": "flatoddutils",
-  "version": "30.0.0",
+  "version": "31.0.0",
   "type": "module",
   "description": "This project is a collection of utility functions and constants.",
   "main": "index.js",
