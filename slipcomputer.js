@@ -5463,7 +5463,10 @@ class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35{
     }
 
     get_percentages = (match_count) => {
+        let count= match_count>20?20:match_count
         return {
+            1: 0.00,
+            2: 0.00,
             3: 0.03,
             4: 0.04,
             5: 0.05,
@@ -5482,7 +5485,7 @@ class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35{
             18: 0.65,
             19: 0.7,
             20: 0.75,
-        }[match_count]
+        }[count]
     }
 }
 
