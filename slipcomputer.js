@@ -5573,6 +5573,100 @@ class MBNS_MW350K_SlpSz30_3_18MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
     }
 }
 
+
+class MBNS_MW350K_55SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
+
+
+    get_configurations(configuration_name) {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['SLIP_SIZE'] = 55
+        all_configurations['BET_SLIP_BONUS'] = true
+        all_configurations['MAX_BONUS'] = 52_400
+        all_configurations["MIN_BONUS_ODD"] = 1.01
+        return all_configurations[configuration_name]
+    }
+
+    get_min_bonus_eligble_match_count = () => 6
+
+    get_max_bonus_eligble_match_count = () => 38
+
+    get_percentage_match_count = () => {
+        let percentage_match_count = this.get_match_count()
+
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count()) {
+            percentage_match_count = this.get_max_bonus_eligble_match_count()
+        }
+
+        return percentage_match_count
+    }
+
+    get_percentages = (match_count) => {
+        if (match_count >= 38) {
+
+            return 3.00 // 300%
+        }
+        else if (match_count >= 32) {
+
+            return 2.50 // 250%
+        }
+        else if (match_count >= 28) {
+
+            return 2.00 // 200%
+        }
+        else if (match_count >= 24) {
+
+            return 1.50 // 150%
+        }
+        else if (match_count >= 21) {
+
+            return 0.72 // 72%
+        }
+        else if (match_count >= 19) {
+
+            return 0.61 // 59%
+        }
+        else if (match_count >= 17) {
+
+            return 0.55 // 46%
+        }
+        else if (match_count >= 15) {
+
+            return 0.51 // 35%
+        }
+        else if (match_count >= 13) {
+
+            return 0.45 // 31%
+        }
+        else if (match_count >= 11) {
+
+            return 0.39 // 27%
+        }
+        else if (match_count >= 9) {
+
+            return 0.34 // 22%
+        }
+        else if (match_count >= 8) {
+
+            return 0.30 // 20%
+        }
+        else if (match_count >= 7) {
+
+            return 0.25 // 18%
+        }
+        else if (match_count >= 6) {
+
+            return 0.2 // 14%
+        }
+        else {
+
+            return 0 // No bonus for fewer than 6 games
+        }
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -5682,5 +5776,6 @@ export default {
     MBNS_MW350K_SlpSz35_3_20MCH: MBNS_MW350K_SlpSz35_3_20MCH,
     NoTaxSlipCompMw250MSlpSz60: NoTaxSlipCompMw250MSlpSz60,
     MBNS_MW300K_SlpSz35_3_20MCH: MBNS_MW300K_SlpSz35_3_20MCH,
-    MBNS_MW350K_SlpSz30_3_18MCH: MBNS_MW350K_SlpSz30_3_18MCH
+    MBNS_MW350K_SlpSz30_3_18MCH: MBNS_MW350K_SlpSz30_3_18MCH,
+    MBNS_MW350K_55SLP_6_38MCH: MBNS_MW350K_55SLP_6_38MCH
 }
