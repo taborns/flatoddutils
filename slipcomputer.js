@@ -218,14 +218,16 @@ class SlipComp {
         return "NAT. Lot"
     }
     get_before_0 = () => {
-        return this.get_initial_tax()
+        // return this.get_initial_tax() // disabled to make it compatible with legacy code
+        return 0
     }
 
     get_before_01 = () => {
         return 0
     }
     get_after_0 = () => {
-        return this.calculate_tax()
+        // return this.calculate_tax() // disabled to make it compatible with legacy code
+        return 0
     }
 
 
