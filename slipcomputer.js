@@ -5679,6 +5679,69 @@ class MBNS_MW350K_55SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
     }
 }
 
+class MBNS_MW350K_SlpSz35_3_40MCH extends MBNS_MW300K_SlpSz35_3_20MCH{
+
+
+     get_configurations( configuration_name){
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 52000
+        all_configurations["SLIP_SIZE"] = 35
+        all_configurations["MIN_BONUS_ODD"] = 1.15
+
+        return all_configurations[configuration_name]}
+
+    get_percentages(match_count) {
+        let count = match_count > 40 ? 40 : match_count
+
+        return {
+            1: 0.00,
+            2: 0.00,
+            3: 0.05,
+            4: 0.08,
+            5: 0.09,
+            6: 0.1,
+            7: 0.15,
+            8: 0.2,
+            9: 0.25,
+            10: 0.3,
+            11: 0.35,
+            12: 0.4,
+            13: 0.45,
+            14: 0.5,
+            15: 0.55,
+            16: 0.6,
+            17: 0.65,
+            18: 0.7,
+            19: 0.75,
+            20: 0.8,
+            21: 0.85,
+            22: 0.9,
+            23: 0.95,
+            24: 1,
+            25: 1.1,
+            26: 1.3,
+            27: 1.5,
+            28: 1.7,
+            29: 2,
+            30: 2.1,
+            31: 2.3,
+            32: 2.5,
+            33: 2.7,
+            34: 2.9,
+            35: 3.1,
+            36: 3.2,
+            37: 3.4,
+            38: 3.6,
+            39: 3.8,
+            40: 4,
+        }[count]
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -5789,5 +5852,6 @@ export default {
     NoTaxSlipCompMw250MSlpSz60: NoTaxSlipCompMw250MSlpSz60,
     MBNS_MW300K_SlpSz35_3_20MCH: MBNS_MW300K_SlpSz35_3_20MCH,
     MBNS_MW350K_SlpSz30_3_18MCH: MBNS_MW350K_SlpSz30_3_18MCH,
-    MBNS_MW350K_55SLP_6_38MCH: MBNS_MW350K_55SLP_6_38MCH
+    MBNS_MW350K_55SLP_6_38MCH: MBNS_MW350K_55SLP_6_38MCH,
+    MBNS_MW350K_SlpSz35_3_40MCH: MBNS_MW350K_SlpSz35_3_40MCH
 }
