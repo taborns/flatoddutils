@@ -5764,7 +5764,6 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
     }
 
     get_percentages(match_count) {
-        let count = match_count > 20 ? 20 : match_count
         return {
             1: 0.00,
             1: 0.00,
@@ -5786,7 +5785,7 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
             18: 0.65,
             19: 0.7,
             20: 0.75,
-        }[count]
+        }[match_count]
     }
 }
 
