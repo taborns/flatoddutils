@@ -5820,6 +5820,21 @@ class MBNS_MW1M_SlpSz35_3_40MCH extends MBNS_MW350K_SlpSz35_3_40MCH {
     }
 }
 
+class MW350_SlpSz40 extends MBNS_MW350K_SlpSz35_3_40MCH{
+
+     get_configurations( configuration_name){
+
+        all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations["SLIP_SIZE"] = 40
+
+        return all_configurations[configuration_name]}
+
+     get_percentages(self, match_count){
+        return 0
+    }
+}
 export default {
 
     SlipComp: SlipComp,
@@ -5934,5 +5949,6 @@ export default {
     MBNS_MW350K_SlpSz35_3_40MCH: MBNS_MW350K_SlpSz35_3_40MCH,
     MultiBonus10_No_Tax: MultiBonus10_No_Tax,
     MBNS_MW350K_SlpSz50_3_18MCH: MBNS_MW350K_SlpSz50_3_18MCH,
-    MBNS_MW1M_SlpSz35_3_40MCH: MBNS_MW1M_SlpSz35_3_40MCH
+    MBNS_MW1M_SlpSz35_3_40MCH: MBNS_MW1M_SlpSz35_3_40MCH,
+    MW350_SlpSz40: MW350_SlpSz40
 }
