@@ -1,6 +1,6 @@
 import slipcomp from './index.js'
 const bonus_calculator = slipcomp.getSlipComputer(
-    'MultiBonus10_No_Tax',
+    'MBNS_MW1M_SlpSz35_3_40MCH',
     10,      // Example bet amount
     800.0,      // Example total odds
     25,      // Example match count
