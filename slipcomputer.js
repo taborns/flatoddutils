@@ -5927,6 +5927,79 @@ class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH{
     }
     }
 
+    class MultiBonusMw1MilSlpSz50 extends MBNS_MW350K_SlpSz35_3_40MCH{
+
+     get_configurations(configuration_name){
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["MAX_BONUS"] = 52400
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.3
+
+        return all_configurations[configuration_name]
+    }
+
+        get_percentages(match_count) {
+            let count = match_count > 50 ? 50 : match_count
+            return {
+                1: 0.00,
+                2: 0.00,
+                3: 0.03,
+                4: 0.04,
+                5: 0.06,
+                6: 0.08,
+                7: 0.15,
+                8: 0.20,
+                9: 0.25,
+                10: 0.35,
+                11: 0.40,
+                12: 0.45,
+                13: 0.50,
+                14: 0.55,
+                15: 0.60,
+                16: 0.65,
+                17: 0.70,
+                18: 0.75,
+                19: 0.80,
+                20: 0.85,
+                21: 0.90,
+                22: 0.95,
+                23: 1.00,
+                24: 1.05,
+                25: 1.10,
+                26: 1.15,
+                27: 1.20,
+                28: 1.25,
+                29: 1.30,
+                30: 1.35,
+                31: 1.40,
+                32: 1.45,
+                33: 1.50,
+                34: 1.55,
+                35: 1.60,
+                36: 1.65,
+                37: 1.70,
+                38: 1.75,
+                39: 1.80,
+                40: 1.90,
+                41: 2.00,
+                42: 2.10,
+                43: 2.20,
+                44: 2.30,
+                45: 2.40,
+                46: 2.50,
+                47: 2.60,
+                48: 2.70,
+                49: 2.80,
+                50: 2.90,
+            }[count]
+        }
+    }
+
+
 export default {
 
     SlipComp: SlipComp,
@@ -6045,5 +6118,6 @@ export default {
     MW350_SlpSz40: MW350_SlpSz40,
     MBNS_MW500K_SlpSz40_3_14MCH: MBNS_MW500K_SlpSz40_3_14MCH,
     MBNS_MW500K_SlpSz35_3_20MCH: MBNS_MW500K_SlpSz35_3_20MCH,
-    MBNS_MW350K_SlpSz40_3_14MCH: MBNS_MW350K_SlpSz40_3_14MCH
+    MBNS_MW350K_SlpSz40_3_14MCH: MBNS_MW350K_SlpSz40_3_14MCH,
+    MultiBonusMw1MilSlpSz50: MultiBonusMw1MilSlpSz50
 }
