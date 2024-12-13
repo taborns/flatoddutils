@@ -5375,7 +5375,7 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW300K_50SLP_3_38MCH {
 
         else return 0
     }
-    
+
 }
 
 
@@ -5383,7 +5383,7 @@ class MBNS_MW350K_50SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
 
 
 
-     get_configurations=( configuration_name)=>{
+    get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350_000
@@ -5395,59 +5395,59 @@ class MBNS_MW350K_50SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
         return all_configurations[configuration_name]
     }
 
-     get_min_bonus_eligble_match_count=()=>{return 6}
+    get_min_bonus_eligble_match_count = () => { return 6 }
 
-     get_max_bonus_eligble_match_count=()=> {return 38}
+    get_max_bonus_eligble_match_count = () => { return 38 }
 
-     get_percentage_match_count=()=>{
+    get_percentage_match_count = () => {
         let percentage_match_count = this.get_match_count()
 
-        if (percentage_match_count > this.get_max_bonus_eligble_match_count()){
+        if (percentage_match_count > this.get_max_bonus_eligble_match_count()) {
             percentage_match_count = this.get_max_bonus_eligble_match_count()
         }
 
         return percentage_match_count
     }
 
-     get_percentages=( match_count)=>{
-         if (match_count >= 38)
-             return 3.00 // # 300%
-         else if( match_count >= 32)
-             return 2.50  //250%
-         else if( match_count >= 28)
-             return 2.00  //200%
-         else if( match_count >= 24)
-             return 1.50  //150%
-         else if( match_count >= 21)
-             return 0.72  //72%
-         else if( match_count >= 19)
-             return 0.59  //59%
-         else if( match_count >= 17)
-             return 0.46  //46%
-         else if( match_count >= 15)
-             return 0.35  //35%
-         else if( match_count >= 13)
-             return 0.31  //31%
-         else if( match_count >= 11)
-             return 0.27  //27%
-         else if( match_count >= 9)
-             return 0.22  //22%
-         else if( match_count >= 8)
-             return 0.20  //20%
-         else if( match_count >= 7)
-             return 0.18  //18%
-         else if( match_count >= 6)
-             return 0.14  //14%
-         else
-             return 0  // No bonus for fewer than 6 games
+    get_percentages = (match_count) => {
+        if (match_count >= 38)
+            return 3.00 // # 300%
+        else if (match_count >= 32)
+            return 2.50  //250%
+        else if (match_count >= 28)
+            return 2.00  //200%
+        else if (match_count >= 24)
+            return 1.50  //150%
+        else if (match_count >= 21)
+            return 0.72  //72%
+        else if (match_count >= 19)
+            return 0.59  //59%
+        else if (match_count >= 17)
+            return 0.46  //46%
+        else if (match_count >= 15)
+            return 0.35  //35%
+        else if (match_count >= 13)
+            return 0.31  //31%
+        else if (match_count >= 11)
+            return 0.27  //27%
+        else if (match_count >= 9)
+            return 0.22  //22%
+        else if (match_count >= 8)
+            return 0.20  //20%
+        else if (match_count >= 7)
+            return 0.18  //18%
+        else if (match_count >= 6)
+            return 0.14  //14%
+        else
+            return 0  // No bonus for fewer than 6 games
 
-     }
     }
+}
 
 class MBNS_MW350K_40SLP extends MBNS_MW500K_25SLP_6_38MCH {
 
 
-    get_configurations = ( configuration_name) => {
+    get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350_000
@@ -5457,25 +5457,25 @@ class MBNS_MW350K_40SLP extends MBNS_MW500K_25SLP_6_38MCH {
         return all_configurations[configuration_name]
     }
 
-    get_percentages=( match_count)=>{return 0}
+    get_percentages = (match_count) => { return 0 }
 }
 
-class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35{
+class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35 {
 
-    get_configurations=( configuration_name)=>{        
-                let all_configurations = this.get_all_configurations()
-                all_configurations['MAX_WIN'] = 300_000
-                all_configurations['NET_PAY_CAP'] = 300_000
-                all_configurations["BET_SLIP_BONUS"] = true
-                all_configurations["MAX_BONUS"] = 52_400
-                all_configurations["SLIP_SIZE"] = 35
-                all_configurations["MIN_BONUS_ODD"] = 1.4
-        
-                return all_configurations[configuration_name]
+    get_configurations = (configuration_name) => {
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 300_000
+        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 52_400
+        all_configurations["SLIP_SIZE"] = 35
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
     }
 
     get_percentages = (match_count) => {
-        let count= match_count>20?20:match_count
+        let count = match_count > 20 ? 20 : match_count
         return {
             1: 0.00,
             2: 0.00,
@@ -5504,7 +5504,7 @@ class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35{
 class MultiBonus11_MW350K_SLP40 extends MultiBonus11_20EVN {
 
 
-    get_configurations = ( configuration_name) => {
+    get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350_000
@@ -5520,7 +5520,7 @@ class MultiBonus11_MW350K_SLP40 extends MultiBonus11_20EVN {
 
 class MBNS_MW350K_SlpSz35_3_20MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
 
-    get_configurations = (configuration_name)=>{
+    get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350_000
@@ -5679,10 +5679,10 @@ class MBNS_MW350K_55SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
     }
 }
 
-class MBNS_MW350K_SlpSz35_3_40MCH extends MBNS_MW300K_SlpSz35_3_20MCH{
+class MBNS_MW350K_SlpSz35_3_40MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
 
 
-     get_configurations( configuration_name){
+    get_configurations(configuration_name) {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350000
@@ -5692,7 +5692,8 @@ class MBNS_MW350K_SlpSz35_3_40MCH extends MBNS_MW300K_SlpSz35_3_20MCH{
         all_configurations["SLIP_SIZE"] = 35
         all_configurations["MIN_BONUS_ODD"] = 1.15
 
-        return all_configurations[configuration_name]}
+        return all_configurations[configuration_name]
+    }
 
     get_percentages(match_count) {
         let count = match_count > 40 ? 40 : match_count
@@ -5806,7 +5807,7 @@ class MBNS_MW350K_SlpSz50_3_18MCH extends MBNS_MW350K_SlpSz30_3_18MCH {
 
 class MBNS_MW1M_SlpSz35_3_40MCH extends MBNS_MW350K_SlpSz35_3_40MCH {
 
-     get_configurations( configuration_name){
+    get_configurations(configuration_name) {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 1000000
@@ -5820,25 +5821,26 @@ class MBNS_MW1M_SlpSz35_3_40MCH extends MBNS_MW350K_SlpSz35_3_40MCH {
     }
 }
 
-class MW350_SlpSz40 extends MBNS_MW350K_SlpSz35_3_40MCH{
+class MW350_SlpSz40 extends MBNS_MW350K_SlpSz35_3_40MCH {
 
-     get_configurations( configuration_name){
+    get_configurations(configuration_name) {
 
         all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 350_000
         all_configurations['NET_PAY_CAP'] = 350_000
         all_configurations["SLIP_SIZE"] = 40
 
-        return all_configurations[configuration_name]}
+        return all_configurations[configuration_name]
+    }
 
-     get_percentages(match_count){
+    get_percentages(match_count) {
         return 0
     }
 }
 
-class MBNS_MW500K_SlpSz40_3_14MCH extends MBNS_MW300K_SlpSz35_3_20MCH{
+class MBNS_MW500K_SlpSz40_3_14MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
 
-    get_configurations( configuration_name){
+    get_configurations(configuration_name) {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['MAX_WIN'] = 500000
@@ -5848,9 +5850,10 @@ class MBNS_MW500K_SlpSz40_3_14MCH extends MBNS_MW300K_SlpSz35_3_20MCH{
         all_configurations["SLIP_SIZE"] = 40
         all_configurations["MIN_BONUS_ODD"] = 1.2
 
-        return all_configurations[configuration_name]}
+        return all_configurations[configuration_name]
+    }
 
-    get_percentages( match_count) {
+    get_percentages(match_count) {
         return {
             1: 0.00,
             2: 0.00,
@@ -5892,9 +5895,9 @@ class MBNS_MW500K_SlpSz35_3_20MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
 }
 
 
-class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH{
+class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH {
 
-    get_configurations(cls, configuration_name){
+    get_configurations(cls, configuration_name) {
 
         let all_configurations = cls.get_all_configurations()
         all_configurations['MAX_WIN'] = 350000
@@ -5904,7 +5907,8 @@ class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH{
         all_configurations["SLIP_SIZE"] = 40
         all_configurations["MIN_BONUS_ODD"] = 1.2
 
-        return all_configurations[configuration_name]}
+        return all_configurations[configuration_name]
+    }
 
     get_percentages(match_count) {
         let count = match_count > 14 ? 14 : match_count
@@ -5925,11 +5929,11 @@ class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH{
             14: 0.7,
         }[count]
     }
-    }
+}
 
-    class MultiBonusMw1MilSlpSz50 extends MBNS_MW350K_SlpSz35_3_40MCH{
+class MultiBonusMw1MilSlpSz50 extends MBNS_MW350K_SlpSz35_3_40MCH {
 
-     get_configurations(configuration_name){
+    get_configurations(configuration_name) {
 
         let all_configurations = this.get_all_configurations()
         all_configurations["BET_SLIP_BONUS"] = true
@@ -5942,63 +5946,167 @@ class MBNS_MW350K_SlpSz40_3_14MCH extends MBNS_MW350K_SlpSz35_3_40MCH{
         return all_configurations[configuration_name]
     }
 
-        get_percentages(match_count) {
-            let count = match_count > 50 ? 50 : match_count
-            return {
-                1: 0.00,
-                2: 0.00,
-                3: 0.03,
-                4: 0.04,
-                5: 0.06,
-                6: 0.08,
-                7: 0.15,
-                8: 0.20,
-                9: 0.25,
-                10: 0.35,
-                11: 0.40,
-                12: 0.45,
-                13: 0.50,
-                14: 0.55,
-                15: 0.60,
-                16: 0.65,
-                17: 0.70,
-                18: 0.75,
-                19: 0.80,
-                20: 0.85,
-                21: 0.90,
-                22: 0.95,
-                23: 1.00,
-                24: 1.05,
-                25: 1.10,
-                26: 1.15,
-                27: 1.20,
-                28: 1.25,
-                29: 1.30,
-                30: 1.35,
-                31: 1.40,
-                32: 1.45,
-                33: 1.50,
-                34: 1.55,
-                35: 1.60,
-                36: 1.65,
-                37: 1.70,
-                38: 1.75,
-                39: 1.80,
-                40: 1.90,
-                41: 2.00,
-                42: 2.10,
-                43: 2.20,
-                44: 2.30,
-                45: 2.40,
-                46: 2.50,
-                47: 2.60,
-                48: 2.70,
-                49: 2.80,
-                50: 2.90,
-            }[count]
-        }
+    get_percentages(match_count) {
+        let count = match_count > 50 ? 50 : match_count
+        return {
+            1: 0.00,
+            2: 0.00,
+            3: 0.03,
+            4: 0.04,
+            5: 0.06,
+            6: 0.08,
+            7: 0.15,
+            8: 0.20,
+            9: 0.25,
+            10: 0.35,
+            11: 0.40,
+            12: 0.45,
+            13: 0.50,
+            14: 0.55,
+            15: 0.60,
+            16: 0.65,
+            17: 0.70,
+            18: 0.75,
+            19: 0.80,
+            20: 0.85,
+            21: 0.90,
+            22: 0.95,
+            23: 1.00,
+            24: 1.05,
+            25: 1.10,
+            26: 1.15,
+            27: 1.20,
+            28: 1.25,
+            29: 1.30,
+            30: 1.35,
+            31: 1.40,
+            32: 1.45,
+            33: 1.50,
+            34: 1.55,
+            35: 1.60,
+            36: 1.65,
+            37: 1.70,
+            38: 1.75,
+            39: 1.80,
+            40: 1.90,
+            41: 2.00,
+            42: 2.10,
+            43: 2.20,
+            44: 2.30,
+            45: 2.40,
+            46: 2.50,
+            47: 2.60,
+            48: 2.70,
+            49: 2.80,
+            50: 2.90,
+        }[count]
+    }
+}
+
+
+class MBNS1_MW1M_SlpSz50_3_50MCH extends MBNS_MW350K_SlpSz35_3_40MCH {
+    get_configurations(configuration_name) {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 75000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
     }
 
+    get_percentages(match_count) {
+        let count = match_count > 50 ? 50 : match_count
+        return {
+            1: 0.00,
+            2: 0.00,
+            3: 0.03,
+            4: 0.04,
+            5: 0.06,
+            6: 0.08,
+            7: 0.20,
+            8: 0.25,
+            9: 0.30,
+            10: 0.35,
+            11: 0.40,
+            12: 0.45,
+            13: 0.50,
+            14: 0.55,
+            15: 0.60,
+            16: 0.65,
+            17: 0.70,
+            18: 0.75,
+            19: 0.80,
+            20: 0.85,
+            21: 0.90,
+            22: 0.95,
+            23: 1.00,
+            24: 1.05,
+            25: 1.10,
+            26: 1.15,
+            27: 1.20,
+            28: 1.25,
+            29: 1.30,
+            30: 1.35,
+            31: 1.40,
+            32: 1.45,
+            33: 1.50,
+            34: 1.55,
+            35: 1.60,
+            36: 1.65,
+            37: 1.70,
+            38: 1.80,
+            39: 1.90,
+            40: 2.00,
+            41: 2.10,
+            42: 2.20,
+            43: 2.30,
+            44: 2.40,
+            45: 2.50,
+            46: 2.60,
+            47: 2.70,
+            48: 2.80,
+            49: 2.90,
+            50: 3.00,
+        }[count]
+    }
+}
+
+
+class MBNS2_MW1M_SlpSz50_3_50MCH extends MBNS1_MW1M_SlpSz50_3_50MCH {
+    get_configurations(configuration_name) {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 65000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.35
+
+        return all_configurations[configuration_name]
+    }
+}
+
+
+class MBNS3_MW1M_SlpSz50_3_50MCH extends MBNS1_MW1M_SlpSz50_3_50MCH {
+
+    get_configurations(configuration_name) {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 60000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.3
+
+        return all_configurations[configuration_name]
+    }
+}
 
 export default {
 
@@ -6119,5 +6227,8 @@ export default {
     MBNS_MW500K_SlpSz40_3_14MCH: MBNS_MW500K_SlpSz40_3_14MCH,
     MBNS_MW500K_SlpSz35_3_20MCH: MBNS_MW500K_SlpSz35_3_20MCH,
     MBNS_MW350K_SlpSz40_3_14MCH: MBNS_MW350K_SlpSz40_3_14MCH,
-    MultiBonusMw1MilSlpSz50: MultiBonusMw1MilSlpSz50
+    MBNS1_MW1M_SlpSz50_3_50MCH: MBNS1_MW1M_SlpSz50_3_50MCH,
+    MultiBonusMw1MilSlpSz50: MultiBonusMw1MilSlpSz50,
+    MBNS2_MW1M_SlpSz50_3_50MCH: MBNS2_MW1M_SlpSz50_3_50MCH,
+    MBNS3_MW1M_SlpSz50_3_50MCH: MBNS3_MW1M_SlpSz50_3_50MCH
 }
