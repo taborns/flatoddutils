@@ -6168,6 +6168,68 @@ class MBNS_MW350K_SlpSz50_3_35MCH extends MBNS_MW1M_SlpSz20_3_20MCH {
     }
 }
 
+class MBNS_MW350K_SlpSz50_3_40MCH extends MBNS_MW1M_SlpSz20_3_20MCH {
+
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350_000
+        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 52_000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+
+        return all_configurations[configuration_name]
+    }
+
+    get_percentages = (match_count) => {
+        let count = match_count > 20 ? 20 : match_count
+        return {
+            1: 0.00,
+            2: 0.00,
+            3: 0.05,
+            4: 0.08,
+            5: 0.09,
+            6: 0.10,
+            7: 0.15,
+            8: 0.20,
+            9: 0.25,
+            10: 0.30,
+            11: 0.35,
+            12: 0.40,
+            13: 0.45,
+            14: 0.50,
+            15: 0.55,
+            16: 0.60,
+            17: 0.65,
+            18: 0.70,
+            19: 0.75,
+            20: 0.80,
+            21: 0.85,
+            22: 0.90,
+            23: 0.95,
+            24: 1.00,
+            25: 1.10,
+            26: 1.30,
+            27: 1.50,
+            28: 1.70,
+            29: 2.00,
+            30: 2.10,
+            31: 2.30,
+            32: 2.50,
+            33: 2.70,
+            34: 2.90,
+            35: 3.10,
+            36: 3.20,
+            37: 3.40,
+            38: 3.60,
+            39: 3.80,
+            40: 4.00,
+        }[count]
+    }
+}
+
 
 
 export default {
@@ -6294,5 +6356,6 @@ export default {
     MBNS2_MW1M_SlpSz50_3_50MCH: MBNS2_MW1M_SlpSz50_3_50MCH,
     MBNS3_MW1M_SlpSz50_3_50MCH: MBNS3_MW1M_SlpSz50_3_50MCH,
     MBNS_MW1M_SlpSz20_3_20MCH: MBNS_MW1M_SlpSz20_3_20MCH,
-    MBNS_MW350K_SlpSz50_3_35MCH: MBNS_MW350K_SlpSz50_3_35MCH
+    MBNS_MW350K_SlpSz50_3_35MCH: MBNS_MW350K_SlpSz50_3_35MCH,
+    MBNS_MW350K_SlpSz50_3_40MCH:MBNS_MW350K_SlpSz50_3_40MCH
 }
