@@ -6173,10 +6173,10 @@ class MBNS_MW350K_SlpSz50_3_40MCH extends MBNS_MW1M_SlpSz20_3_20MCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 52_000
+        all_configurations["MAX_BONUS"] = 52000
         all_configurations["SLIP_SIZE"] = 50
         all_configurations["MIN_BONUS_ODD"] = 1.2
 
