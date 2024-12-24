@@ -5757,10 +5757,10 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
 
         return all_configurations[configuration_name]
     }
-    get_min_bonus_eligble_match_count() {
+    get_min_bonus_eligble_match_count=() =>{
         return 3
     }
-    get_max_bonus_eligble_match_count() {
+    get_max_bonus_eligble_match_count=()=> {
         return 20
     }
 
