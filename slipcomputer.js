@@ -5753,7 +5753,7 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
         all_configurations["MAX_BONUS"] = 52400
         all_configurations["SLIP_SIZE"] = 30
         all_configurations["MIN_BONUS_ODD"] = 1.4
-        all_configurations["TAX_TYPE"] = configurations.TAX_TYPE_NONE
+        all_configurations["TAX_TYPE"] = 'none'
 
         return all_configurations[configuration_name]
     }
