@@ -1,6 +1,6 @@
 import slipcomp from './index.js'
 const bonus_calculator = slipcomp.getSlipComputer(
-    'MBNS_MW350K_SlpSz50_3_40MCH',
+    'MultiBonus10_No_Tax',
     10,      // Example bet amount
     9324.37,      // Example total odds
     8,      // Example match count
@@ -20,7 +20,7 @@ let pct_match_count = bonus_calculator.get_percentage_match_count()
 let get_win_value = bonus_calculator.get_win_value()
 let max_bonus_eligble_match_count = bonus_calculator.get_max_bonus_eligble_match_count()
 let min_bonus_eligble_match_count = bonus_calculator.get_min_bonus_eligble_match_count()
-let total_odd_match_count = bonus_calculator.get_total_odd_match_count()
+// let total_odd_match_count = bonus_calculator.get_total_odd_match_count()
 // get_win_tax_bonus = bonus_calculator.get_win_tax_bonus()
 // is_win_taxable = bonus_calculator.is_win_taxable()
 
@@ -39,4 +39,4 @@ console.log(`pct_match_count: ${pct_match_count}`)
 console.log(`get_win_value: ${get_win_value}`)
 console.log(`max_bonus_eligble_match_count: ${max_bonus_eligble_match_count}`)
 console.log(`min_bonus_eligble_match_count: ${min_bonus_eligble_match_count}`)
-console.log(`total_odd_match_count: ${total_odd_match_count}`)
+// console.log(`total_odd_match_count: ${total_odd_match_count}`)

@@ -5744,8 +5744,7 @@ class MBNS_MW350K_SlpSz35_3_40MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
 }
 
 class MultiBonus10_No_Tax extends MultiBonus10 {
-
-    get_configurations=(configuration_name)=> {
+    get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
         all_configurations["BET_SLIP_BONUS"] = true
@@ -5757,14 +5756,13 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
 
         return all_configurations[configuration_name]
     }
-    get_min_bonus_eligble_match_count=() =>{
-        return 3
-    }
-    get_max_bonus_eligble_match_count=()=> {
-        return 20
-    }
 
-    get_percentages=(match_count)=> {
+    get_min_bonus_eligble_match_count = () => 3
+
+    get_max_bonus_eligble_match_count = () => 20
+
+    get_percentages = (match_count) => {
+        let count = match_count > 20 ? 20 : match_count
         return {
             1: 0.00,
             1: 0.00,
@@ -5786,7 +5784,7 @@ class MultiBonus10_No_Tax extends MultiBonus10 {
             18: 0.65,
             19: 0.7,
             20: 0.75,
-        }[match_count]
+        }[count]
     }
 }
 
