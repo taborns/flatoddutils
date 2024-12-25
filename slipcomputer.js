@@ -48,6 +48,7 @@ class SlipComp {
         else if (this.get_configurations('TAX_TYPE') == 'vat')
             return this.get_configurations('VAT_TAX')
 
+        return 0
     }
 
     get_placed_bet = () => {
@@ -62,7 +63,7 @@ class SlipComp {
         else if (this.get_configurations('TAX_TYPE') == 'vat')
             return this.placedbet / (1 + this.get_tax_value())
 
-        return 0
+        return this.placedbet
 
     }
 
@@ -87,12 +88,13 @@ class SlipComp {
     // this represnets taxes applied on the betting amount. 
     //Vat or Tot are two taxes considered in this stage of the calculation 
     get_initial_tax = () => {
-
         if (this.get_configurations('TAX_TYPE') == 'tot')
             return this.get_tot_tax()
 
         else if (this.get_configurations('TAX_TYPE') == 'vat')
             return this.get_vat_tax()
+
+        return 0
 
     }
 
@@ -6233,9 +6235,6 @@ class MBNS_MW350K_SlpSz50_3_40MCH extends MBNS_MW1M_SlpSz20_3_20MCH {
 
 
 class MultiBonus10_No_Tax2 extends MBNS_MW1M_SlpSz20_3_20MCH {
-    static ConfigurationDescription = () => ({
-        TAX_TYPE: 'none'
-    })
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
@@ -6244,6 +6243,7 @@ class MultiBonus10_No_Tax2 extends MBNS_MW1M_SlpSz20_3_20MCH {
         all_configurations["MAX_BONUS"] = 52400
         all_configurations["SLIP_SIZE"] = 30
         all_configurations["MIN_BONUS_ODD"] = 1.4
+        all_configurations["TAX_TYPE"] = 'none'
 
         return all_configurations[configuration_name]
     }
