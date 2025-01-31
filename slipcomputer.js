@@ -6451,6 +6451,21 @@ get_configurations=(configuration_name)=>{
     }[count]}
 }
 
+class MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH extends MBNS_MW350K_SlpSz30_3_18MCH {
+
+    get_configurations = (configuration_name) => {
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_BONUS"] = 100_000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.3
+
+        return all_configurations[configuration_name]
+    }
+}
+
 
 export default {
 
@@ -6581,5 +6596,6 @@ export default {
     MultiBonus10_No_Tax2:MultiBonus10_No_Tax2,
     MBS_SLP_MW_1M_SZ_35_3_20MCH:MBS_SLP_MW_1M_SZ_35_3_20MCH,
     MBNS_MW1M_50SLP_3_40MCH_NO_VAT:MBNS_MW1M_50SLP_3_40MCH_NO_VAT,
-    MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT:MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT
+    MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT:MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT,
+    MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH:MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH
 }
