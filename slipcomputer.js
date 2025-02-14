@@ -2100,7 +2100,6 @@ class MultiBonus9 extends MultiBonus6 {
 
         if (this.is_win_taxable(win_value))
             tax_value = 0.15 * win_value
-
         return tax_value
     }
 
@@ -6511,6 +6510,17 @@ class MultiBonus10_No_Tax4 extends MBNS_MW1M_SlpSz20_3_20MCH {
             19: 0.7,
             20: 0.75,
         }[count]
+    }
+    calculate_tax = () => {
+
+        let win_value = this.get_win_value()
+        let tax_value = 0
+        console.log('win_value: ',win_value)
+
+        if (this.is_win_taxable(win_value))
+            tax_value = this.get_configurations("WIN_TAX") * win_value
+        console.log('tax_value:',tax_value)
+        return tax_value
     }
 }
 
