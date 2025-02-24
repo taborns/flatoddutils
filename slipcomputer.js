@@ -6522,6 +6522,12 @@ class MultiBonus10_No_Tax4 extends MBNS_MW1M_SlpSz20_3_20MCH {
         console.log('tax_value:',tax_value)
         return tax_value
     }
+    is_odd_bonus_eligible = () => {
+        return (
+            this.total_odds
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.match_count
+        )
+    }
 }
 
 
