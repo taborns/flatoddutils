@@ -6530,6 +6530,75 @@ class MultiBonus10_No_Tax4 extends MBNS_MW1M_SlpSz20_3_20MCH {
     }
 }
 
+class MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations["NET_PAY_CAP"] = 1000000
+        all_configurations["MAX_BONUS"] = 75000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+    }
+
+
+    get_net_pay = () => {
+        let net_pay = this.get_win_value() + this.get_bonus_value()
+        let winning_tax = this.calculate_tax()
+
+        net_pay = net_pay - winning_tax
+        let net_pay_cap = this.get_configurations("NET_PAY_CAP")
+        if (net_pay > net_pay_cap) net_pay = net_pay_cap
+
+        return net_pay.toFixed(2)
+    }
+
+    get_percentages = (match_count) => {
+
+        // >= 14
+        if (match_count >= 14) return 0.75
+
+        // >= 13, 60
+        else if (match_count >= 13) return 0.6
+
+        // >= 12, 50%
+        else if (match_count >= 12) return 0.5
+
+        // >= 11, 40%
+        else if (match_count >= 11) return 0.4
+
+        // >= 10, 35%
+        else if (match_count >= 10) return 0.35
+
+        // >= 9, 30%
+        else if (match_count >= 9) return 0.3
+
+
+        // >= 8, 25%
+        else if (match_count >= 8) return 0.25
+
+        // >= 7, 20% 
+        else if (match_count >= 7) return 0.2
+
+        // >= 6, 10%
+        else if (match_count >= 6) return 0.1
+
+        // >= 5
+        else if (match_count >= 5) return 0.05
+
+        // >= 4
+        else if (match_count >= 4) return 0.04
+
+        // >= 3
+        else if (match_count >= 3) return 0.03
+
+        else return 0
+    }
+}
+
 
 export default {
 
@@ -6662,5 +6731,6 @@ export default {
     MBNS_MW1M_50SLP_3_40MCH_NO_VAT:MBNS_MW1M_50SLP_3_40MCH_NO_VAT,
     MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT:MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT,
     MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH:MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH,
-    MultiBonus10_No_Tax4:MultiBonus10_No_Tax4
+    MultiBonus10_No_Tax4:MultiBonus10_No_Tax4,
+    MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH:MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH
 }
