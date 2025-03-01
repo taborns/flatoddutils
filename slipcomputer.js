@@ -6600,6 +6600,77 @@ class MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH extends MultiBonus11_20EVN {
 }
 
 
+// 117
+class MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT extends MBNS_MW1M_SlpSz20_3_20MCH {
+    get_configurations = (configuration_name) => {
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 300000
+        all_configurations['NET_PAY_CAP'] = 300000
+        all_configurations["MAX_BONUS"] = 200000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.3
+
+
+        return all_configurations[configuration_name]
+    }
+
+    is_odd_bonus_eligible = () => {
+        return (
+            this.total_odds
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.match_count
+        )
+    }
+
+    get_percentages = (match_count) => {
+        let count = match_count > 40 ? 40 : match_count
+        return {
+            0: 0.00,
+            1: 0.00,
+            2: 0.00,
+            3: 0.05,
+            4: 0.08,
+            5: 0.10,
+            6: 0.12,
+            7: 0.18,
+            8: 0.25,
+            9: 0.30,
+            10: 0.35,
+            11: 0.40,
+            12: 0.45,
+            13: 0.50,
+            14: 0.55,
+            15: 0.60,
+            16: 0.65,
+            17: 0.70,
+            18: 0.80,
+            19: 0.90,
+            20: 1.00,
+            21: 1.10,
+            22: 1.30,
+            23: 1.50,
+            24: 1.70,
+            25: 1.90,
+            26: 2.10,
+            27: 2.30,
+            28: 2.50,
+            29: 2.70,
+            30: 2.90,
+            31: 3.10,
+            32: 3.30,
+            33: 3.50,
+            34: 3.70,
+            35: 3.90,
+            36: 4.10,
+            37: 4.30,
+            38: 4.50,
+            39: 4.75,
+            40: 5.00,
+        }[count]
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -6732,5 +6803,6 @@ export default {
     MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT:MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT,
     MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH:MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH,
     MultiBonus10_No_Tax4:MultiBonus10_No_Tax4,
-    MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH:MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH
+    MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH:MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH,
+    MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT:MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT
 }
