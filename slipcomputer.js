@@ -6687,6 +6687,7 @@ class MBNS_MW1M_25SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH{
     }
 
 
+    // 119
 class MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1 extends MBNS_MW1M_50SLP_3_40MCH_NO_VAT {
     get_configurations = (configuration_name) => {
 
