@@ -1820,7 +1820,6 @@ class MultiBonus6 extends MultiBonus3 {
             }
         }
 
-        console.log("match_counttt", match_count)
 
         return match_count
 
@@ -4436,8 +4435,8 @@ class MBNS_MW350K_40SLP_4_36MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations['SLIP_SIZE'] = 40
         all_configurations['MAX_BONUS'] = 52400
         all_configurations['VAT_TAX'] = 0.1
@@ -4558,8 +4557,8 @@ class MBNS_MW1M_50SLP_3_14MCH extends MBNS_MW1M_50SLP_1MILCAP_3_14MMCH {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_WIN'] = 1_000_000
-        all_configurations['NET_PAY_CAP'] = 1_000_000
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         all_configurations['WIN_TAX'] = 0.1
@@ -4668,8 +4667,8 @@ class MBNS_MW300K_50SLP_7_35MCH extends MBNS_MW350K_50SLP_7_35MCH {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_WIN'] = 300_000
-        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['MAX_WIN'] = 300000
+        all_configurations['NET_PAY_CAP'] = 300000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         // all_configurations['VAT_TAX'] = 0.1
@@ -4729,8 +4728,8 @@ class MBNS_MW300K_50SLP_3_20MCH extends MBNS_MW300K_50SLP_7_35MCH {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_WIN'] = 300_000
-        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['MAX_WIN'] = 300000
+        all_configurations['NET_PAY_CAP'] = 300000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         // all_configurations['VAT_TAX'] = 0.1
@@ -4806,8 +4805,8 @@ class MBNS_MW300K_50SLP_3_38MCH extends MBNS_MW300K_50SLP_7_35MCH {
 
         let all_configurations = this.get_all_configurations()
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_WIN'] = 300_000
-        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['MAX_WIN'] = 300000
+        all_configurations['NET_PAY_CAP'] = 300000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['MAX_BONUS'] = 52400
         all_configurations["MIN_BONUS_ODD"] = 1.2
@@ -5124,8 +5123,8 @@ class MBNS_MW500K_25SLP extends AfroSlipCompNoBonusMW350KSlipSize50 {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 500_000
-        all_configurations['NET_PAY_CAP'] = 500_000
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['NET_PAY_CAP'] = 500000
         all_configurations['SLIP_SIZE'] = 25
 
         return all_configurations[configuration_name]
@@ -5136,8 +5135,8 @@ class MBNS_MW500K_25SLP_6_38MCH extends MBNS_MW300K_50SLP_3_38MCH {
 
     get_configurations = (configuration_name) => {
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 500_000
-        all_configurations['NET_PAY_CAP'] = 500_000
+        all_configurations['MAX_WIN'] = 500000
+        all_configurations['NET_PAY_CAP'] = 500000
         all_configurations['SLIP_SIZE'] = 25
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_BONUS'] = 52_400
@@ -5247,8 +5246,8 @@ class MBNS_MW350K_50SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations['SLIP_SIZE'] = 50
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_BONUS'] = 52_400
@@ -5311,8 +5310,8 @@ class MBNS_MW350K_40SLP extends MBNS_MW500K_25SLP_6_38MCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations['SLIP_SIZE'] = 40
         all_configurations['MAX_BONUS'] = 0
         return all_configurations[configuration_name]
@@ -5325,8 +5324,8 @@ class MBNS_MW300K_SlpSz35_3_20MCH extends MultiBonus9Mw1MilMB5240SlpSz35 {
 
     get_configurations = (configuration_name) => {
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 300_000
-        all_configurations['NET_PAY_CAP'] = 300_000
+        all_configurations['MAX_WIN'] = 300000
+        all_configurations['NET_PAY_CAP'] = 300000
         all_configurations["BET_SLIP_BONUS"] = true
         all_configurations["MAX_BONUS"] = 52_400
         all_configurations["SLIP_SIZE"] = 35
@@ -5368,8 +5367,8 @@ class MultiBonus11_MW350K_SLP40 extends MultiBonus11_20EVN {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
         all_configurations["MAX_BONUS"] = 52_400
         all_configurations["SLIP_SIZE"] = 40
@@ -5384,8 +5383,8 @@ class MBNS_MW350K_SlpSz35_3_20MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
         all_configurations["MAX_BONUS"] = 52_400
         all_configurations["SLIP_SIZE"] = 35
@@ -5398,8 +5397,8 @@ class NoTaxSlipCompMw250MSlpSz60 extends NoTaxSlipCompMw15M {
 
     get_configurations = (configuration_name) => {
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 250_000_000
-        all_configurations['NET_PAY_CAP'] = 250_000_000
+        all_configurations['MAX_WIN'] = 250000000
+        all_configurations['NET_PAY_CAP'] = 250000000
         all_configurations["SLIP_SIZE"] = 60
 
         return all_configurations[configuration_name]
@@ -5410,10 +5409,10 @@ class MBNS_MW350K_SlpSz30_3_18MCH extends MBNS_MW300K_SlpSz35_3_20MCH {
     get_configurations = (configuration_name) => {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 52_000
+        all_configurations["MAX_BONUS"] = 52000
         all_configurations["SLIP_SIZE"] = 30
         all_configurations["MIN_BONUS_ODD"] = 1.3
 
@@ -5453,8 +5452,8 @@ class MBNS_MW350K_55SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
     get_configurations=(configuration_name)=> {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations['SLIP_SIZE'] = 55
         all_configurations['BET_SLIP_BONUS'] = true
         all_configurations['MAX_BONUS'] = 52_400
@@ -5609,10 +5608,10 @@ class MBNS_MW350K_SlpSz50_3_18MCH extends MBNS_MW350K_SlpSz30_3_18MCH {
     get_configurations=(configuration_name)=> {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 52_000
+        all_configurations["MAX_BONUS"] = 52000
         all_configurations["SLIP_SIZE"] = 50
         all_configurations["MIN_BONUS_ODD"] = 1.3
 
@@ -5640,9 +5639,9 @@ class MW350_SlpSz40 extends MBNS_MW350K_SlpSz35_3_40MCH {
 
     get_configurations=(configuration_name)=> {
 
-        all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 350_000
-        all_configurations['NET_PAY_CAP'] = 350_000
+        let all_configurations = this.get_all_configurations()
+        all_configurations['MAX_WIN'] = 350000
+        all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["SLIP_SIZE"] = 40
 
         return all_configurations[configuration_name]
@@ -5763,7 +5762,7 @@ class MultiBonusMw1MilSlpSz50 extends MBNS_MW350K_SlpSz35_3_40MCH {
 
     get_percentages = (match_count) => {
         let count = match_count > 50 ? 50 : match_count
-        console.log("match count report", match_count, count)
+
 
         return {
             1: 0.00,
@@ -5931,10 +5930,10 @@ class MBNS_MW1M_SlpSz20_3_20MCH extends MBNS1_MW1M_SlpSz50_3_50MCH {
     get_configurations=(configuration_name)=> {
 
         let all_configurations = this.get_all_configurations()
-        all_configurations['MAX_WIN'] = 1_000_000
-        all_configurations['NET_PAY_CAP'] = 1_000_000
+        all_configurations['MAX_WIN'] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
         all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 52_000
+        all_configurations["MAX_BONUS"] = 52000
         all_configurations["SLIP_SIZE"] = 20
         all_configurations["MIN_BONUS_ODD"] = 1.3
 
@@ -6317,7 +6316,7 @@ class MBNS_100K_BNS_MW350K_SlpSz50_3_18MCH extends MBNS_MW350K_SlpSz30_3_18MCH {
         all_configurations['MAX_WIN'] = 350000
         all_configurations['NET_PAY_CAP'] = 350000
         all_configurations["BET_SLIP_BONUS"] = true
-        all_configurations["MAX_BONUS"] = 100_000
+        all_configurations["MAX_BONUS"] = 100000
         all_configurations["SLIP_SIZE"] = 50
         all_configurations["MIN_BONUS_ODD"] = 1.3
 
@@ -6375,11 +6374,9 @@ class MultiBonus10_No_Tax4 extends MBNS_MW1M_SlpSz20_3_20MCH {
 
         let win_value = this.get_win_value()
         let tax_value = 0
-        console.log('win_value: ',win_value)
 
         if (this.is_win_taxable(win_value))
             tax_value = this.get_configurations("WIN_TAX") * win_value
-        console.log('tax_value:',tax_value)
         return tax_value
     }
     is_odd_bonus_eligible = () => {
@@ -6571,6 +6568,138 @@ class MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1 extends MBNS_MW1M_50SLP_3_40MCH_NO_VAT {
         )
     }
 }
+
+class MultiBetBonus1_50MCH extends MBNS_MW1M_25SLP_6_38MCH{
+    get_configurations=( configuration_name)=>{
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MIN_BONUS_ODD"] = 1.19
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations["NET_PAY_CAP"] = 1000000
+        all_configurations["SLIP_SIZE"] = 50  
+        all_configurations["MAX_BONUS"] = 52000
+        return all_configurations[configuration_name]}
+
+    is_odd_bonus_eligible=()=>{
+        return (
+            this.total_odds
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.match_count
+        )}
+
+    get_min_bonus_eligble_match_count=()=>  1;
+
+    get_max_bonus_eligble_match_count=()=> 50
+
+    get_percentages=(match_count)=>{
+        let count = match_count > 50 ? 50 : match_count
+        return {
+            1: 0.10,
+            2: 0.11,
+            3: 0.12,
+            4: 0.13,
+            5: 0.14,
+            6: 0.15,
+            7: 0.20,
+            8: 0.25,
+            9: 0.30,
+            10: 0.40,
+            11: 0.50,
+            12: 0.60,
+            13: 0.70,
+            14: 0.80,
+            15: 0.90,
+            16: 1.00,
+            17: 1.10,
+            18: 1.20,
+            19: 1.30,
+            20: 1.40,
+            21: 1.50,
+            22: 1.60,
+            23: 1.70,
+            24: 1.80,
+            25: 1.90,
+            26: 2.00,
+            27: 2.10,
+            28: 2.20,
+            29: 2.40,
+            30: 2.60,
+            31: 2.80,
+            32: 3.00,
+            33: 3.10,
+            34: 3.20,
+            35: 3.30,
+            36: 3.40,
+            37: 3.50,
+            38: 3.60,
+            39: 3.70,
+            40: 3.80,
+            41: 3.90,
+            42: 4.00,
+            43: 4.10,
+            44: 4.20,
+            45: 4.30,
+            46: 4.40,
+            47: 4.50,
+            48: 4.60,
+            49: 4.80,
+            50: 5.00,
+        }[count]}
+    }
+
+
+class MultiBonus_3_20MCH_1M extends MBNS_MW1M_25SLP_6_38MCH{
+    get_configurations=( configuration_name)=>{
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations["NET_PAY_CAP"] = 1000000
+        all_configurations["MAX_BONUS"] = 52400
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.40
+
+        return all_configurations[configuration_name]
+    }
+
+    is_odd_bonus_eligible=()=>{
+        return (
+            this.total_odds
+            >= this.get_configurations("MIN_BONUS_ODD") ** this.match_count
+        )}
+
+    get_min_bonus_eligble_match_count=()=>{
+        return 3}
+
+    get_max_bonus_eligble_match_count=()=>{
+        return 20}
+
+    get_percentages=(match_count)=>{
+        let count = match_count > 20 ? 20 : match_count
+        return {
+            1: 0.00,
+            2: 0.00,
+            3: 0.03,
+            4: 0.04,
+            5: 0.05,
+            6: 0.06,
+            7: 0.10,
+            8: 0.15,
+            9: 0.20,
+            10: 0.25,
+            11: 0.30,
+            12: 0.35,
+            13: 0.40,
+            14: 0.45,
+            15: 0.50,
+            16: 0.55,
+            17: 0.60,
+            18: 0.65,
+            19: 0.70,
+            20: 0.75,
+        }[count]
+    }
+    }
+
 export default {
 
     SlipComp: SlipComp,
@@ -6706,5 +6835,7 @@ export default {
     MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH:MBNS75K_MW1M_50SLP_1MILCAP_3_14MMCH,
     MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT:MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT,
     MBNS_MW1M_25SLP_6_38MCH:MBNS_MW1M_25SLP_6_38MCH,
-    MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1:MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1
+    MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1:MBNS_MW1M_50SLP_3_40MCH_NO_VAT_1,
+    MultiBonus_3_20MCH_1M:MultiBonus_3_20MCH_1M,
+    MultiBetBonus1_50MCH:MultiBetBonus1_50MCH
 }
