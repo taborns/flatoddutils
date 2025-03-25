@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MultiBetBonus1_50MCH')
+main('MBNS_MW1M_75MB_4_21MCH')
 // testAllClasses()
