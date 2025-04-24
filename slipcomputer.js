@@ -6878,6 +6878,22 @@ class MultiBonus_SlpSz50_MW1M extends MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT{
         }[count]}
     }
 
+    class MBNS_MW1M_SlipSize50_3_18MCH extends MBNS_MW350K_SlpSz50_3_18MCH{
+
+        get_configurations=(configuration_name)=>{
+        let all_configurations = this.get_all_configurations()
+         all_configurations['MAX_WIN'] = 1000000
+         all_configurations['NET_PAY_CAP'] = 1000000
+         all_configurations["BET_SLIP_BONUS"] = true
+         all_configurations["MAX_BONUS"] = 52000
+         all_configurations["SLIP_SIZE"] = 50
+         all_configurations["MIN_BONUS_ODD"] = 1.3
+    
+         return all_configurations[configuration_name]
+     }
+
+    }
+
 export default {
 
     SlipComp: SlipComp,
@@ -7019,5 +7035,6 @@ export default {
     MBNS_MW1M_75MB_4_21MCH:MBNS_MW1M_75MB_4_21MCH,
     MBNS_MW1M_50SLP_3_40MCH_VAT_WIN:MBNS_MW1M_50SLP_3_40MCH_VAT_WIN,
     MBNS_MW1M_SlpSz50_3_18MCH:MBNS_MW1M_SlpSz50_3_18MCH,
-    MultiBonus_SlpSz50_MW1M:MultiBonus_SlpSz50_MW1M
+    MultiBonus_SlpSz50_MW1M:MultiBonus_SlpSz50_MW1M,
+    MBNS_MW1M_SlipSize50_3_18MCH:MBNS_MW1M_SlipSize50_3_18MCH
 }

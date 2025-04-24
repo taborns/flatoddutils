@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MultiBonus_SlpSz50_MW1M')
+main('MBNS_MW1M_SlipSize50_3_18MCH')
 // testAllClasses()
