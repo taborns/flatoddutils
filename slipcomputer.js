@@ -6962,7 +6962,7 @@ class MultiBonus_SlpSz50_MW1M extends MBNS_MW1M_SlpSz50_3_14MCH_NO_VAT{
         all_configurations["NET_PAY_CAP"] = 1000000
 
         // Taxations
-        all_configurations["TAX_TYPE"] = 'none'
+        all_configurations["TAX_TYPE"] = 'vat'
         all_configurations["VAT_TAX"] = 0.1
         all_configurations["WIN_TAX"] = 0.1
 
