@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MBNS_MW1M_SlipSize50_3_18MCH')
+main('MBNS_MaxWin1M_50SLP_3_40MCH_10P_VAT_WIN')
 // testAllClasses()
