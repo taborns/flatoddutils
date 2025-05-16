@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MBNS_MaxWin1M_50SLP_3_40MCH_10P_VAT_WIN')
+main('MBNS_HG_MW1M_SlpSz50_3_14MCH')
 // testAllClasses()
