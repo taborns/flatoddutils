@@ -7090,7 +7090,7 @@ class MBNS_MaxWin1M_25SLP_6_38MCH extends MBNS_MW500K_25SLP_6_38MCH {
         all_configurations['NET_PAY_CAP'] = 1000000
         all_configurations['SLIP_SIZE'] = 25
         all_configurations['BET_SLIP_BONUS'] = true
-        all_configurations['MAX_BONUS'] = 52_400
+        all_configurations['MAX_BONUS'] = 52400
         all_configurations["MIN_BONUS_ODD"] = 1.01
         return all_configurations[configuration_name]
     }
