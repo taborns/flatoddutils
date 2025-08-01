@@ -7177,6 +7177,89 @@ class MBNS52K_MW1MCAP_50SLP extends MBNS75K_MW1M_50SLP_1MILCAP_3_24MCH {
         }[count]
     }
 }
+
+class MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX extends MBNS52K_MW1MCAP_50SLP {
+    get_configurations = (configuration_name) => {
+        let all_configurations = this.get_all_configurations()
+        all_configurations["MIN_BONUS_ODD"] = 1.2
+        all_configurations["MAX_BONUS"] = 100000
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations["NET_PAY_CAP"] = 900000
+
+        // # Taxations
+        all_configurations["TAX_TYPE"] = 'vat'
+        all_configurations["VAT_TAX"] = 0.1
+        all_configurations["WIN_TAX"] = 0.2
+
+        return all_configurations[configuration_name]
+    }
+
+    get_percentages = (match_count) => {
+        let count = match_count > 40 ? 40 : match_count
+        return {
+            1: 0,
+            2: 0,
+            3: 0.05,
+            4: 0.08,
+            5: 0.09,
+            6: 0.1,
+            7: 0.15,
+            8: 0.20,
+            9: 0.25,
+            10: 0.3,
+            11: 0.35,
+            12: 0.4,
+            13: 0.45,
+            14: 0.5,
+            15: 0.55,
+            16: 0.6,
+            17: 0.65,
+            18: 0.7,
+            19: 0.75,
+            20: 0.80,
+            21: 0.85,
+            22: 0.90,
+            23: 0.95,
+            24: 1.0,
+            25: 1.1,
+            26: 1.3,
+            27: 1.5,
+            28: 1.7,
+            29: 2.0,
+            30: 2.1,
+            31: 2.3,
+            32: 2.5,
+            33: 2.7,
+            34: 2.9,
+            35: 3.1,
+            36: 3.2,
+            37: 3.4,
+            38: 3.6,
+            39: 3.8,
+            40: 4,
+        }[count]
+    }
+
+    get_bonus_value = () => {
+        if (!this.is_odd_bonus_eligible())
+            return 0
+
+        let percentage = this.get_percentages(this.get_percentage_match_count())
+        if (!percentage)
+            return 0
+
+        let win_value = this.get_win_value()
+        let max_percentage = this.get_percentages(this.get_max_bonus_eligble_match_count())
+        let max_possible_bonus = win_value * max_percentage
+        let bonus_value = Math.min(win_value * percentage, max_possible_bonus)
+
+        let max_bonus_limit = this.get_configurations("MAX_BONUS")
+        return Math.min(bonus_value, max_bonus_limit)
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -7327,6 +7410,7 @@ export default {
     MBNS_HG_MW1M_SlpSz50_3_14MCH:MBNS_HG_MW1M_SlpSz50_3_14MCH,
     MBNS_MaxWin1M_25SLP_6_38MCH:MBNS_MaxWin1M_25SLP_6_38MCH,
     MBNS75K_MW1M_50SLP_1MILCAP_3_24MCH:MBNS75K_MW1M_50SLP_1MILCAP_3_24MCH,
-    MBNS52K_MW1MCAP_50SLP:MBNS52K_MW1MCAP_50SLP
+    MBNS52K_MW1MCAP_50SLP:MBNS52K_MW1MCAP_50SLP,
+    MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX:MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX
 }
 
