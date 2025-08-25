@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX')
+main('MBNS_MW1M_SIpSz50_MXBNS_100K')
 // testAllClasses()
