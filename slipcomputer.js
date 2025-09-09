@@ -7275,6 +7275,59 @@ class MBNS_MW1M_SIpSz50_MXBNS_100K extends MBNS_MW1M_SlpSz50_3_18MCH {
     }
 }
 
+class MBNS_MW500K_25SLP_6_40MCH_BM extends MBNS_MW500K_25SLP_6_38MCH   { 
+
+    get_max_bonus_eligble_match_count=() =>{
+        return 40
+    }
+
+    get_percentages=(match_count)=> {
+        let count = match_count > 40 ? 40 : match_count
+        return {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0.1,
+            7: 0.15,
+            8: 0.20,
+            9: 0.25,
+            10: 0.3,
+            11: 0.35,
+            12: 0.4,
+            13: 0.45,
+            14: 0.5,
+            15: 0.55,
+            16: 0.6,
+            17: 0.65,
+            18: 0.7,
+            19: 0.75,
+            20: 0.80,
+            21: 0.85,
+            22: 0.90,
+            23: 0.95,
+            24: 1.0,
+            25: 1.1,
+            26: 1.3,
+            27: 1.5,
+            28: 1.7,
+            29: 2.0,
+            30: 2.1,
+            31: 2.3,
+            32: 2.5,
+            33: 2.7,
+            34: 2.9,
+            35: 3.1,
+            36: 3.2,
+            37: 3.5,
+            38: 3.7,
+            39: 3.9,
+            40: 4,
+        }[count]
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -7427,6 +7480,7 @@ export default {
     MBNS75K_MW1M_50SLP_1MILCAP_3_24MCH:MBNS75K_MW1M_50SLP_1MILCAP_3_24MCH,
     MBNS52K_MW1MCAP_50SLP:MBNS52K_MW1MCAP_50SLP,
     MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX:MBNS_MW1M_50SLP_3_40MCH_20P_PAYOUT_TAX,
-    MBNS_MW1M_SIpSz50_MXBNS_100K:MBNS_MW1M_SIpSz50_MXBNS_100K
+    MBNS_MW1M_SIpSz50_MXBNS_100K:MBNS_MW1M_SIpSz50_MXBNS_100K,
+    MBNS_MW500K_25SLP_6_40MCH_BM:MBNS_MW500K_25SLP_6_40MCH_BM
 }
 
