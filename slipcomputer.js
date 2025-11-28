@@ -7393,6 +7393,35 @@ class MBNS30K_MW870K_28SLP_870KCAP_7_28MCH extends MBNS75K_MW1M_50SLP_1MILCAP_3_
     }
 }
 
+class MBNS_MW1M_SlpSz50_3_40MCH_NO_VAT extends MBNS_MW300K_SlpSz50_3_40MCH_NO_VAT {
+
+    get_configurations = (configuration_name) => {
+        all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["MAX_BONUS"] = 200000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.3
+
+        return all_configurations[configuration_name]
+    }
+}
+
+class MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT extends MBNS_MW1M_SlpSz50_3_40MCH_NO_VAT {
+    get_configurations=( configuration_name)=>{
+        let all_configurations = this.get_all_configurations()
+        all_configurations["BET_SLIP_BONUS"] = true
+        all_configurations["MAX_WIN"] = 1000000
+        all_configurations['NET_PAY_CAP'] = 1000000
+        all_configurations["MAX_BONUS"] = 200000
+        all_configurations["SLIP_SIZE"] = 50
+        all_configurations["MIN_BONUS_ODD"] = 1.15
+
+        return all_configurations[configuration_name]
+    }
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -7548,6 +7577,7 @@ export default {
     MBNS_MW1M_SIpSz50_MXBNS_100K:MBNS_MW1M_SIpSz50_MXBNS_100K,
     MBNS_MW500K_25SLP_6_40MCH_BM:MBNS_MW500K_25SLP_6_40MCH_BM,
     MBNS_MW1M_SlpSz50_MXBNS_100K:MBNS_MW1M_SlpSz50_MXBNS_100K,
-    MBNS30K_MW870K_28SLP_870KCAP_7_28MCH:MBNS30K_MW870K_28SLP_870KCAP_7_28MCH
+    MBNS30K_MW870K_28SLP_870KCAP_7_28MCH:MBNS30K_MW870K_28SLP_870KCAP_7_28MCH,
+    MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT:MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT
 }
 
