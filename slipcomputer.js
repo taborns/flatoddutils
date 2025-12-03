@@ -7422,6 +7422,34 @@ class MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT extends MBNS_MW1M_SlpSz50_3_40MCH_NO_VAT
     }
 }
 
+class MBNS_MW1M_SlpSz35_3_20MCHABOL extends MultiBonus9Mw1MilMB5240SlpSz35{
+    get_percentages=(match_count)=>{
+    let count = match_count > 20 ? 20 : match_count
+    return {
+        1: 0.00,
+        2: 0.00,
+        3: 0.03,
+        4: 0.04,
+        5: 0.05,
+        6: 0.06,
+        7: 0.1,
+        8: 0.15,
+        9: 0.2,
+        10: 0.25,
+        11: 0.3,
+        12: 0.35,
+        13: 0.4,
+        14: 0.45,
+        15: 0.5,
+        16: 0.55,
+        17: 0.6,
+        18: 0.65,
+        19: 0.7,
+        20: 5,
+    }[count]
+}
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -7578,6 +7606,7 @@ export default {
     MBNS_MW500K_25SLP_6_40MCH_BM:MBNS_MW500K_25SLP_6_40MCH_BM,
     MBNS_MW1M_SlpSz50_MXBNS_100K:MBNS_MW1M_SlpSz50_MXBNS_100K,
     MBNS30K_MW870K_28SLP_870KCAP_7_28MCH:MBNS30K_MW870K_28SLP_870KCAP_7_28MCH,
-    MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT:MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT
+    MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT:MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT,
+    MBNS_MW1M_SlpSz35_3_20MCHABOL:MBNS_MW1M_SlpSz35_3_20MCHABOL
 }
 
