@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('MBNS_MW1M_SlpSz35_3_20MCHABOL')
+main('AccumulatorBonusSlipComp')
 // testAllClasses()

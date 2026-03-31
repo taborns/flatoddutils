@@ -7450,6 +7450,97 @@ class MBNS_MW1M_SlpSz35_3_20MCHABOL extends MultiBonus9Mw1MilMB5240SlpSz35{
 }
 }
 
+class AccumulatorBonusSlipComp extends MultiBonusMaxBonus100K {
+  get_configurations = (configuration_name) => {
+    let all_configurations = this.get_all_configurations();
+    all_configurations["BET_SLIP_BONUS"] = true;
+    all_configurations["MAX_WIN"] = 25000000;
+    all_configurations["NET_PAY_CAP"] = 25000000;
+    all_configurations["MAX_BONUS"] = 500000;
+    all_configurations["SLIP_SIZE"] = 50;
+    all_configurations["MIN_BONUS_ODD"] = 1.5;
+    return all_configurations[configuration_name];
+  };
+
+  get_min_bonus_eligble_match_count = () => {
+    return 6;
+  };
+
+  get_max_bonus_eligble_match_count = () => {
+    return 38;
+  };
+
+  is_odd_bonus_eligible = () => {
+    return (
+      this.total_odds >=
+      this.get_configurations("MIN_BONUS_ODD") ** this.match_count
+    );
+  };
+
+// Added missing method
+  is_win_taxable = (amount) => {
+    return amount >= this.get_configurations("TAXABLE_WIN");
+  };
+
+  get_percentages = (match_count) => {
+    if (
+      match_count < this.get_min_bonus_eligble_match_count() ||
+      match_count > this.get_max_bonus_eligble_match_count()
+    )
+      return 0;
+
+    return (
+      {
+        6: 0.02,
+        7: 0.03,
+        8: 0.04,
+        9: 0.07,
+        10: 0.07,
+        11: 0.1,
+        12: 0.1,
+        13: 0.14,
+        14: 0.14,
+        15: 0.22,
+        16: 0.22,
+        17: 0.29,
+        18: 0.29,
+        19: 0.42,
+        20: 0.42,
+        21: 0.72,
+        22: 0.72,
+        23: 0.72,
+        24: 1.5,
+        25: 1.5,
+        26: 1.5,
+        27: 1.5,
+        28: 2.0,
+        29: 2.0,
+        30: 2.0,
+        31: 2.0,
+        32: 2.5,
+        33: 2.5,
+        34: 2.5,
+        35: 2.5,
+        36: 2.5,
+        37: 2.5,
+        38: 3.0,
+      }[match_count] || 0
+    );
+  };
+  
+  get_net_pay = () => {
+    let net_pay = this.get_win_value() + this.get_bonus_value();
+    let winning_tax = this.calculate_tax();
+    net_pay = net_pay - winning_tax;
+    let net_pay_cap = this.get_configurations("NET_PAY_CAP");
+    if (net_pay > net_pay_cap) {
+      net_pay = net_pay_cap;
+
+      return round(net_pay, 2);
+    }
+  };
+}
+
 export default {
 
     SlipComp: SlipComp,
@@ -7607,6 +7698,7 @@ export default {
     MBNS_MW1M_SlpSz50_MXBNS_100K:MBNS_MW1M_SlpSz50_MXBNS_100K,
     MBNS30K_MW870K_28SLP_870KCAP_7_28MCH:MBNS30K_MW870K_28SLP_870KCAP_7_28MCH,
     MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT:MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT,
-    MBNS_MW1M_SlpSz35_3_20MCHABOL:MBNS_MW1M_SlpSz35_3_20MCHABOL
+    MBNS_MW1M_SlpSz35_3_20MCHABOL:MBNS_MW1M_SlpSz35_3_20MCHABOL,
+    AccumulatorBonusSlipComp:AccumulatorBonusSlipComp
 }
 
