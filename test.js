@@ -180,7 +180,7 @@ function main(className){
     let min_bonus_eligble_match_count = bonus_calculator.get_min_bonus_eligble_match_count()
     // let total_odd_match_count = bonus_calculator.get_total_odd_match_count()
     // get_win_tax_bonus = bonus_calculator.get_win_tax_bonus()
-    let is_win_taxable = bonus_calculator.is_win_taxable()
+    // let is_win_taxable = bonus_calculator.is_win_taxable()
     
     // Output the result
     console.log(`Match count: ${bonus_calculator.match_count}`)
@@ -197,7 +197,7 @@ function main(className){
     console.log(`get_win_value: ${get_win_value}`)
     console.log(`max_bonus_eligble_match_count: ${max_bonus_eligble_match_count}`)
     console.log(`min_bonus_eligble_match_count: ${min_bonus_eligble_match_count}`)
-    console.log(`isWinTaxable: ${is_win_taxable}`)
+    // console.log(`isWinTaxable: ${is_win_taxable}`)
     // console.log(`total_odd_match_count: ${total_odd_match_count}`)
 
 }
@@ -206,5 +206,5 @@ function main(className){
 
 
 
-main('AccumulatorBonusSlipComp')
+main('LesMultiBonus1NoSlipBonus')
 // testAllClasses()

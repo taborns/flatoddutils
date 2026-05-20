@@ -7541,6 +7541,21 @@ class AccumulatorBonusSlipComp extends MultiBonusMaxBonus100K {
   };
 }
 
+class LesMultiBonus1NoSlipBonus extends LesMultiBonus1{
+
+    get_configurations=( configuration_name)=>{
+
+        let all_configurations = this.get_all_configurations()
+        all_configurations["MAX_WIN"] = 10_000
+        all_configurations["TAX_TYPE"] = 'none'
+        all_configurations["MAX_BONUS"] = 0.00
+        all_configurations["SLIP_SIZE"] = 20
+        all_configurations["MIN_BONUS_ODD"] = 1.4
+
+        return all_configurations[configuration_name]
+    };
+    }
+
 export default {
 
     SlipComp: SlipComp,
@@ -7699,6 +7714,7 @@ export default {
     MBNS30K_MW870K_28SLP_870KCAP_7_28MCH:MBNS30K_MW870K_28SLP_870KCAP_7_28MCH,
     MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT:MBNS2_MW1M_SlpSz50_3_40MCH_NO_VAT,
     MBNS_MW1M_SlpSz35_3_20MCHABOL:MBNS_MW1M_SlpSz35_3_20MCHABOL,
-    AccumulatorBonusSlipComp:AccumulatorBonusSlipComp
+    AccumulatorBonusSlipComp:AccumulatorBonusSlipComp,
+    LesMultiBonus1NoSlipBonus:LesMultiBonus1NoSlipBonus
 }
 
